@@ -9,6 +9,7 @@
             --primary-red: #ff0033;
             --dark-bg: #111;
             --light-bg: #f6f7fb;
+            --whatsapp-green: #25d366;
         }
 
         body {
@@ -67,10 +68,10 @@
         }
         .modal-content {
             background: #fff; padding: 30px; border-radius: 15px; width: 90%;
-            max-width: 450px; text-align: center; position: relative;
+            max-width: 500px; text-align: center; position: relative;
         }
         .close-btn { position: absolute; top: 10px; right: 20px; cursor: pointer; font-size: 28px; color: #999; }
-        input, select {
+        input {
             width: 100%; padding: 12px; margin: 15px 0; border: 1px solid #ddd;
             border-radius: 8px; box-sizing: border-box;
         }
@@ -79,9 +80,43 @@
             word-break: break-all; font-size: 14px; border: 1px dashed #ccc;
         }
 
+        /* --- WHATSAPP FLOATING BUTTON --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--whatsapp-green);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #128c7e;
+        }
+
         /* --- FOOTER --- */
-        footer { background: var(--dark-bg); color: #bbb; padding: 50px 20px 20px; margin-top: 60px; text-align: center; }
-        .footer-bottom { margin-top: 30px; border-top: 1px solid #333; padding-top: 20px; font-size: 12px; }
+        footer { background: var(--dark-bg); color: #bbb; padding: 60px 20px 20px; margin-top: 80px; }
+        .footer-content {
+            max-width: 1200px; margin: auto; display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: left;
+        }
+        .footer-section h4 { color: #fff; margin-bottom: 20px; border-bottom: 2px solid var(--primary-red); display: inline-block; padding-bottom: 5px; }
+        .footer-section ul { list-style: none; padding: 0; }
+        .footer-section ul li { margin-bottom: 10px; }
+        .footer-section ul li a { color: #bbb; text-decoration: none; cursor: pointer; transition: 0.3s; }
+        .footer-section ul li a:hover { color: var(--primary-red); padding-left: 5px; }
+        .footer-bottom { text-align: center; margin-top: 50px; border-top: 1px solid #333; padding-top: 20px; font-size: 12px; }
     </style>
 </head>
 <body>
@@ -96,6 +131,10 @@
         <a href="#seo">SEO Check</a>
     </div>
 </header>
+
+<a href="https://wa.me/923266342858?text=Hello%20AhsanTools%20Support!%20I%20need%20help." class="whatsapp-float" target="_blank">
+    <span style="font-family: Arial, sans-serif; font-weight: bold;">WA</span>
+</a>
 
 <div class="container">
     <h2 class="section-title" id="data">📥 Data & Utility Tools</h2>
@@ -191,9 +230,43 @@
     </div>
 </div>
 
+<div id="aboutModal" class="modal-overlay">
+    <div class="modal-content" style="text-align:left;">
+        <span class="close-btn" onclick="closeModal('aboutModal')">&times;</span>
+        <h3 style="color:var(--primary-red);">About AhsanTools</h3>
+        <p>AhsanTools is a dedicated platform for YouTube creators. Our mission is to provide simple, fast, and free web tools to help creators optimize their videos.</p>
+    </div>
+</div>
+
+<div id="privacyModal" class="modal-overlay">
+    <div class="modal-content" style="text-align:left;">
+        <span class="close-btn" onclick="closeModal('privacyModal')">&times;</span>
+        <h3 style="color:var(--primary-red);">Privacy Policy</h3>
+        <p>All calculations happen directly in your browser. We do not store any user data.</p>
+    </div>
+</div>
+
+<div id="contactModal" class="modal-overlay">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('contactModal')">&times;</span>
+        <h3 style="color:var(--primary-red);">Contact Us</h3>
+        <p>Email: support@ahsantools.com</p>
+        <p>WhatsApp: +92 326 6342858</p>
+    </div>
+</div>
+
 <footer>
-    <p>AhsanTools - Built for YouTube Content Creators</p>
-    <div class="footer-bottom"> &copy; 2026 AhsanTools • All Rights Reserved </div>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a onclick="openModal('aboutModal')">About Us</a></li>
+                <li><a onclick="openModal('privacyModal')">Privacy Policy</a></li>
+                <li><a onclick="openModal('contactModal')">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom"> &copy; 2026 AhsanTools • Built for Creators </div>
 </footer>
 
 <script>
@@ -208,32 +281,29 @@
         return id;
     }
 
-    // Thumbnail Logic
     function fnThumb() {
         let id = getID(document.getElementById('tUrl').value);
         if(id) {
             let img = `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
-            document.getElementById('tRes').innerHTML = `<img src="${img}" style="width:100%; border-radius:5px;"><br><a href="${img}" target="_blank">Download HD</a>`;
+            document.getElementById('tRes').innerHTML = `<img src="${img}" style="width:100%; border-radius:5px;"><br><a href="${img}" target="_blank" style="color:var(--primary-red); text-decoration:none;">View Image</a>`;
             document.getElementById('tRes').style.display = 'block';
         } else { alert("Invalid URL"); }
     }
 
-    // Calculator Logic
     function fnCalc() {
         let v = document.getElementById('viewsIn').value;
+        if(v <= 0) return alert("Enter valid views");
         let min = (v/1000)*0.5; let max = (v/1000)*4.5;
         document.getElementById('cRes').innerHTML = `Daily: $${min.toFixed(2)} - $${max.toFixed(2)}`;
         document.getElementById('cRes').style.display = 'block';
     }
 
-    // Title Logic
     function fnTitle() {
         let t = document.getElementById('titleIn').value.length;
         let status = t > 70 ? "Too Long" : (t < 40 ? "Too Short" : "Perfect");
         document.getElementById('tiRes').innerHTML = `Characters: ${t} / 100 <br> Status: ${status}`;
     }
 
-    // Embed Logic
     function fnEmbed() {
         let id = getID(document.getElementById('eUrl').value);
         if(id) {
@@ -243,11 +313,10 @@
         }
     }
 
-    // Time Logic
     function fnTime() {
         let id = getID(document.getElementById('tmUrl').value);
         let sec = document.getElementById('tmSec').value;
-        if(id) {
+        if(id && sec) {
             let link = `https://youtu.be/${id}?t=${sec}`;
             document.getElementById('tmRes').innerHTML = `<a href="${link}" target="_blank">${link}</a>`;
             document.getElementById('tmRes').style.display = 'block';
