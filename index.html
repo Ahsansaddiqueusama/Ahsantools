@@ -18,52 +18,54 @@
     <style>
         :root { --red: #ff0033; --dark: #111; --light: #f6f7fb; --wa: #25d366; }
         body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: var(--light); color: #222; }
-        header { background: linear-gradient(135deg, #ff0033 0%, #b30024 100%); color: #fff; padding: 50px 20px; text-align: center; }
-        .container { max-width: 1200px; margin: auto; padding: 30px 15px; }
+        header { background: linear-gradient(135deg, #ff0033 0%, #b30024 100%); color: #fff; padding: 40px 20px; text-align: center; }
+        .container { max-width: 1200px; margin: auto; padding: 20px 15px; }
         
-        /* Section Titles remain left-aligned for hierarchy */
-        .section-title { font-size: 22px; margin: 40px 0 20px; border-left: 5px solid var(--red); padding-left: 12px; display: flex; align-items: center; gap: 10px; font-weight: 800; }
-        .section-title i { color: var(--red); font-size: 24px; }
+        .section-title { font-size: 20px; margin: 30px 0 15px; border-left: 5px solid var(--red); padding-left: 12px; display: flex; align-items: center; gap: 10px; font-weight: 800; }
+        .section-title i { color: var(--red); }
 
-        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
         
-        /* Centering Card Content */
+        /* Fixed Card Styling */
         .tool-card { 
             background: #fff; 
             border-radius: 12px; 
-            padding: 30px 20px; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.06); 
-            text-align: center; /* All text and buttons centered */
+            padding: 20px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
+            text-align: center;
             transition: 0.3s; 
             border: 1px solid #eee; 
             display: flex;
             flex-direction: column;
-            align-items: center; /* Ensures icons and buttons are in the middle */
+            justify-content: space-between; /* Pushes button to bottom */
+            height: 100%; /* Ensures all cards have same height */
+            min-height: 240px; 
         }
         .tool-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(255,0,51,0.1); }
         
-        .card-icon { font-size: 32px; margin-bottom: 15px; display: block; }
+        /* Compact Spacing for Content */
+        .card-content { margin-bottom: 10px; }
+        .card-icon { font-size: 28px; margin-bottom: 10px; display: block; }
         .card-icon.blue { color: #007bff; }
-        .card-icon.red { color: var(--red); }
         .card-icon.yellow { color: #ffc107; }
         .card-icon.green { color: #28a745; }
 
-        .tool-card h3 { margin: 10px 0; font-size: 19px; color: #333; }
-        .tool-card p { font-size: 14px; color: #666; margin-bottom: 20px; }
+        .tool-card h3 { margin: 5px 0; font-size: 17px; color: #333; font-weight: 700; }
+        .tool-card p { font-size: 13px; color: #666; margin: 5px 0 15px; line-height: 1.4; min-height: 36px; } /* min-height keeps buttons aligned */
 
-        .btn-use { background: var(--red); color: #fff; border: none; padding: 12px 25px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.2s; width: 80%; }
-        .btn-use:hover { background: #cc0029; transform: scale(1.05); }
+        .btn-use { background: var(--red); color: #fff; border: none; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; font-size: 14px; }
+        .btn-use:hover { background: #cc0029; }
 
         /* Modal & UI */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; justify-content: center; align-items: center; }
-        .modal-content { background: #fff; padding: 30px; border-radius: 15px; width: 90%; max-width: 550px; position: relative; max-height: 85vh; overflow-y: auto; text-align: center; }
-        .close-btn { position: absolute; top: 15px; right: 20px; cursor: pointer; font-size: 28px; color: #999; }
+        .modal-content { background: #fff; padding: 25px; border-radius: 15px; width: 90%; max-width: 500px; position: relative; text-align: center; }
+        .close-btn { position: absolute; top: 10px; right: 15px; cursor: pointer; font-size: 24px; color: #999; }
         input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
-        .res-box { margin-top: 15px; padding: 15px; background: #f8f9fa; border-radius: 8px; font-size: 14px; border: 1px dashed #ccc; display: none; text-align: left; white-space: pre-wrap; line-height: 1.6; color: #333; }
-        .loader { border: 4px solid #f3f3f3; border-top: 4px solid var(--red); border-radius: 50%; width: 25px; height: 25px; animation: spin 1s linear infinite; display: none; margin: 15px auto; }
+        .res-box { margin-top: 15px; padding: 15px; background: #f8f9fa; border-radius: 8px; font-size: 14px; border: 1px dashed #ccc; display: none; text-align: left; white-space: pre-wrap; color: #333; }
+        .loader { border: 4px solid #f3f3f3; border-top: 4px solid var(--red); border-radius: 50%; width: 25px; height: 25px; animation: spin 1s linear infinite; display: none; margin: 10px auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         
-        .whatsapp-float { position: fixed; bottom: 25px; right: 25px; background: var(--wa); color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 3000; box-shadow: 0 4px 12px rgba(0,0,0,0.2); text-decoration: none; }
+        .whatsapp-float { position: fixed; bottom: 25px; right: 25px; background: var(--wa); color: #fff; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 3000; box-shadow: 0 4px 12px rgba(0,0,0,0.2); text-decoration: none; }
     </style>
 </head>
 <body>
@@ -78,27 +80,35 @@
     <h2 class="section-title"><i class="fa-solid fa-toolbox"></i> Data & Download Tools</h2>
     <div class="tools-grid">
         <div class="tool-card">
-            <i class="fa-solid fa-magnifying-glass card-icon blue"></i>
-            <h3>Channel ID Finder</h3>
-            <p>Find YouTube channel ID instantly.</p>
+            <div class="card-content">
+                <i class="fa-solid fa-magnifying-glass card-icon blue"></i>
+                <h3>Channel ID Finder</h3>
+                <p>Find YouTube channel ID instantly via URL or handle.</p>
+            </div>
             <button class="btn-use" onclick="openTool('channel')">Use Tool</button>
         </div>
         <div class="tool-card">
-            <i class="fa-solid fa-chart-column card-icon green"></i>
-            <h3>Data Extractor</h3>
-            <p>Extract video title, tags & metadata.</p>
+            <div class="card-content">
+                <i class="fa-solid fa-chart-column card-icon green"></i>
+                <h3>Data Extractor</h3>
+                <p>Extract video title, tags and complete metadata.</p>
+            </div>
             <button class="btn-use" onclick="openTool('data_ext')">Use Tool</button>
         </div>
         <div class="tool-card">
-            <i class="fa-solid fa-square-arrow-down card-icon blue"></i>
-            <h3>YT Downloader</h3>
-            <p>Download videos & thumbnails.</p>
+            <div class="card-content">
+                <i class="fa-solid fa-square-arrow-down card-icon blue"></i>
+                <h3>YT Downloader</h3>
+                <p>Download videos and thumbnails in high quality.</p>
+            </div>
             <button class="btn-use" onclick="openTool('download')">Use Tool</button>
         </div>
         <div class="tool-card">
-            <i class="fa-solid fa-image card-icon yellow"></i>
-            <h3>Thumbnail Downloader</h3>
-            <p>Get HD YouTube thumbnails.</p>
+            <div class="card-content">
+                <i class="fa-solid fa-image card-icon yellow"></i>
+                <h3>Thumbnail Downloader</h3>
+                <p>Get high-definition YouTube video thumbnails.</p>
+            </div>
             <button class="btn-use" onclick="openTool('thumb')">Use Tool</button>
         </div>
     </div>
@@ -106,21 +116,27 @@
     <h2 class="section-title"><i class="fa-solid fa-robot"></i> AI Script & Content</h2>
     <div class="tools-grid">
         <div class="tool-card">
-            <i class="fa-solid fa-pen-nib card-icon yellow"></i>
-            <h3>AI Script Writer</h3>
-            <p>Generate full YouTube scripts.</p>
+            <div class="card-content">
+                <i class="fa-solid fa-pen-nib card-icon yellow"></i>
+                <h3>AI Script Writer</h3>
+                <p>Generate professional and engaging YouTube scripts.</p>
+            </div>
             <button class="btn-use" onclick="openTool('ai_script')">Use Tool</button>
         </div>
         <div class="tool-card">
-            <i class="fa-solid fa-rotate card-icon blue"></i>
-            <h3>Script Rewriter</h3>
-            <p>Rewrite scripts professionally.</p>
+            <div class="card-content">
+                <i class="fa-solid fa-rotate card-icon blue"></i>
+                <h3>Script Rewriter</h3>
+                <p>Rewrite and optimize your existing video scripts.</p>
+            </div>
             <button class="btn-use" onclick="openTool('ai_rewrite')">Use Tool</button>
         </div>
         <div class="tool-card">
-            <i class="fa-solid fa-bolt card-icon yellow"></i>
-            <h3>Viral Hook Gen</h3>
-            <p>Create powerful video hooks.</p>
+            <div class="card-content">
+                <i class="fa-solid fa-bolt card-icon yellow"></i>
+                <h3>Viral Hook Gen</h3>
+                <p>Create catchy intros to hook your audience instantly.</p>
+            </div>
             <button class="btn-use" onclick="openTool('ai_hook')">Use Tool</button>
         </div>
     </div>
@@ -131,8 +147,8 @@
     <div class="modal-content">
         <span class="close-btn" onclick="closeModal()">&times;</span>
         <h3 id="uTitle">Tool</h3>
-        <input type="text" id="uInput" placeholder="Paste link or topic...">
-        <button class="btn-use" style="width:100%" onclick="runLogic()">Execute Tool</button>
+        <input type="text" id="uInput" placeholder="Paste link or enter topic...">
+        <button class="btn-use" onclick="runLogic()">Execute Tool</button>
         <div class="loader" id="uLoad"></div>
         <div id="uRes" class="res-box"></div>
     </div>
@@ -158,14 +174,12 @@
         const loader = document.getElementById('uLoad');
         const resBox = document.getElementById('uRes');
         if(!input) return alert("Please enter something!");
-        
         loader.style.display = 'block'; resBox.style.display = 'none';
-
         try {
             if(activeTool.startsWith('ai_')) {
                 const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEM_KEY}`, {
                     method: "POST",
-                    body: JSON.stringify({ contents: [{ parts: [{ text: `YouTube Specialist: Perform ${activeTool} for: ${input}` }] }] })
+                    body: JSON.stringify({ contents: [{ parts: [{ text: `Act as a YouTube Expert. Task: ${activeTool} for: ${input}` }] }] })
                 });
                 const data = await res.json();
                 resBox.innerText = data.candidates[0].content.parts[0].text;
@@ -176,10 +190,10 @@
                 resBox.innerText = "Channel ID: " + (data.items ? data.items[0].id : "Not Found");
             } else if(activeTool === 'thumb') {
                 const vid = input.split('v=')[1]?.split('&')[0] || input.split('/').pop();
-                resBox.innerHTML = `<img src="https://img.youtube.com/vi/${vid}/maxresdefault.jpg" style="width:100%"><br><br><a href="https://img.youtube.com/vi/${vid}/maxresdefault.jpg" target="_blank">Download Image</a>`;
+                resBox.innerHTML = `<img src="https://img.youtube.com/vi/${vid}/maxresdefault.jpg" style="width:100%; border-radius:8px;"><br><br><a href="https://img.youtube.com/vi/${vid}/maxresdefault.jpg" target="_blank" style="color:red; font-weight:bold; text-decoration:none;">Download High Resolution</a>`;
             }
             resBox.style.display = 'block';
-        } catch(e) { resBox.innerText = "Error: Please check input or API Quota."; resBox.style.display = 'block'; }
+        } catch(e) { resBox.innerText = "Error: Please check your connection or input."; resBox.style.display = 'block'; }
         loader.style.display = 'none';
     }
 </script>
