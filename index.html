@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AhsanTools – 100% Fixed & Active</title>
+    <title>AhsanTools – Professional YouTube Suite</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WMX94TX4PQ"></script>
     <script>
@@ -21,32 +21,45 @@
         header { background: linear-gradient(135deg, #ff0033 0%, #b30024 100%); color: #fff; padding: 50px 20px; text-align: center; }
         .container { max-width: 1200px; margin: auto; padding: 30px 15px; }
         
+        /* Section Titles remain left-aligned for hierarchy */
         .section-title { font-size: 22px; margin: 40px 0 20px; border-left: 5px solid var(--red); padding-left: 12px; display: flex; align-items: center; gap: 10px; font-weight: 800; }
         .section-title i { color: var(--red); font-size: 24px; }
 
         .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-        .tool-card { background: #fff; border-radius: 12px; padding: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.06); text-align: left; transition: 0.3s; border: 1px solid #eee; position: relative; }
+        
+        /* Centering Card Content */
+        .tool-card { 
+            background: #fff; 
+            border-radius: 12px; 
+            padding: 30px 20px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.06); 
+            text-align: center; /* All text and buttons centered */
+            transition: 0.3s; 
+            border: 1px solid #eee; 
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Ensures icons and buttons are in the middle */
+        }
         .tool-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(255,0,51,0.1); }
         
-        /* Card Icons */
-        .card-icon { font-size: 28px; margin-bottom: 15px; display: block; }
+        .card-icon { font-size: 32px; margin-bottom: 15px; display: block; }
         .card-icon.blue { color: #007bff; }
         .card-icon.red { color: var(--red); }
         .card-icon.yellow { color: #ffc107; }
         .card-icon.green { color: #28a745; }
 
-        .tool-card h3 { margin: 10px 0; font-size: 18px; color: #333; }
-        .tool-card p { font-size: 13px; color: #666; margin-bottom: 20px; }
+        .tool-card h3 { margin: 10px 0; font-size: 19px; color: #333; }
+        .tool-card p { font-size: 14px; color: #666; margin-bottom: 20px; }
 
-        .btn-use { background: var(--red); color: #fff; border: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.2s; }
-        .btn-use:hover { background: #cc0029; }
+        .btn-use { background: var(--red); color: #fff; border: none; padding: 12px 25px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.2s; width: 80%; }
+        .btn-use:hover { background: #cc0029; transform: scale(1.05); }
 
         /* Modal & UI */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; justify-content: center; align-items: center; }
-        .modal-content { background: #fff; padding: 30px; border-radius: 15px; width: 90%; max-width: 550px; position: relative; max-height: 85vh; overflow-y: auto; }
+        .modal-content { background: #fff; padding: 30px; border-radius: 15px; width: 90%; max-width: 550px; position: relative; max-height: 85vh; overflow-y: auto; text-align: center; }
         .close-btn { position: absolute; top: 15px; right: 20px; cursor: pointer; font-size: 28px; color: #999; }
         input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
-        .res-box { margin-top: 15px; padding: 15px; background: #f8f9fa; border-radius: 8px; font-size: 14px; border: 1px dashed #ccc; display: none; text-align: left; white-space: pre-wrap; line-height: 1.6; }
+        .res-box { margin-top: 15px; padding: 15px; background: #f8f9fa; border-radius: 8px; font-size: 14px; border: 1px dashed #ccc; display: none; text-align: left; white-space: pre-wrap; line-height: 1.6; color: #333; }
         .loader { border: 4px solid #f3f3f3; border-top: 4px solid var(--red); border-radius: 50%; width: 25px; height: 25px; animation: spin 1s linear infinite; display: none; margin: 15px auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         
@@ -57,7 +70,7 @@
 
 <header>
     <h1>AhsanTools</h1>
-    <p>All-in-One Smart YouTube Tools for Creators</p>
+    <p>Professional Suite for YouTube Growth</p>
 </header>
 
 <div class="container">
@@ -66,19 +79,19 @@
     <div class="tools-grid">
         <div class="tool-card">
             <i class="fa-solid fa-magnifying-glass card-icon blue"></i>
-            <h3>YT Channel ID Finder</h3>
+            <h3>Channel ID Finder</h3>
             <p>Find YouTube channel ID instantly.</p>
             <button class="btn-use" onclick="openTool('channel')">Use Tool</button>
         </div>
         <div class="tool-card">
             <i class="fa-solid fa-chart-column card-icon green"></i>
-            <h3>YouTube Data Extractor</h3>
+            <h3>Data Extractor</h3>
             <p>Extract video title, tags & metadata.</p>
             <button class="btn-use" onclick="openTool('data_ext')">Use Tool</button>
         </div>
         <div class="tool-card">
             <i class="fa-solid fa-square-arrow-down card-icon blue"></i>
-            <h3>YouTube Downloader</h3>
+            <h3>YT Downloader</h3>
             <p>Download videos & thumbnails.</p>
             <button class="btn-use" onclick="openTool('download')">Use Tool</button>
         </div>
@@ -88,21 +101,9 @@
             <p>Get HD YouTube thumbnails.</p>
             <button class="btn-use" onclick="openTool('thumb')">Use Tool</button>
         </div>
-        <div class="tool-card">
-            <i class="fa-solid fa-link card-icon"></i>
-            <h3>Embed Code Generator</h3>
-            <p>Create YouTube embed codes.</p>
-            <button class="btn-use" onclick="openTool('embed')">Use Tool</button>
-        </div>
-        <div class="tool-card">
-            <i class="fa-solid fa-clock card-icon"></i>
-            <h3>Timestamp Link Gen</h3>
-            <p>Generate timestamped video links.</p>
-            <button class="btn-use" onclick="openTool('timestamp')">Use Tool</button>
-        </div>
     </div>
 
-    <h2 class="section-title"><i class="fa-solid fa-robot"></i> AI Script & Content Tools</h2>
+    <h2 class="section-title"><i class="fa-solid fa-robot"></i> AI Script & Content</h2>
     <div class="tools-grid">
         <div class="tool-card">
             <i class="fa-solid fa-pen-nib card-icon yellow"></i>
@@ -118,31 +119,9 @@
         </div>
         <div class="tool-card">
             <i class="fa-solid fa-bolt card-icon yellow"></i>
-            <h3>Hook Generator</h3>
+            <h3>Viral Hook Gen</h3>
             <p>Create powerful video hooks.</p>
             <button class="btn-use" onclick="openTool('ai_hook')">Use Tool</button>
-        </div>
-        <div class="tool-card">
-            <i class="fa-solid fa-clapperboard card-icon"></i>
-            <h3>Shorts Script Generator</h3>
-            <p>AI scripts for YouTube Shorts.</p>
-            <button class="btn-use" onclick="openTool('ai_shorts')">Use Tool</button>
-        </div>
-    </div>
-
-    <h2 class="section-title"><i class="fa-solid fa-chart-line"></i> Growth & Earnings</h2>
-    <div class="tools-grid">
-        <div class="tool-card">
-            <i class="fa-solid fa-sack-dollar card-icon yellow"></i>
-            <h3>Income Calculator</h3>
-            <p>Estimate YouTube earnings.</p>
-            <button class="btn-use" onclick="openTool('income')">Use Tool</button>
-        </div>
-        <div class="tool-card">
-            <i class="fa-solid fa-check-double card-icon green"></i>
-            <h3>Monetization Checker</h3>
-            <p>Check channel monetization status.</p>
-            <button class="btn-use" onclick="openTool('monetize')">Use Tool</button>
         </div>
     </div>
 
@@ -152,7 +131,7 @@
     <div class="modal-content">
         <span class="close-btn" onclick="closeModal()">&times;</span>
         <h3 id="uTitle">Tool</h3>
-        <input type="text" id="uInput" placeholder="Paste link or enter topic...">
+        <input type="text" id="uInput" placeholder="Paste link or topic...">
         <button class="btn-use" style="width:100%" onclick="runLogic()">Execute Tool</button>
         <div class="loader" id="uLoad"></div>
         <div id="uRes" class="res-box"></div>
@@ -186,7 +165,7 @@
             if(activeTool.startsWith('ai_')) {
                 const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEM_KEY}`, {
                     method: "POST",
-                    body: JSON.stringify({ contents: [{ parts: [{ text: `YouTube Expert: Perform ${activeTool} for: ${input}` }] }] })
+                    body: JSON.stringify({ contents: [{ parts: [{ text: `YouTube Specialist: Perform ${activeTool} for: ${input}` }] }] })
                 });
                 const data = await res.json();
                 resBox.innerText = data.candidates[0].content.parts[0].text;
@@ -195,17 +174,12 @@
                 const res = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=id&forHandle=${handle}&key=${YT_KEY}`);
                 const data = await res.json();
                 resBox.innerText = "Channel ID: " + (data.items ? data.items[0].id : "Not Found");
-            } else if(activeTool === 'income') {
-                const v = parseInt(input.replace(/,/g,'')) || 0;
-                resBox.innerText = `Estimated Monthly Earnings:\nMin: $${(v*0.001).toFixed(2)}\nMax: $${(v*0.004).toFixed(2)}`;
             } else if(activeTool === 'thumb') {
                 const vid = input.split('v=')[1]?.split('&')[0] || input.split('/').pop();
-                resBox.innerHTML = `<img src="https://img.youtube.com/vi/${vid}/maxresdefault.jpg" style="width:100%"><br><a href="https://img.youtube.com/vi/${vid}/maxresdefault.jpg" target="_blank">Download HD</a>`;
-            } else {
-                resBox.innerText = "Processing complete. Check result above.";
+                resBox.innerHTML = `<img src="https://img.youtube.com/vi/${vid}/maxresdefault.jpg" style="width:100%"><br><br><a href="https://img.youtube.com/vi/${vid}/maxresdefault.jpg" target="_blank">Download Image</a>`;
             }
             resBox.style.display = 'block';
-        } catch(e) { alert("Error: Check API or Link."); }
+        } catch(e) { resBox.innerText = "Error: Please check input or API Quota."; resBox.style.display = 'block'; }
         loader.style.display = 'none';
     }
 </script>
