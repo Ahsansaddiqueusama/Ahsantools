@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AhsanTools – All-in-One YouTube Tools</title>
+
+    <meta property="og:title" content="AhsanTools – Free YouTube Growth Tools">
+    <meta property="og:description" content="Download HD thumbnails, calculate earnings, and optimize your YouTube channel for free.">
+    <meta property="og:image" content="https://img.youtube.com/vi/y881t8ilMyc/maxresdefault.jpg">
+    <meta property="og:url" content="https://ahsansaddiqueusama.github.io/Ahsantools/">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
         :root {
             --primary-red: #ff0033;
@@ -83,27 +92,24 @@
         /* --- WHATSAPP FLOATING BUTTON --- */
         .whatsapp-float {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 25px;
+            right: 25px;
             background-color: var(--whatsapp-green);
             color: white;
             width: 60px;
             height: 60px;
             border-radius: 50px;
             text-align: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-            z-index: 100;
+            font-size: 35px;
+            box-shadow: 2px 5px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
             transition: 0.3s;
         }
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            background-color: #128c7e;
-        }
+        .whatsapp-float:hover { transform: scale(1.1); background-color: #128c7e; }
 
         /* --- FOOTER --- */
         footer { background: var(--dark-bg); color: #bbb; padding: 60px 20px 20px; margin-top: 80px; }
@@ -133,7 +139,7 @@
 </header>
 
 <a href="https://wa.me/923266342858?text=Hello%20AhsanTools%20Support!%20I%20need%20help." class="whatsapp-float" target="_blank">
-    <span style="font-family: Arial, sans-serif; font-weight: bold;">WA</span>
+    <i class="fab fa-whatsapp"></i>
 </a>
 
 <div class="container">
@@ -185,7 +191,7 @@
         <span class="close-btn" onclick="closeModal('thumbModal')">&times;</span>
         <h3>Thumbnail Downloader</h3>
         <input type="text" id="tUrl" placeholder="Paste Video URL">
-        <button onclick="fnThumb()" style="width:100%; padding:10px; background:var(--primary-red); color:#fff; border:none; border-radius:5px; cursor:pointer;">Fetch Images</button>
+        <button onclick="fnThumb()" style="width:100%; padding:12px; background:var(--primary-red); color:#fff; border:none; border-radius:8px; cursor:pointer; font-weight:bold;">Fetch Images</button>
         <div id="tRes" class="res-box" style="display:none;"></div>
     </div>
 </div>
@@ -195,7 +201,7 @@
         <span class="close-btn" onclick="closeModal('calcModal')">&times;</span>
         <h3>Earnings Calculator</h3>
         <input type="number" id="viewsIn" placeholder="Enter Daily Views">
-        <button onclick="fnCalc()" style="width:100%; padding:10px; background:var(--primary-red); color:#fff; border:none; border-radius:5px; cursor:pointer;">Calculate</button>
+        <button onclick="fnCalc()" style="width:100%; padding:12px; background:var(--primary-red); color:#fff; border:none; border-radius:8px; cursor:pointer; font-weight:bold;">Calculate</button>
         <div id="cRes" class="res-box" style="display:none;"></div>
     </div>
 </div>
@@ -214,7 +220,7 @@
         <span class="close-btn" onclick="closeModal('embedModal')">&times;</span>
         <h3>Embed Code Generator</h3>
         <input type="text" id="eUrl" placeholder="Paste Video URL">
-        <button onclick="fnEmbed()" style="width:100%; padding:10px; background:var(--primary-red); color:#fff; border:none; border-radius:5px; cursor:pointer;">Generate Code</button>
+        <button onclick="fnEmbed()" style="width:100%; padding:12px; background:var(--primary-red); color:#fff; border:none; border-radius:8px; cursor:pointer; font-weight:bold;">Generate Code</button>
         <div id="eRes" class="res-box" style="display:none;"></div>
     </div>
 </div>
@@ -225,7 +231,7 @@
         <h3>Timestamp Link Generator</h3>
         <input type="text" id="tmUrl" placeholder="Paste Video URL">
         <input type="number" id="tmSec" placeholder="Seconds (e.g. 90)">
-        <button onclick="fnTime()" style="width:100%; padding:10px; background:var(--primary-red); color:#fff; border:none; border-radius:5px; cursor:pointer;">Generate Link</button>
+        <button onclick="fnTime()" style="width:100%; padding:12px; background:var(--primary-red); color:#fff; border:none; border-radius:8px; cursor:pointer; font-weight:bold;">Generate Link</button>
         <div id="tmRes" class="res-box" style="display:none;"></div>
     </div>
 </div>
@@ -242,7 +248,7 @@
     <div class="modal-content" style="text-align:left;">
         <span class="close-btn" onclick="closeModal('privacyModal')">&times;</span>
         <h3 style="color:var(--primary-red);">Privacy Policy</h3>
-        <p>All calculations happen directly in your browser. We do not store any user data.</p>
+        <p>All calculations happen directly in your browser. We do not store any user data. We value your privacy and trust.</p>
     </div>
 </div>
 
@@ -258,7 +264,7 @@
 <footer>
     <div class="footer-content">
         <div class="footer-section">
-            <h4>Quick Links</h4>
+            <h4>Support</h4>
             <ul>
                 <li><a onclick="openModal('aboutModal')">About Us</a></li>
                 <li><a onclick="openModal('privacyModal')">Privacy Policy</a></li>
@@ -266,7 +272,7 @@
             </ul>
         </div>
     </div>
-    <div class="footer-bottom"> &copy; 2026 AhsanTools • Built for Creators </div>
+    <div class="footer-bottom"> &copy; 2026 AhsanTools • All Rights Reserved </div>
 </footer>
 
 <script>
@@ -285,7 +291,7 @@
         let id = getID(document.getElementById('tUrl').value);
         if(id) {
             let img = `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
-            document.getElementById('tRes').innerHTML = `<img src="${img}" style="width:100%; border-radius:5px;"><br><a href="${img}" target="_blank" style="color:var(--primary-red); text-decoration:none;">View Image</a>`;
+            document.getElementById('tRes').innerHTML = `<img src="${img}" style="width:100%; border-radius:5px;"><br><a href="${img}" target="_blank" style="color:var(--primary-red); text-decoration:none; font-weight:bold; display:block; margin-top:10px;">Download HD Image</a>`;
             document.getElementById('tRes').style.display = 'block';
         } else { alert("Invalid URL"); }
     }
