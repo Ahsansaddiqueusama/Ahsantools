@@ -1,158 +1,334 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AhsanTools – All-in-One YouTube Tools</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AhsanTools – All-in-One YouTube Tools</title>
 
-<style>
-body{
-    margin:0;
-    font-family:Arial, Helvetica, sans-serif;
-    background:#f6f7fb;
-    color:#222;
-}
-header{
-    background:#ff0033;
-    color:#fff;
-    padding:20px;
-    text-align:center;
-}
-header h1{
-    margin:0;
-    font-size:32px;
-}
-header p{
-    margin:8px 0 0;
-    font-size:16px;
-}
-.container{
-    max-width:1200px;
-    margin:auto;
-    padding:30px 15px;
-}
-.section-title{
-    font-size:24px;
-    margin:40px 0 20px;
-    border-left:5px solid #ff0033;
-    padding-left:12px;
-}
-.tools-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
-    gap:20px;
-}
-.tool-card{
-    background:#fff;
-    border-radius:12px;
-    padding:20px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.08);
-    transition:0.3s;
-}
-.tool-card:hover{
-    transform:translateY(-5px);
-}
-.tool-icon{
-    font-size:28px;
-    color:#ff0033;
-}
-.tool-card h3{
-    margin:12px 0 8px;
-    font-size:18px;
-}
-.tool-card p{
-    font-size:14px;
-    color:#555;
-}
-.tool-card a{
-    display:inline-block;
-    margin-top:12px;
-    padding:10px 16px;
-    background:#ff0033;
-    color:#fff;
-    text-decoration:none;
-    border-radius:6px;
-    font-size:14px;
-}
-.tool-card a:hover{
-    background:#d9002c;
-}
-footer{
-    background:#111;
-    color:#bbb;
-    text-align:center;
-    padding:20px;
-    margin-top:50px;
-    font-size:14px;
-}
-</style>
+    <meta property="og:title" content="AhsanTools – Free YouTube Growth Tools">
+    <meta property="og:description" content="Download HD thumbnails, calculate earnings, and optimize your YouTube channel for free.">
+    <meta property="og:image" content="https://img.youtube.com/vi/y881t8ilMyc/maxresdefault.jpg">
+    <meta property="og:url" content="https://ahsansaddiqueusama.github.io/Ahsantools/">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-red: #ff0033;
+            --dark-bg: #111;
+            --light-bg: #f6f7fb;
+            --whatsapp-green: #25d366;
+        }
+
+        body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: var(--light-bg); color: #222; scroll-behavior: smooth; }
+
+        /* --- HEADER --- */
+        header {
+            background: linear-gradient(135deg, #ff0033 0%, #b30024 100%);
+            color: #fff; padding: 50px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        header h1 { margin: 0; font-size: 36px; font-weight: 800; }
+        header p { margin: 10px 0 25px; font-size: 16px; opacity: 0.9; }
+
+        .nav-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .nav-links a {
+            color: white; text-decoration: none; font-weight: 600; font-size: 13px;
+            padding: 8px 16px; border-radius: 50px; background: rgba(255,255,255,0.15); transition: 0.3s;
+        }
+        .nav-links a:hover { background: #fff; color: var(--primary-red); }
+
+        /* --- GRID & CARDS --- */
+        .container { max-width: 1200px; margin: auto; padding: 30px 15px; }
+        .section-title {
+            font-size: 22px; margin: 40px 0 20px; border-left: 5px solid var(--primary-red);
+            padding-left: 12px; color: #333; display: flex; align-items: center; gap: 10px;
+        }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        
+        .tool-card {
+            background: #fff; border-radius: 12px; padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.06); text-align: center; transition: 0.3s;
+            position: relative; overflow: hidden;
+        }
+        .tool-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(255, 0, 51, 0.1); }
+        .tool-icon { font-size: 30px; margin-bottom: 10px; }
+        .tool-card h3 { margin: 10px 0; font-size: 17px; color: #333; }
+        .tool-card p { font-size: 12px; color: #666; min-height: 35px; margin-bottom: 15px; }
+        
+        .btn-use {
+            display: inline-block; padding: 10px 20px; background: var(--primary-red); color: #fff; 
+            text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: bold; 
+            cursor: pointer; width: 85%; border: none;
+        }
+        .btn-soon { background: #e0e0e0; color: #888; cursor: not-allowed; }
+
+        /* --- MODALS --- */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center;
+        }
+        .modal-content {
+            background: #fff; padding: 30px; border-radius: 15px; width: 90%;
+            max-width: 500px; text-align: center; position: relative;
+        }
+        .close-btn { position: absolute; top: 10px; right: 20px; cursor: pointer; font-size: 28px; color: #999; }
+        input, textarea {
+            width: 100%; padding: 12px; margin: 15px 0; border: 1px solid #ddd;
+            border-radius: 8px; box-sizing: border-box; font-family: inherit;
+        }
+        .res-box {
+            margin-top: 15px; padding: 15px; background: #f9f9f9; border-radius: 8px;
+            word-break: break-all; font-size: 14px; border: 1px dashed #ccc; text-align: left;
+        }
+
+        /* --- WHATSAPP --- */
+        .whatsapp-float {
+            position: fixed; bottom: 25px; right: 25px; background-color: var(--whatsapp-green);
+            color: white; width: 60px; height: 60px; border-radius: 50px; text-align: center;
+            font-size: 35px; box-shadow: 2px 5px 15px rgba(0,0,0,0.3); z-index: 1500;
+            display: flex; align-items: center; justify-content: center; text-decoration: none;
+        }
+
+        /* --- FOOTER --- */
+        footer { background: var(--dark-bg); color: #bbb; padding: 40px 20px; margin-top: 80px; text-align: center; }
+        .footer-links { margin-bottom: 20px; }
+        .footer-links a { color: #bbb; text-decoration: none; margin: 0 10px; font-size: 14px; cursor: pointer; }
+        .footer-links a:hover { color: #fff; }
+    </style>
 </head>
-
 <body>
 
 <header>
     <h1>AhsanTools</h1>
-    <p>All-in-One Smart YouTube Tools for Creators</p>
+    <p>Professional Suite for YouTube Creators</p>
+    <div class="nav-links">
+        <a href="#data">Downloaders</a>
+        <a href="#ai">AI Tools</a>
+        <a href="#seo">SEO</a>
+        <a href="#growth">Earnings</a>
+    </div>
 </header>
 
+<a href="https://wa.me/923266342858?text=Hello%20AhsanTools%20Support!" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
 <div class="container">
+    
+    <h2 class="section-title" id="data">📥 Data & Download Tools</h2>
+    <div class="tools-grid">
+        <div class="tool-card">
+            <div class="tool-icon">🖼️</div>
+            <h3>Thumbnail Downloader</h3>
+            <p>Download HD/4K YouTube thumbnails.</p>
+            <button class="btn-use" onclick="openModal('thumbModal')">Use Tool</button>
+        </div>
+        <div class="tool-card">
+            <div class="tool-icon">🔗</div>
+            <h3>Embed Generator</h3>
+            <p>Generate clean YouTube embed codes.</p>
+            <button class="btn-use" onclick="openModal('embedModal')">Use Tool</button>
+        </div>
+        <div class="tool-card">
+            <div class="tool-icon">⏱️</div>
+            <h3>Timestamp Linker</h3>
+            <p>Link to specific video segments.</p>
+            <button class="btn-use" onclick="openModal('timeModal')">Use Tool</button>
+        </div>
+        <div class="tool-card">
+            <div class="tool-icon">🆔</div>
+            <h3>Channel ID Finder</h3>
+            <p>Extract unique YouTube Channel IDs.</p>
+            <button class="btn-use btn-soon">Coming Soon</button>
+        </div>
+    </div>
 
-<!-- DATA & DOWNLOAD -->
-<h2 class="section-title">📥 Data & Download Tools</h2>
-<div class="tools-grid">
-    <div class="tool-card"><div class="tool-icon">🔎</div><h3>YT Channel ID Finder</h3><p>Find YouTube channel ID instantly.</p><a href="#">Use Tool</a></div>
-    <div class="tool-card"><div class="tool-icon">📊</div><h3>YouTube Data Extractor</h3><p>Extract video title, tags & metadata.</p><a href="#">Use Tool</a></div>
-    <div class="tool-card"><div class="tool-icon">⬇️</div><h3>YouTube Downloader</h3><p>Download videos & thumbnails.</p><a href="#">Use Tool</a></div>
-    <div class="tool-card"><div class="tool-icon">🖼️</div><h3>Thumbnail Downloader</h3><p>Get HD YouTube thumbnails.</p><a href="#">Use Tool</a></div>
-    <div class="tool-card"><div class="tool-icon">🔗</div><h3>Embed Code Generator</h3><p>Create YouTube embed codes.</p><a href="#">Use Tool</a></div>
-    <div class="tool-card"><div class="tool-icon">⏱️</div><h3>Timestamp Link Generator</h3><p>Generate timestamped video links.</p><a href="#">Use Tool</a></div>
+    <h2 class="section-title" id="ai">🤖 AI Script & Content</h2>
+    <div class="grid tools-grid">
+        <div class="tool-card">
+            <div class="tool-icon">✍️</div>
+            <h3>AI Script Writer</h3>
+            <p>Generate high-retention video scripts.</p>
+            <button class="btn-use btn-soon">Coming Soon</button>
+        </div>
+        <div class="tool-card">
+            <div class="tool-icon">🪝</div>
+            <h3>Hook Generator</h3>
+            <p>Create viral hooks for your videos.</p>
+            <button class="btn-use btn-soon">Coming Soon</button>
+        </div>
+        <div class="tool-card">
+            <div class="tool-icon">🎥</div>
+            <h3>Shorts Script Maker</h3>
+            <p>Quick scripts for YouTube Shorts.</p>
+            <button class="btn-use btn-soon">Coming Soon</button>
+        </div>
+    </div>
+
+    <h2 class="section-title" id="seo">🔍 SEO, Tags & Titles</h2>
+    <div class="tools-grid">
+        <div class="tool-card">
+            <div class="tool-icon">📏</div>
+            <h3>Title Length Checker</h3>
+            <p>Optimize title for search & mobile.</p>
+            <button class="btn-use" onclick="openModal('titleModal')">Use Tool</button>
+        </div>
+        <div class="tool-card">
+            <div class="tool-icon">🏷️</div>
+            <h3>Tag Generator</h3>
+            <p>Find SEO optimized tags for videos.</p>
+            <button class="btn-use btn-soon">Coming Soon</button>
+        </div>
+        <div class="tool-card">
+            <div class="tool-icon">🔥</div>
+            <h3>Hashtag Finder</h3>
+            <p>Get trending YouTube hashtags.</p>
+            <button class="btn-use btn-soon">Coming Soon</button>
+        </div>
+    </div>
+
+    <h2 class="section-title" id="growth">📈 Growth & Earnings</h2>
+    <div class="tools-grid">
+        <div class="tool-card">
+            <div class="tool-icon">💰</div>
+            <h3>Income Calculator</h3>
+            <p>Estimate your potential YT revenue.</p>
+            <button class="btn-use" onclick="openModal('calcModal')">Use Tool</button>
+        </div>
+        <div class="tool-card">
+            <div class="tool-icon">✅</div>
+            <h3>Monetization Checker</h3>
+            <p>Check if a channel is monetized.</p>
+            <button class="btn-use btn-soon">Coming Soon</button>
+        </div>
+    </div>
+
 </div>
 
-<!-- AI SCRIPT -->
-<h2 class="section-title">🤖 AI Script & Content Tools</h2>
-<div class="tools-grid">
-    <div class="tool-card"><div class="tool-icon">✍️</div><h3>AI Script Writer</h3><p>Generate full YouTube scripts.</p><a href="#">Use Tool</a></div>
-    <div class="tool-card"><div class="tool-icon">🔁</div><h3>Script Rewriter</h3><p>Rewrite scripts professionally.</p><a href="#">Use Tool</a></div>
-    <div class="tool-card"><div class="tool-icon">⚡</div><h3>Hook Generator</h3><p>Create powerful video hooks.</p><a href="#">Use Tool</a></div>
-    <div class="tool-card"><div class="tool-icon">🎬</div><h3>Shorts Script Generator</h3><p>AI scripts for YouTube Shorts.</p><a href="#">Use Tool</a></div>
+<div id="thumbModal" class="modal-overlay">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('thumbModal')">&times;</span>
+        <h3>Thumbnail Downloader</h3>
+        <input type="text" id="tUrl" placeholder="Paste YouTube Link">
+        <button onclick="fnThumb()" class="btn-use" style="width:100%">Fetch HD Images</button>
+        <div id="tRes" class="res-box" style="display:none; text-align:center;"></div>
+    </div>
 </div>
 
-<!-- SEO -->
-<h2 class="section-title">🔍 SEO, Tags & Titles</h2>
-<div class="tools-grid">
-    <div class="tool-card"><div class="tool-icon">#️⃣</div><h3>Tag Generator</h3><p>Generate SEO optimized tags.</p><a href="#">Use Tool</a></div>
-    <div class="tool-card"><div class="tool-icon">📌</div><h3>Tag Extractor</h3><p>Extract tags from videos.</p><a href="#">Use Tool</a></div>
-    <div class="tool-card"><div class="tool-icon">🔥</div><h3>Hashtag Generator</h3><p>Create trending hashtags.</p><a href="#">Use Tool</a></div>
-    <div class="tool-card"><div class="tool-icon">📝</div><h3>Title Generator</h3><p>Generate high-CTR titles.</p><a href="#">Use Tool</a></div>
-    <div class="tool-card"><div class="tool-icon">📏</div><h3>Title Length Checker</h3><p>Check SEO-friendly title length.</p><a href="#">Use Tool</a></div>
+<div id="calcModal" class="modal-overlay">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('calcModal')">&times;</span>
+        <h3>Earnings Calculator</h3>
+        <input type="number" id="viewsIn" placeholder="Daily Views">
+        <button onclick="fnCalc()" class="btn-use" style="width:100%">Calculate Revenue</button>
+        <div id="cRes" class="res-box" style="display:none; font-weight:bold; text-align:center;"></div>
+    </div>
 </div>
 
-<!-- THUMBNAIL -->
-<h2 class="section-title">🎨 Thumbnail & CTR Tools</h2>
-<div class="tools-grid">
-    <div class="tool-card"><div class="tool-icon">🧠</div><h3>Thumbnail Text Generator</h3><p>AI thumbnail text ideas.</p><a href="#">Use Tool</a></div>
-    <div class="tool-card"><div class="tool-icon">📊</div><h3>Thumbnail Analyzer</h3><p>Analyze thumbnail CTR & clarity.</p><a href="#">Use Tool</a></div>
+<div id="titleModal" class="modal-overlay">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('titleModal')">&times;</span>
+        <h3>Title Length Checker</h3>
+        <textarea id="titleIn" oninput="fnTitle()" placeholder="Enter your video title here..." rows="3"></textarea>
+        <div id="tiRes" class="res-box" style="text-align:center;">Characters: 0 / 100 <br> Status: Waiting...</div>
+    </div>
 </div>
 
-<!-- ANALYTICS -->
-<h2 class="section-title">📈 Growth & Earnings</h2>
-<div class="tools-grid">
-    <div class="tool-card"><div class="tool-icon">💰</div><h3>YouTube Income Calculator</h3><p>Estimate YouTube earnings.</p><a href="#">Use Tool</a></div>
-    <div class="tool-card"><div class="tool-icon">✔️</div><h3>Monetization Checker</h3><p>Check channel monetization.</p><a href="#">Use Tool</a></div>
-    <div class="tool-card"><div class="tool-icon">🔥</div><h3>Trending Videos</h3><p>Find trending videos worldwide.</p><a href="#">Use Tool</a></div>
+<div id="embedModal" class="modal-overlay">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('embedModal')">&times;</span>
+        <h3>Embed Code Generator</h3>
+        <input type="text" id="eUrl" placeholder="Video Link">
+        <button onclick="fnEmbed()" class="btn-use" style="width:100%">Generate Embed Code</button>
+        <div id="eRes" class="res-box" style="display:none;"></div>
+    </div>
 </div>
 
-<!-- ENGAGEMENT -->
-<h2 class="section-title">💬 Engagement Tools</h2>
-<div class="tools-grid">
-    <div class="tool-card"><div class="tool-icon">🎲</div><h3>Random Comment Picker</h3><p>Pick winners from comments.</p><a href="#">Use Tool</a></div>
+<div id="timeModal" class="modal-overlay">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('timeModal')">&times;</span>
+        <h3>Timestamp Linker</h3>
+        <input type="text" id="tmUrl" placeholder="Video Link">
+        <input type="number" id="tmSec" placeholder="Time in Seconds (e.g. 120)">
+        <button onclick="fnTime()" class="btn-use" style="width:100%">Get Timestamp Link</button>
+        <div id="tmRes" class="res-box" style="display:none; text-align:center;"></div>
+    </div>
 </div>
 
-</div>
+<div id="aboutModal" class="modal-overlay"><div class="modal-content"><span class="close-btn" onclick="closeModal('aboutModal')">&times;</span><h3>About AhsanTools</h3><p>We provide free tools for YouTube creators to help them grow and analyze their channels.</p></div></div>
+<div id="privacyModal" class="modal-overlay"><div class="modal-content"><span class="close-btn" onclick="closeModal('privacyModal')">&times;</span><h3>Privacy</h3><p>We don't store your data. Everything happens in your browser.</p></div></div>
 
 <footer>
-    © 2026 AhsanTools • Built for YouTube Creators
+    <div class="footer-links">
+        <a onclick="openModal('aboutModal')">About</a>
+        <a onclick="openModal('privacyModal')">Privacy</a>
+        <a href="mailto:support@ahsantools.com">Contact</a>
+    </div>
+    <div class="footer-bottom"> &copy; 2026 AhsanTools • All Rights Reserved </div>
 </footer>
+
+<script>
+    function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+    function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+
+    function getID(url) {
+        let id = '';
+        if(url.includes('v=')) id = url.split('v=')[1].split('&')[0];
+        else if(url.includes('youtu.be/')) id = url.split('youtu.be/')[1].split('?')[0];
+        else if(url.includes('shorts/')) id = url.split('shorts/')[1].split('?')[0];
+        return id;
+    }
+
+    function fnThumb() {
+        let id = getID(document.getElementById('tUrl').value);
+        if(id) {
+            let img = `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
+            document.getElementById('tRes').innerHTML = `<img src="${img}" style="width:100%; border-radius:8px;"><br><a href="${img}" target="_blank" style="color:var(--primary-red); text-decoration:none; font-weight:bold; display:block; margin-top:15px;">Download HD Thumbnail</a>`;
+            document.getElementById('tRes').style.display = 'block';
+        } else { alert("Please enter a valid YouTube link"); }
+    }
+
+    function fnCalc() {
+        let v = document.getElementById('viewsIn').value;
+        if(v <= 0) return alert("Enter valid daily views");
+        let min = (v/1000)*0.5; let max = (v/1000)*4.5;
+        document.getElementById('cRes').innerHTML = `Estimated Daily: $${min.toFixed(2)} - $${max.toFixed(2)}`;
+        document.getElementById('cRes').style.display = 'block';
+    }
+
+    function fnTitle() {
+        let t = document.getElementById('titleIn').value.length;
+        let color = t > 70 ? "red" : (t < 40 ? "orange" : "green");
+        let status = t > 70 ? "Too Long" : (t < 40 ? "Too Short" : "Perfect");
+        document.getElementById('tiRes').innerHTML = `Characters: ${t} / 100 <br> Status: <span style="color:${color}; font-weight:bold;">${status}</span>`;
+    }
+
+    function fnEmbed() {
+        let id = getID(document.getElementById('eUrl').value);
+        if(id) {
+            let code = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${id}" frameborder="0" allowfullscreen></iframe>`;
+            document.getElementById('eRes').innerText = code;
+            document.getElementById('eRes').style.display = 'block';
+        }
+    }
+
+    function fnTime() {
+        let id = getID(document.getElementById('tmUrl').value);
+        let sec = document.getElementById('tmSec').value;
+        if(id && sec) {
+            let link = `https://youtu.be/${id}?t=${sec}`;
+            document.getElementById('tmRes').innerHTML = `<a href="${link}" target="_blank" style="color:red; font-weight:bold;">${link}</a>`;
+            document.getElementById('tmRes').style.display = 'block';
+        }
+    }
+
+    // Close modal on outside click
+    window.onclick = function(event) {
+        if (event.target.className === 'modal-overlay') {
+            event.target.style.display = "none";
+        }
+    }
+</script>
 
 </body>
 </html>
