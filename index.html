@@ -3,194 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AhsanTools – Professional YouTube Suite</title>
+    <title>AhsanTools – All-in-One YouTube Tools</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX'); // Apni Measurement ID yahan replace karein
+      gtag('config', 'G-XXXXXXXXXX');
     </script>
-
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        :root { --red: #ff0033; --dark: #111; --light: #f6f7fb; --wa: #25d366; }
-        body { margin: 0; font-family: 'Segoe UI', sans-serif; background: var(--light); color: #222; scroll-behavior: smooth; }
-        
+        :root { --primary-red: #ff0033; --dark-bg: #111; --light-bg: #f6f7fb; --whatsapp-green: #25d366; }
+        body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: var(--light-bg); color: #222; scroll-behavior: smooth; }
         header { background: linear-gradient(135deg, #ff0033 0%, #b30024 100%); color: #fff; padding: 50px 20px; text-align: center; }
-        .nav-links { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
-        .nav-links a { color: white; text-decoration: none; font-weight: 600; padding: 8px 16px; border-radius: 50px; background: rgba(255,255,255,0.15); transition: 0.3s; cursor: pointer; }
-        
+        header h1 { margin: 0; font-size: 36px; font-weight: 800; }
+        .nav-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 600; font-size: 13px; padding: 8px 16px; border-radius: 50px; background: rgba(255,255,255,0.15); transition: 0.3s; }
         .container { max-width: 1200px; margin: auto; padding: 30px 15px; }
-        .section-title { font-size: 22px; margin: 40px 0 20px; border-left: 5px solid var(--red); padding-left: 12px; }
-        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-        
+        .section-title { font-size: 22px; margin: 40px 0 20px; border-left: 5px solid var(--primary-red); padding-left: 12px; display: flex; align-items: center; gap: 10px; }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
         .tool-card { background: #fff; border-radius: 12px; padding: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.06); text-align: center; transition: 0.3s; }
-        .tool-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(255,0,51,0.1); }
-        .tool-icon { font-size: 35px; margin-bottom: 10px; }
-        
-        .btn-use { background: var(--red); color: #fff; border: none; padding: 12px; border-radius: 8px; width: 100%; font-weight: bold; cursor: pointer; margin-top: 10px; }
-        
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; justify-content: center; align-items: center; }
-        .modal-content { background: #fff; padding: 30px; border-radius: 15px; width: 90%; max-width: 600px; max-height: 85vh; overflow-y: auto; position: relative; }
-        .close-btn { position: absolute; top: 15px; right: 20px; cursor: pointer; font-size: 25px; color: #666; }
-        
-        input, textarea { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
-        .res-box { margin-top: 15px; padding: 15px; background: #f1f3f5; border-radius: 8px; font-size: 14px; white-space: pre-wrap; display: none; text-align: left; border: 1px solid #e0e0e0; }
-        
-        .whatsapp-float { position: fixed; bottom: 25px; right: 25px; background: var(--wa); color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 2px 5px 15px rgba(0,0,0,0.3); z-index: 3000; text-decoration: none; }
-        footer { background: var(--dark); color: #bbb; padding: 40px; text-align: center; margin-top: 50px; }
-        .loader { border: 4px solid #f3f3f3; border-top: 4px solid var(--red); border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; display: none; margin: 10px auto; }
+        .tool-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(255, 0, 51, 0.1); }
+        .btn-use { display: inline-block; padding: 10px 20px; background: var(--primary-red); color: #fff; border: none; border-radius: 6px; font-size: 13px; font-weight: bold; cursor: pointer; width: 100%; transition: 0.3s; }
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; }
+        .modal-content { background: #fff; padding: 30px; border-radius: 15px; width: 90%; max-width: 550px; position: relative; max-height: 80vh; overflow-y: auto; }
+        .close-btn { position: absolute; top: 10px; right: 20px; cursor: pointer; font-size: 28px; color: #999; }
+        input, textarea { width: 100%; padding: 12px; margin: 15px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        .res-box { margin-top: 15px; padding: 15px; background: #f9f9f9; border-radius: 8px; font-size: 14px; border: 1px dashed #ccc; text-align: left; display: none; white-space: pre-wrap; }
+        .loader { border: 3px solid #f3f3f3; border-top: 3px solid var(--primary-red); border-radius: 50%; width: 20px; height: 20px; animation: spin 1s linear infinite; display: none; margin: 10px auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .whatsapp-float { position: fixed; bottom: 25px; right: 25px; background-color: var(--whatsapp-green); color: white; width: 60px; height: 60px; border-radius: 50px; display: flex; align-items: center; justify-content: center; font-size: 35px; z-index: 1500; text-decoration: none; }
+        footer { background: var(--dark-bg); color: #bbb; padding: 40px 20px; text-align: center; margin-top: 50px; }
     </style>
 </head>
 <body>
 
 <header>
     <h1>AhsanTools</h1>
-    <p>The Ultimate AI-Powered Toolkit for YouTube Growth</p>
+    <p>Professional Suite for YouTube Creators</p>
     <div class="nav-links">
-        <a href="#data">Utility</a>
-        <a href="#ai">AI Tools</a>
-        <a href="#seo">SEO</a>
-        <a href="#growth">Earnings</a>
+        <a href="#data">Downloaders</a> <a href="#ai">AI Tools</a> <a href="#seo">SEO</a> <a href="#growth">Earnings</a>
     </div>
 </header>
 
-<a href="https://wa.me/923266342858?text=Support%20Needed!" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
 <div class="container">
-    <h2 class="section-title" id="data">📥 Data & Extractors</h2>
+    <h2 class="section-title" id="data">📥 Data & Download Tools</h2>
     <div class="tools-grid">
-        <div class="tool-card"><div class="tool-icon">🆔</div><h3>Channel ID Finder</h3><p>Extract ID from handle or URL.</p><button class="btn-use" onclick="openModal('channelModal')">Use Tool</button></div>
-        <div class="tool-card"><div class="tool-icon">🏷️</div><h3>Tag Extractor</h3><p>Get tags from any video URL.</p><button class="btn-use" onclick="openModal('tagExtModal')">Use Tool</button></div>
-        <div class="tool-card"><div class="tool-icon">🖼️</div><h3>HD Thumbnail</h3><p>Download 4K Thumbnails.</p><button class="btn-use" onclick="openModal('thumbModal')">Use Tool</button></div>
+        <div class="tool-card"><div class="tool-icon">🆔</div><h3>Channel ID Finder</h3><button class="btn-use" onclick="openModal('channelIDModal')">Use Tool</button></div>
+        <div class="tool-card"><div class="tool-icon">📊</div><h3>Data Extractor</h3><button class="btn-use" onclick="openModal('dataExtModal')">Use Tool</button></div>
+        <div class="tool-card"><div class="tool-icon">📥</div><h3>YT Downloader</h3><button class="btn-use" onclick="openModal('downModal')">Use Tool</button></div>
+        <div class="tool-card"><div class="tool-icon">🖼️</div><h3>Thumbnail Downloader</h3><button class="btn-use" onclick="openModal('thumbModal')">Use Tool</button></div>
+        <div class="tool-card"><div class="tool-icon">🔗</div><h3>Embed Generator</h3><button class="btn-use" onclick="openModal('embedModal')">Use Tool</button></div>
+        <div class="tool-card"><div class="tool-icon">⏱️</div><h3>Timestamp Linker</h3><button class="btn-use" onclick="openModal('timeModal')">Use Tool</button></div>
     </div>
 
-    <h2 class="section-title" id="ai">🤖 AI Content Generators</h2>
+    <h2 class="section-title" id="ai">🤖 AI Script & Content Tools</h2>
     <div class="tools-grid">
-        <div class="tool-card"><div class="tool-icon">✍️</div><h3>AI Script Writer</h3><p>Generate full video scripts.</p><button class="btn-use" onclick="openModal('aiScriptModal')">Use Tool</button></div>
-        <div class="tool-card"><div class="tool-icon">🪝</div><h3>Hook Generator</h3><p>Viral hooks for high CTR.</p><button class="btn-use" onclick="openModal('aiHookModal')">Use Tool</button></div>
+        <div class="tool-card"><div class="tool-icon">✍️</div><h3>AI Script Writer</h3><button class="btn-use" onclick="openModal('aiScriptModal')">Use Tool</button></div>
+        <div class="tool-card"><div class="tool-icon">🔄</div><h3>Script Rewriter</h3><button class="btn-use" onclick="openModal('aiRewriteModal')">Use Tool</button></div>
+        <div class="tool-card"><div class="tool-icon">🪝</div><h3>Hook Generator</h3><button class="btn-use" onclick="openModal('aiHookModal')">Use Tool</button></div>
+        <div class="tool-card"><div class="tool-icon">🎥</div><h3>Shorts Script Maker</h3><button class="btn-use" onclick="openModal('aiShortsModal')">Use Tool</button></div>
     </div>
 
-    <h2 class="section-title" id="seo">🔍 SEO & Optimization</h2>
+    <h2 class="section-title" id="seo">🔍 SEO, Tags & Title</h2>
     <div class="tools-grid">
-        <div class="tool-card"><div class="tool-icon">📏</div><h3>Title Checker</h3><p>Real-time SEO length check.</p><button class="btn-use" onclick="openModal('titleModal')">Use Tool</button></div>
-        <div class="tool-card"><div class="tool-icon">💰</div><h3>Income Calc</h3><p>Estimate daily/monthly revenue.</p><button class="btn-use" onclick="openModal('calcModal')">Use Tool</button></div>
+        <div class="tool-card"><div class="tool-icon">🏷️</div><h3>Tag Generator</h3><button class="btn-use" onclick="openModal('tagGenModal')">Use Tool</button></div>
+        <div class="tool-card"><div class="tool-icon">📌</div><h3>Tag Extractor</h3><button class="btn-use" onclick="openModal('tagExtModal')">Use Tool</button></div>
+        <div class="tool-card"><div class="tool-icon">#️⃣</div><h3>Hashtag Generator</h3><button class="btn-use" onclick="openModal('hashModal')">Use Tool</button></div>
+        <div class="tool-card"><div class="tool-icon">📝</div><h3>Title Generator</h3><button class="btn-use" onclick="openModal('titleGenModal')">Use Tool</button></div>
+        <div class="tool-card"><div class="tool-icon">📏</div><h3>Title Length Checker</h3><button class="btn-use" onclick="openModal('titleLenModal')">Use Tool</button></div>
+    </div>
+
+    <h2 class="section-title" id="growth">📈 Growth & Earning</h2>
+    <div class="tools-grid">
+        <div class="tool-card"><div class="tool-icon">💰</div><h3>Income Calculator</h3><button class="btn-use" onclick="openModal('calcModal')">Use Tool</button></div>
+        <div class="tool-card"><div class="tool-icon">✅</div><h3>Monetization Checker</h3><button class="btn-use" onclick="openModal('monetizeModal')">Use Tool</button></div>
+        <div class="tool-card"><div class="tool-icon">🔥</div><h3>Trending Videos</h3><button class="btn-use" onclick="openModal('trendModal')">Use Tool</button></div>
+        <div class="tool-card"><div class="tool-icon">🎲</div><h3>Comment Picker</h3><button class="btn-use" onclick="openModal('commentModal')">Use Tool</button></div>
     </div>
 </div>
 
-<div id="channelModal" class="modal-overlay"><div class="modal-content"><span class="close-btn" onclick="closeModal('channelModal')">&times;</span><h3>Channel ID Finder</h3><input type="text" id="cInput" placeholder="@username or URL"><button onclick="fnChannelID()" class="btn-use">Find ID</button><div id="cLoader" class="loader"></div><div id="cRes" class="res-box"></div></div></div>
+<div id="channelIDModal" class="modal-overlay"><div class="modal-content"><span class="close-btn" onclick="closeModal('channelIDModal')">&times;</span><h3>Channel ID Finder</h3><input type="text" id="chanIn" placeholder="@handle or URL"><button class="btn-use" onclick="apiChannelID()">Find ID</button><div class="loader" id="chanLoad"></div><div id="chanRes" class="res-box"></div></div></div>
+<div id="aiScriptModal" class="modal-overlay"><div class="modal-content"><span class="close-btn" onclick="closeModal('aiScriptModal')">&times;</span><h3>AI Script Writer</h3><input type="text" id="scriptIn" placeholder="Enter topic"><button class="btn-use" onclick="apiAIScript('script')">Generate Script</button><div class="loader" id="scriptLoad"></div><div id="scriptRes" class="res-box"></div></div></div>
+<div id="downModal" class="modal-overlay"><div class="modal-content"><span class="close-btn" onclick="closeModal('downModal')">&times;</span><h3>YouTube Downloader</h3><input type="text" id="dlIn" placeholder="Video URL"><button class="btn-use" onclick="apiDownload()">Get Links</button><div class="loader" id="dlLoad"></div><div id="dlRes" class="res-box"></div></div></div>
+<div id="tagExtModal" class="modal-overlay"><div class="modal-content"><span class="close-btn" onclick="closeModal('tagExtModal')">&times;</span><h3>Tag Extractor</h3><input type="text" id="teIn" placeholder="Video URL"><button class="btn-use" onclick="apiExtractTags()">Extract</button><div class="loader" id="teLoad"></div><div id="teRes" class="res-box"></div></div></div>
+<div id="monetizeModal" class="modal-overlay"><div class="modal-content"><span class="close-btn" onclick="closeModal('monetizeModal')">&times;</span><h3>Monetization Checker</h3><input type="text" id="monIn" placeholder="Channel/Video URL"><button class="btn-use" onclick="apiCheckMonetization()">Check Status</button><div class="loader" id="monLoad"></div><div id="monRes" class="res-box"></div></div></div>
 
-<div id="tagExtModal" class="modal-overlay"><div class="modal-content"><span class="close-btn" onclick="closeModal('tagExtModal')">&times;</span><h3>Tag Extractor</h3><input type="text" id="tagUrl" placeholder="Video Link"><button onclick="fnExtractTags()" class="btn-use">Extract Tags</button><div id="tagLoader" class="loader"></div><div id="tagRes" class="res-box"></div></div></div>
-
-<div id="aiScriptModal" class="modal-overlay"><div class="modal-content"><span class="close-btn" onclick="closeModal('aiScriptModal')">&times;</span><h3>AI Script Writer</h3><input type="text" id="scriptTopic" placeholder="Video Topic (e.g. How to grow on YT)"><button onclick="fnAIScript()" class="btn-use">Generate Script</button><div id="scriptLoader" class="loader"></div><div id="scriptRes" class="res-box"></div></div></div>
-
-<div id="aiHookModal" class="modal-overlay"><div class="modal-content"><span class="close-btn" onclick="closeModal('aiHookModal')">&times;</span><h3>Viral Hook Generator</h3><input type="text" id="hookTopic" placeholder="What is your video about?"><button onclick="fnAIHook()" class="btn-use">Generate Hooks</button><div id="hookLoader" class="loader"></div><div id="hookRes" class="res-box"></div></div></div>
-
-<div id="thumbModal" class="modal-overlay"><div class="modal-content"><span class="close-btn" onclick="closeModal('thumbModal')">&times;</span><h3>Thumbnail Downloader</h3><input type="text" id="tUrl" placeholder="Link"><button onclick="fnThumb()" class="btn-use">Download</button><div id="tRes" class="res-box"></div></div></div>
-<div id="calcModal" class="modal-overlay"><div class="modal-content"><span class="close-btn" onclick="closeModal('calcModal')">&times;</span><h3>Earnings Calc</h3><input type="number" id="viewsIn" placeholder="Views"><button onclick="fnCalc()" class="btn-use">Calculate</button><div id="cRes" class="res-box"></div></div></div>
-<div id="titleModal" class="modal-overlay"><div class="modal-content"><span class="close-btn" onclick="closeModal('titleModal')">&times;</span><h3>Title Length</h3><textarea id="titleIn" oninput="fnTitle()" placeholder="Type title..."></textarea><div id="tiRes" class="res-box" style="display:block; text-align:center;">Characters: 0</div></div></div>
-
-<footer>&copy; 2026 AhsanTools • All Rights Reserved</footer>
+<footer> &copy; 2026 AhsanTools • All Rights Reserved </footer>
 
 <script>
-    // API KEYS
     const YT_KEY = "AIzaSyCUmd6h8n74WGmpDt_nLKij0vHUqVSFilI";
-    const GEMINI_KEY = "AIzaSyC5GztPDS_NyyXBPj1Up3Tn4p0yIlVZsiA";
-    const RAPID_KEY = "dfaaa0b572msha79fcf1ce7c8857p115e44jsnd1843468ab1c";
+    const GEM_KEY = "AIzaSyC5GztPDS_NyyXBPj1Up3Tn4p0yIlVZsiA";
+    const RAP_KEY = "dfaaa0b572msha79fcf1ce7c8857p115e44jsnd1843468ab1c";
 
     function openModal(id) { document.getElementById(id).style.display = 'flex'; }
     function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
     function getID(url) {
-        let regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-        let match = url.match(regExp);
-        return (match && match[2].length == 11) ? match[2] : false;
+        let reg = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+        let m = url.match(reg); return (m&&m[2].length==11)?m[2]:null;
     }
 
-    // 1. Channel ID Finder
-    async function fnChannelID() {
-        let input = document.getElementById('cInput').value;
-        let handle = input.includes('@') ? input.split('@')[1].split('/')[0] : input.split('/').pop();
-        document.getElementById('cLoader').style.display = 'block';
+    // --- TOOL FUNCTIONS ---
+
+    async function apiChannelID() {
+        let val = document.getElementById('chanIn').value;
+        let handle = val.includes('@') ? val.split('@')[1] : val.split('/').pop();
+        document.getElementById('chanLoad').style.display='block';
         try {
             let res = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=id&forHandle=${handle}&key=${YT_KEY}`);
             let data = await res.json();
-            let id = data.items[0].id;
-            document.getElementById('cRes').innerHTML = `Channel ID: <br><b>${id}</b>`;
-            document.getElementById('cRes').style.display = 'block';
-        } catch(e) { alert("Not Found! Use Handle like @Username"); }
-        document.getElementById('cLoader').style.display = 'none';
+            document.getElementById('chanRes').innerText = "ID: " + data.items[0].id;
+            document.getElementById('chanRes').style.display='block';
+        } catch(e) { alert("Error finding channel"); }
+        document.getElementById('chanLoad').style.display='none';
     }
 
-    // 2. Tag Extractor
-    async function fnExtractTags() {
-        let vid = getID(document.getElementById('tagUrl').value);
-        if(!vid) return alert("Invalid URL");
-        document.getElementById('tagLoader').style.display = 'block';
+    async function apiAIScript(type) {
+        let topic = document.getElementById('scriptIn').value;
+        document.getElementById('scriptLoad').style.display='block';
         try {
-            let res = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${vid}&key=${YT_KEY}`);
-            let data = await res.json();
-            let tags = data.items[0].snippet.tags;
-            document.getElementById('tagRes').innerText = tags ? tags.join(', ') : "No tags found.";
-            document.getElementById('tagRes').style.display = 'block';
-        } catch(e) { alert("Error fetching tags"); }
-        document.getElementById('tagLoader').style.display = 'none';
-    }
-
-    // 3. AI Script Writer (Gemini)
-    async function fnAIScript() {
-        let topic = document.getElementById('scriptTopic').value;
-        document.getElementById('scriptLoader').style.display = 'block';
-        try {
-            let res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_KEY}`, {
-                method: "POST",
-                body: JSON.stringify({ contents: [{ parts: [{ text: `Write a professional YouTube video script about: ${topic}. Include Intro, Body and Outro.` }] }] })
+            let res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEM_KEY}`, {
+                method: "POST", body: JSON.stringify({contents: [{parts:[{text: `Write a viral YouTube ${type} about ${topic}`}]}]})
             });
             let data = await res.json();
             document.getElementById('scriptRes').innerText = data.candidates[0].content.parts[0].text;
-            document.getElementById('scriptRes').style.display = 'block';
-        } catch(e) { alert("AI Error! Check API Key."); }
-        document.getElementById('scriptLoader').style.display = 'none';
+            document.getElementById('scriptRes').style.display='block';
+        } catch(e) { alert("AI Error"); }
+        document.getElementById('scriptLoad').style.display='none';
     }
 
-    // 4. AI Hook Generator
-    async function fnAIHook() {
-        let topic = document.getElementById('hookTopic').value;
-        document.getElementById('hookLoader').style.display = 'block';
+    async function apiExtractTags() {
+        let id = getID(document.getElementById('teIn').value);
+        document.getElementById('teLoad').style.display='block';
         try {
-            let res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_KEY}`, {
-                method: "POST",
-                body: JSON.stringify({ contents: [{ parts: [{ text: `Generate 5 viral, high-CTR YouTube video hooks for: ${topic}` }] }] })
-            });
+            let res = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${id}&key=${YT_KEY}`);
             let data = await res.json();
-            document.getElementById('hookRes').innerText = data.candidates[0].content.parts[0].text;
-            document.getElementById('hookRes').style.display = 'block';
-        } catch(e) { alert("AI Error!"); }
-        document.getElementById('hookLoader').style.display = 'none';
+            let tags = data.items[0].snippet.tags;
+            document.getElementById('teRes').innerText = tags ? tags.join(', ') : "No tags found";
+            document.getElementById('teRes').style.display='block';
+        } catch(e) { alert("Error extracting tags"); }
+        document.getElementById('teLoad').style.display='none';
     }
 
-    // Utility Functions
-    function fnThumb() {
-        let id = getID(document.getElementById('tUrl').value);
-        if(id) {
-            let img = `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
-            document.getElementById('tRes').innerHTML = `<img src="${img}" style="width:100%"><br><a href="${img}" target="_blank">Download HD</a>`;
-            document.getElementById('tRes').style.display = 'block';
-        }
-    }
-    function fnCalc() {
-        let v = document.getElementById('viewsIn').value;
-        let rev = (v/1000*1.5).toFixed(2);
-        document.getElementById('cRes').innerText = `Est. Revenue: $${rev}`;
-        document.getElementById('cRes').style.display = 'block';
-    }
-    function fnTitle() {
-        let l = document.getElementById('titleIn').value.length;
-        document.getElementById('tiRes').innerHTML = `Characters: ${l} / 100 <br> Status: ${l>70?'Too Long':l<40?'Short':'Perfect'}`;
+    async function apiDownload() {
+        let id = getID(document.getElementById('dlIn').value);
+        document.getElementById('dlLoad').style.display='block';
+        try {
+            const options = { method: 'GET', headers: { 'X-RapidAPI-Key': RAP_KEY, 'X-RapidAPI-Host': 'youtube-search-and-download.p.rapidapi.com' } };
+            let res = await fetch(`https://youtube-search-and-download.p.rapidapi.com/video?id=${id}`, options);
+            let data = await res.json();
+            let links = data.streamingData.formats.map(f => `<a href="${f.url}" target="_blank">Download ${f.qualityLabel}</a>`).join('<br>');
+            document.getElementById('dlRes').innerHTML = links;
+            document.getElementById('dlRes').style.display='block';
+        } catch(e) { alert("RapidAPI Error or Limit Reached"); }
+        document.getElementById('dlLoad').style.display='none';
     }
 </script>
 </body>
