@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AhsanTools – All-in-One YouTube Tools</title>
-    
-    <meta property="og:title" content="AhsanTools – Free YouTube Growth Tools">
-    <meta property="og:description" content="Download thumbnails, extract tags, and calculate earnings for free.">
-    <meta property="og:image" content="https://img.youtube.com/vi/y881t8ilMyc/maxresdefault.jpg">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
+    <meta property="og:title" content="AhsanTools – Free YouTube Growth Tools">
+    <meta property="og:description" content="Download HD thumbnails, calculate earnings, and optimize your YouTube channel for free.">
+    <meta property="og:image" content="https://img.youtube.com/vi/y881t8ilMyc/maxresdefault.jpg">
+    <meta property="og:url" content="https://ahsansaddiqueusama.github.io/Ahsantools/">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
         :root {
             --primary-red: #ff0033;
@@ -19,231 +21,119 @@
             --whatsapp-green: #25d366;
         }
 
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: var(--light-bg);
-            color: #222;
-        }
+        body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: var(--light-bg); color: #222; }
 
-        /* --- PROFESSIONAL HEADER & NAVIGATION --- */
+        /* --- PROFESSIONAL STICKY NAV --- */
         nav {
-            background: #fff;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            background: #fff; padding: 12px 20px; display: flex; justify-content: space-between;
+            align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000;
         }
+        .logo { font-size: 22px; font-weight: 800; color: var(--primary-red); text-decoration: none; }
+        .nav-right { display: flex; align-items: center; gap: 15px; }
+        .nav-menu { display: flex; gap: 15px; margin-right: 15px; border-right: 1px solid #ddd; padding-right: 15px; }
+        .nav-menu a { text-decoration: none; color: #444; font-weight: 600; font-size: 13px; cursor: pointer; }
+        .btn-login { background: transparent; border: 1px solid var(--primary-red); color: var(--primary-red); padding: 6px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .btn-signup { background: var(--primary-red); border: none; color: #fff; padding: 7px 16px; border-radius: 5px; cursor: pointer; font-weight: bold; }
 
-        .logo {
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--primary-red);
-            text-decoration: none;
-        }
+        /* --- HEADER --- */
+        header { background: linear-gradient(135deg, #ff0033 0%, #b30024 100%); color: #fff; padding: 50px 20px; text-align: center; }
+        header h1 { margin: 0; font-size: 32px; font-weight: 800; }
+        header p { margin: 10px 0 0; font-size: 16px; opacity: 0.9; }
 
-        .nav-menu {
-            display: flex;
-            gap: 20px;
-        }
+        /* --- GRID & CARDS --- */
+        .container { max-width: 1200px; margin: auto; padding: 30px 15px; }
+        .section-title { font-size: 22px; margin: 40px 0 20px; border-left: 5px solid var(--primary-red); padding-left: 12px; color: #333; }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .tool-card { background: #fff; border-radius: 12px; padding: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.06); text-align: center; transition: 0.3s; }
+        .tool-card:hover { transform: translateY(-5px); }
+        .tool-icon { font-size: 30px; color: var(--primary-red); margin-bottom: 10px; }
+        .tool-card h3 { margin: 10px 0; font-size: 18px; }
+        .tool-card a { display: inline-block; margin-top: 15px; padding: 10px 20px; background: var(--primary-red); color: #fff; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: bold; cursor: pointer; width: 80%; }
 
-        .nav-menu a {
-            text-decoration: none;
-            color: #444;
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .nav-menu a:hover { color: var(--primary-red); }
-
-        header {
-            background: linear-gradient(135deg, #ff0033 0%, #b30024 100%);
-            color: #fff;
-            padding: 60px 20px;
-            text-align: center;
-        }
-
-        header h1 { margin: 0; font-size: 36px; }
-        header p { margin: 10px 0 0; font-size: 18px; opacity: 0.9; }
-
-        /* --- CONTAINER & TOOLS GRID --- */
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 30px 15px;
-        }
-
-        .section-title {
-            font-size: 24px;
-            margin: 40px 0 20px;
-            border-left: 5px solid var(--primary-red);
-            padding-left: 12px;
-            color: #333;
-        }
-
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .tool-card {
-            background: #fff;
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            text-align: center;
-            transition: 0.3s;
-        }
-
-        .tool-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(255, 0, 51, 0.1); }
-
-        .tool-icon { font-size: 32px; color: var(--primary-red); margin-bottom: 10px; }
-        .tool-card h3 { margin: 12px 0 8px; font-size: 18px; }
-        .tool-card p { font-size: 14px; color: #666; height: 40px; }
-
-        .tool-card a {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 10px 20px;
-            background: var(--primary-red);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: bold;
-            cursor: pointer;
-            width: 80%;
-        }
-
-        /* --- WHATSAPP BUTTON --- */
-        .whatsapp-float {
-            position: fixed; bottom: 25px; right: 25px;
-            background-color: var(--whatsapp-green); color: white;
-            width: 60px; height: 60px; border-radius: 50px;
-            text-align: center; font-size: 35px;
-            box-shadow: 2px 5px 15px rgba(0,0,0,0.3);
-            z-index: 1000; display: flex; align-items: center; justify-content: center;
-            text-decoration: none; transition: 0.3s;
-        }
-
-        /* --- MODALS (POPUPS) --- */
-        .modal-overlay {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center;
-        }
-        .modal-content {
-            background: #fff; padding: 30px; border-radius: 15px; width: 90%;
-            max-width: 500px; text-align: center; position: relative;
-        }
+        /* --- MODAL --- */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; }
+        .modal-content { background: #fff; padding: 30px; border-radius: 15px; width: 90%; max-width: 400px; text-align: center; position: relative; }
         .close-btn { position: absolute; top: 10px; right: 20px; cursor: pointer; font-size: 28px; color: #999; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        
+        /* --- WHATSAPP --- */
+        .whatsapp-float { position: fixed; bottom: 25px; right: 25px; background-color: var(--whatsapp-green); color: white; width: 60px; height: 60px; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 5px 15px rgba(0,0,0,0.3); z-index: 1500; display: flex; align-items: center; justify-content: center; text-decoration: none; }
 
-        footer {
-            background: var(--dark-bg);
-            color: #bbb;
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 50px;
-        }
+        footer { background: var(--dark-bg); color: #bbb; padding: 40px 20px; text-align: center; margin-top: 50px; }
     </style>
 </head>
 <body>
 
 <nav>
     <a href="#" class="logo">AhsanTools</a>
-    <div class="nav-menu">
-        <a onclick="openModal('aboutModal')">About</a>
-        <a onclick="openModal('privacyModal')">Privacy</a>
-        <a onclick="openModal('contactModal')">Contact</a>
+    <div class="nav-right">
+        <div class="nav-menu">
+            <a onclick="openModal('aboutModal')">About</a>
+            <a onclick="openModal('contactModal')">Contact</a>
+        </div>
+        <button class="btn-login" onclick="openModal('loginModal')">Login</button>
+        <button class="btn-signup" onclick="openModal('signupModal')">Sign Up</button>
     </div>
 </nav>
 
 <header>
     <h1>AhsanTools</h1>
-    <p>All-in-One Smart YouTube Tools for Creators</p>
+    <p>Premium YouTube Creator Suite</p>
 </header>
-
-<div class="container">
-
-    <h2 class="section-title">📥 Data & Download Tools</h2>
-    <div class="tools-grid">
-        <div class="tool-card"><div class="tool-icon">🖼️</div><h3>Thumbnail Downloader</h3><p>Get HD YouTube thumbnails instantly.</p><a onclick="openModal('thumbModal')">Use Tool</a></div>
-        <div class="tool-card"><div class="tool-icon">🔎</div><h3>YT Channel ID Finder</h3><p>Find any YouTube channel ID.</p><a href="#">Use Tool</a></div>
-        <div class="tool-card"><div class="tool-icon">🔗</div><h3>Embed Generator</h3><p>Create custom embed codes.</p><a href="#">Use Tool</a></div>
-    </div>
-
-    <h2 class="section-title">🤖 AI Script & Content Tools</h2>
-    <div class="tools-grid">
-        <div class="tool-card"><div class="tool-icon">✍️</div><h3>AI Script Writer</h3><p>Generate full scripts using AI.</p><a href="#">Use Tool</a></div>
-        <div class="tool-card"><div class="tool-icon">🎬</div><h3>Shorts Script</h3><p>AI scripts for viral Shorts.</p><a href="#">Use Tool</a></div>
-        <div class="tool-card"><div class="tool-icon">⚡</div><h3>Hook Generator</h3><p>Create powerful intro hooks.</p><a href="#">Use Tool</a></div>
-    </div>
-
-    <h2 class="section-title">🔍 SEO, Tags & Titles</h2>
-    <div class="tools-grid">
-        <div class="tool-card"><div class="tool-icon">#️⃣</div><h3>Tag Generator</h3><p>SEO optimized tags for videos.</p><a href="#">Use Tool</a></div>
-        <div class="tool-card"><div class="tool-icon">📏</div><h3>Title Checker</h3><p>Check SEO-friendly title length.</p><a onclick="openModal('titleModal')">Use Tool</a></div>
-        <div class="tool-card"><div class="tool-icon">📝</div><h3>Title Generator</h3><p>Generate high-CTR titles.</p><a href="#">Use Tool</a></div>
-    </div>
-
-    <h2 class="section-title">📈 Growth & Earnings</h2>
-    <div class="tools-grid">
-        <div class="tool-card"><div class="tool-icon">💰</div><h3>Income Calculator</h3><p>Estimate your YouTube revenue.</p><a onclick="openModal('calcModal')">Use Tool</a></div>
-        <div class="tool-card"><div class="tool-icon">✔️</div><h3>Monetization Checker</h3><p>Check if a channel is monetized.</p><a href="#">Use Tool</a></div>
-    </div>
-
-</div>
 
 <a href="https://wa.me/923266342858" class="whatsapp-float" target="_blank">
     <i class="fab fa-whatsapp"></i>
 </a>
 
-<div id="aboutModal" class="modal-overlay">
+<div class="container">
+    <h2 class="section-title">📥 Data & Utility Tools</h2>
+    <div class="tools-grid">
+        <div class="tool-card">
+            <div class="tool-icon">🖼️</div>
+            <h3>Thumbnail Downloader</h3>
+            <p>Get HD/4K thumbnails from any video.</p>
+            <a onclick="openModal('thumbModal')">Use Tool</a>
+        </div>
+        </div>
+</div>
+
+<div id="loginModal" class="modal-overlay">
     <div class="modal-content">
-        <span class="close-btn" onclick="closeModal('aboutModal')">&times;</span>
-        <h2 style="color:var(--primary-red);">About Us</h2>
-        <p>AhsanTools is a free platform for YouTube creators to help them grow and manage their channels with professional tools.</p>
+        <span class="close-btn" onclick="closeModal('loginModal')">&times;</span>
+        <h2 style="color:var(--primary-red);">Welcome Back</h2>
+        <p>Login to your AhsanTools account</p>
+        <input type="email" placeholder="Email Address">
+        <input type="password" placeholder="Password">
+        <button class="btn-signup" style="width:100%; margin-top:10px;">Login</button>
     </div>
 </div>
 
-<div id="privacyModal" class="modal-overlay">
+<div id="signupModal" class="modal-overlay">
     <div class="modal-content">
-        <span class="close-btn" onclick="closeModal('privacyModal')">&times;</span>
-        <h2 style="color:var(--primary-red);">Privacy Policy</h2>
-        <p>We do not store your data. All tool calculations are done in your browser for 100% security.</p>
+        <span class="close-btn" onclick="closeModal('signupModal')">&times;</span>
+        <h2 style="color:var(--primary-red);">Create Account</h2>
+        <p>Join thousands of YouTube creators</p>
+        <input type="text" placeholder="Full Name">
+        <input type="email" placeholder="Email Address">
+        <input type="password" placeholder="Password">
+        <button class="btn-signup" style="width:100%; margin-top:10px;">Create Account</button>
     </div>
 </div>
 
-<div id="contactModal" class="modal-overlay">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeModal('contactModal')">&times;</span>
-        <h2 style="color:var(--primary-red);">Contact Us</h2>
-        <p>Email: support@ahsantools.com<br>WhatsApp: +92 326 6342858</p>
-    </div>
-</div>
+<div id="aboutModal" class="modal-overlay"><div class="modal-content"><span class="close-btn" onclick="closeModal('aboutModal')">&times;</span><h2>About Us</h2><p>Free YouTube tools for everyone.</p></div></div>
+<div id="contactModal" class="modal-overlay"><div class="modal-content"><span class="close-btn" onclick="closeModal('contactModal')">&times;</span><h2>Contact</h2><p>WhatsApp: +92 326 6342858</p></div></div>
 
-<div id="thumbModal" class="modal-overlay">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeModal('thumbModal')">&times;</span>
-        <h3>Thumbnail Downloader</h3>
-        <input type="text" id="tUrl" placeholder="Paste YouTube Link">
-        <button onclick="alert('Tool Logic working!')" style="width:100%; padding:10px; background:var(--primary-red); color:#fff; border:none; border-radius:5px; cursor:pointer;">Fetch Thumbnail</button>
-    </div>
-</div>
-
-<footer>
-    © 2026 AhsanTools • Built for YouTube Creators
-</footer>
+<footer> © 2026 AhsanTools • All Rights Reserved </footer>
 
 <script>
     function openModal(id) { document.getElementById(id).style.display = 'flex'; }
     function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+    // Window click se modal band karna
+    window.onclick = function(event) {
+        if (event.target.className === 'modal-overlay') {
+            event.target.style.display = "none";
+        }
+    }
 </script>
 
 </body>
