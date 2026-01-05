@@ -3,131 +3,332 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AhsanTools - Free YouTube Suite</title>
+    <title>AhsanTools – All-in-One YouTube Tools</title>
+
+    <meta property="og:title" content="AhsanTools – Free YouTube Growth Tools">
+    <meta property="og:description" content="Download HD thumbnails, calculate earnings, and optimize your YouTube channel for free.">
+    <meta property="og:image" content="https://img.youtube.com/vi/y881t8ilMyc/maxresdefault.jpg">
+    <meta property="og:url" content="https://ahsansaddiqueusama.github.io/Ahsantools/">
     
-    <script src="https://js.puter.com/v2/"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        :root { --red: #ff0033; --bg: #f4f4f4; }
-        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; padding: 0; }
+        :root {
+            --primary-red: #ff0033;
+            --dark-bg: #111;
+            --light-bg: #f6f7fb;
+            --whatsapp-green: #25d366;
+        }
+
+        body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: var(--light-bg); color: #222; scroll-behavior: smooth; }
+
+        /* --- HEADER --- */
+        header {
+            background: linear-gradient(135deg, #ff0033 0%, #b30024 100%);
+            color: #fff; padding: 50px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        header h1 { margin: 0; font-size: 36px; font-weight: 800; }
+        header p { margin: 10px 0 25px; font-size: 16px; opacity: 0.9; }
+
+        .nav-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .nav-links a {
+            color: white; text-decoration: none; font-weight: 600; font-size: 13px;
+            padding: 8px 16px; border-radius: 50px; background: rgba(255,255,255,0.15); transition: 0.3s;
+        }
+        .nav-links a:hover { background: #fff; color: var(--primary-red); }
+
+        /* --- GRID & CARDS --- */
+        .container { max-width: 1200px; margin: auto; padding: 30px 15px; }
+        .section-title {
+            font-size: 22px; margin: 40px 0 20px; border-left: 5px solid var(--primary-red);
+            padding-left: 12px; color: #333; display: flex; align-items: center; gap: 10px;
+        }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
         
-        header { background: var(--red); color: white; padding: 50px 20px; text-align: center; }
-        header h1 { margin: 0; font-size: 32px; letter-spacing: 1px; }
-        header p { margin: 10px 0 0; opacity: 0.9; }
-
-        .main-wrapper { max-width: 1200px; margin: 20px auto; display: flex; flex-wrap: wrap; gap: 20px; padding: 0 15px; }
-
-        /* Ads Sidebar Areas */
-        .ad-sidebar { flex: 1; min-width: 200px; display: flex; flex-direction: column; gap: 15px; }
-        .ad-box { background: #000; color: #444; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 12px; min-height: 180px; text-transform: uppercase; border: 1px solid #333; }
-
-        /* Tools Center Area */
-        .tools-section { flex: 3; min-width: 300px; }
-        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
-
-        .tool-card { background: white; padding: 30px 20px; border-radius: 12px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; }
-        .tool-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
-        .tool-card i { font-size: 35px; color: var(--red); margin-bottom: 15px; }
-        .tool-card h3 { margin: 10px 0; font-size: 18px; color: #222; }
-        .tool-card p { font-size: 13px; color: #666; margin-bottom: 20px; line-height: 1.4; }
+        .tool-card {
+            background: #fff; border-radius: 12px; padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.06); text-align: center; transition: 0.3s;
+            position: relative; overflow: hidden;
+        }
+        .tool-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(255, 0, 51, 0.1); }
+        .tool-icon { font-size: 30px; margin-bottom: 10px; }
+        .tool-card h3 { margin: 10px 0; font-size: 17px; color: #333; }
+        .tool-card p { font-size: 12px; color: #666; min-height: 35px; margin-bottom: 15px; }
         
-        .btn { background: var(--red); color: white; border: none; padding: 10px 25px; border-radius: 6px; cursor: pointer; font-weight: bold; width: 100%; transition: 0.2s; }
-        .btn:hover { background: #d6002b; }
+        .btn-use {
+            display: inline-block; padding: 10px 20px; background: var(--primary-red); color: #fff; 
+            text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: bold; 
+            cursor: pointer; width: 85%; border: none;
+        }
+        .btn-soon { background: #e0e0e0; color: #888; cursor: not-allowed; }
 
-        /* Bottom Ad Area */
-        .ad-bottom { width: 100%; background: #000; height: 120px; border-radius: 8px; margin-top: 20px; display: flex; align-items: center; justify-content: center; color: #444; border: 1px solid #333; }
+        /* --- MODALS --- */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center;
+        }
+        .modal-content {
+            background: #fff; padding: 30px; border-radius: 15px; width: 90%;
+            max-width: 500px; text-align: center; position: relative;
+        }
+        .close-btn { position: absolute; top: 10px; right: 20px; cursor: pointer; font-size: 28px; color: #999; }
+        input, textarea {
+            width: 100%; padding: 12px; margin: 15px 0; border: 1px solid #ddd;
+            border-radius: 8px; box-sizing: border-box; font-family: inherit;
+        }
+        .res-box {
+            margin-top: 15px; padding: 15px; background: #f9f9f9; border-radius: 8px;
+            word-break: break-all; font-size: 14px; border: 1px dashed #ccc; text-align: left;
+        }
 
-        /* Modal Area */
-        .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1000; justify-content:center; align-items:center; }
-        .modal-box { background:white; padding:30px; border-radius:15px; width:90%; max-width:450px; position:relative; text-align:center; }
-        .close { position:absolute; top:10px; right:15px; font-size:25px; cursor:pointer; color:#999; }
-        input { width:100%; padding:12px; margin:15px 0; border:1px solid #ddd; border-radius:8px; box-sizing: border-box; }
-        #res { background:#f9f9f9; padding:15px; margin-top:15px; border-radius:8px; text-align:left; max-height:250px; overflow-y:auto; white-space: pre-wrap; font-size:14px; border: 1px dashed #ccc; display: none; }
-        
-        @media (max-width: 768px) { .ad-sidebar { display: none; } }
+        /* --- WHATSAPP --- */
+        .whatsapp-float {
+            position: fixed; bottom: 25px; right: 25px; background-color: var(--whatsapp-green);
+            color: white; width: 60px; height: 60px; border-radius: 50px; text-align: center;
+            font-size: 35px; box-shadow: 2px 5px 15px rgba(0,0,0,0.3); z-index: 1500;
+            display: flex; align-items: center; justify-content: center; text-decoration: none;
+        }
+
+        /* --- FOOTER --- */
+        footer { background: var(--dark-bg); color: #bbb; padding: 40px 20px; margin-top: 80px; text-align: center; }
+        .footer-links { margin-bottom: 20px; }
+        .footer-links a { color: #bbb; text-decoration: none; margin: 0 10px; font-size: 14px; cursor: pointer; }
+        .footer-links a:hover { color: #fff; }
     </style>
 </head>
 <body>
 
 <header>
     <h1>AhsanTools</h1>
-    <p>Professional YouTube Tools | Free & Fast</p>
+    <p>Professional Suite for YouTube Creators</p>
+    <div class="nav-links">
+        <a href="#data">Downloaders</a>
+        <a href="#ai">AI Tools</a>
+        <a href="#seo">SEO</a>
+        <a href="#growth">Earnings</a>
+    </div>
 </header>
 
-<div class="main-wrapper">
-    <div class="ad-sidebar">
-        <div class="ad-box">Ad Space (Side L1)</div>
-        <div class="ad-box">Ad Space (Side L2)</div>
-        <div class="ad-box">Ad Space (Side L3)</div>
-    </div>
+<a href="https://wa.me/923266342858?text=Hello%20AhsanTools%20Support!" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
 
-    <div class="tools-section">
-        <div class="tools-grid">
-            <div class="tool-card"><i class="fa-solid fa-magnifying-glass-chart"></i><h3>Keyword Planner</h3><p>Find trending keywords from search.</p><button class="btn" onclick="openT('keywords')">Open Tool</button></div>
-            <div class="tool-card"><i class="fa-solid fa-tags"></i><h3>Tag Generator</h3><p>Generate SEO tags via AI for growth.</p><button class="btn" onclick="openT('tags')">Open Tool</button></div>
-            <div class="tool-card"><i class="fa-solid fa-file-lines"></i><h3>AI Script Writer</h3><p>Write complete video scripts for free.</p><button class="btn" onclick="openT('script')">Open Tool</button></div>
-            <div class="tool-card"><i class="fa-solid fa-image"></i><h3>Thumb Downloader</h3><p>Get HD video thumbnails instantly.</p><button class="btn" onclick="openT('thumb')">Open Tool</button></div>
+<div class="container">
+    
+    <h2 class="section-title" id="data">📥 Data & Download Tools</h2>
+    <div class="tools-grid">
+        <div class="tool-card">
+            <div class="tool-icon">🖼️</div>
+            <h3>Thumbnail Downloader</h3>
+            <p>Download HD/4K YouTube thumbnails.</p>
+            <button class="btn-use" onclick="openModal('thumbModal')">Use Tool</button>
         </div>
-        
-        <div class="ad-bottom">Google AdSense / Horizontal Banner Area</div>
+        <div class="tool-card">
+            <div class="tool-icon">🔗</div>
+            <h3>Embed Generator</h3>
+            <p>Generate clean YouTube embed codes.</p>
+            <button class="btn-use" onclick="openModal('embedModal')">Use Tool</button>
+        </div>
+        <div class="tool-card">
+            <div class="tool-icon">⏱️</div>
+            <h3>Timestamp Linker</h3>
+            <p>Link to specific video segments.</p>
+            <button class="btn-use" onclick="openModal('timeModal')">Use Tool</button>
+        </div>
+        <div class="tool-card">
+            <div class="tool-icon">🆔</div>
+            <h3>Channel ID Finder</h3>
+            <p>Extract unique YouTube Channel IDs.</p>
+            <button class="btn-use btn-soon">Coming Soon</button>
+        </div>
     </div>
 
-    <div class="ad-sidebar">
-        <div class="ad-box">Ad Space (Side R1)</div>
-        <div class="ad-box">Ad Space (Side R2)</div>
-        <div class="ad-box">Ad Space (Side R3)</div>
+    <h2 class="section-title" id="ai">🤖 AI Script & Content</h2>
+    <div class="grid tools-grid">
+        <div class="tool-card">
+            <div class="tool-icon">✍️</div>
+            <h3>AI Script Writer</h3>
+            <p>Generate high-retention video scripts.</p>
+            <button class="btn-use btn-soon">Coming Soon</button>
+        </div>
+        <div class="tool-card">
+            <div class="tool-icon">🪝</div>
+            <h3>Hook Generator</h3>
+            <p>Create viral hooks for your videos.</p>
+            <button class="btn-use btn-soon">Coming Soon</button>
+        </div>
+        <div class="tool-card">
+            <div class="tool-icon">🎥</div>
+            <h3>Shorts Script Maker</h3>
+            <p>Quick scripts for YouTube Shorts.</p>
+            <button class="btn-use btn-soon">Coming Soon</button>
+        </div>
+    </div>
+
+    <h2 class="section-title" id="seo">🔍 SEO, Tags & Titles</h2>
+    <div class="tools-grid">
+        <div class="tool-card">
+            <div class="tool-icon">📏</div>
+            <h3>Title Length Checker</h3>
+            <p>Optimize title for search & mobile.</p>
+            <button class="btn-use" onclick="openModal('titleModal')">Use Tool</button>
+        </div>
+        <div class="tool-card">
+            <div class="tool-icon">🏷️</div>
+            <h3>Tag Generator</h3>
+            <p>Find SEO optimized tags for videos.</p>
+            <button class="btn-use btn-soon">Coming Soon</button>
+        </div>
+        <div class="tool-card">
+            <div class="tool-icon">🔥</div>
+            <h3>Hashtag Finder</h3>
+            <p>Get trending YouTube hashtags.</p>
+            <button class="btn-use btn-soon">Coming Soon</button>
+        </div>
+    </div>
+
+    <h2 class="section-title" id="growth">📈 Growth & Earnings</h2>
+    <div class="tools-grid">
+        <div class="tool-card">
+            <div class="tool-icon">💰</div>
+            <h3>Income Calculator</h3>
+            <p>Estimate your potential YT revenue.</p>
+            <button class="btn-use" onclick="openModal('calcModal')">Use Tool</button>
+        </div>
+        <div class="tool-card">
+            <div class="tool-icon">✅</div>
+            <h3>Monetization Checker</h3>
+            <p>Check if a channel is monetized.</p>
+            <button class="btn-use btn-soon">Coming Soon</button>
+        </div>
+    </div>
+
+</div>
+
+<div id="thumbModal" class="modal-overlay">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('thumbModal')">&times;</span>
+        <h3>Thumbnail Downloader</h3>
+        <input type="text" id="tUrl" placeholder="Paste YouTube Link">
+        <button onclick="fnThumb()" class="btn-use" style="width:100%">Fetch HD Images</button>
+        <div id="tRes" class="res-box" style="display:none; text-align:center;"></div>
     </div>
 </div>
 
-<div id="modal" class="modal">
-    <div class="modal-box">
-        <span class="close" onclick="closeT()">&times;</span>
-        <h2 id="title">Tool</h2>
-        <input type="text" id="inp" placeholder="Enter link or topic...">
-        <button class="btn" onclick="process()">Run Tool</button>
-        <div id="res"></div>
+<div id="calcModal" class="modal-overlay">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('calcModal')">&times;</span>
+        <h3>Earnings Calculator</h3>
+        <input type="number" id="viewsIn" placeholder="Daily Views">
+        <button onclick="fnCalc()" class="btn-use" style="width:100%">Calculate Revenue</button>
+        <div id="cRes" class="res-box" style="display:none; font-weight:bold; text-align:center;"></div>
     </div>
 </div>
+
+<div id="titleModal" class="modal-overlay">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('titleModal')">&times;</span>
+        <h3>Title Length Checker</h3>
+        <textarea id="titleIn" oninput="fnTitle()" placeholder="Enter your video title here..." rows="3"></textarea>
+        <div id="tiRes" class="res-box" style="text-align:center;">Characters: 0 / 100 <br> Status: Waiting...</div>
+    </div>
+</div>
+
+<div id="embedModal" class="modal-overlay">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('embedModal')">&times;</span>
+        <h3>Embed Code Generator</h3>
+        <input type="text" id="eUrl" placeholder="Video Link">
+        <button onclick="fnEmbed()" class="btn-use" style="width:100%">Generate Embed Code</button>
+        <div id="eRes" class="res-box" style="display:none;"></div>
+    </div>
+</div>
+
+<div id="timeModal" class="modal-overlay">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('timeModal')">&times;</span>
+        <h3>Timestamp Linker</h3>
+        <input type="text" id="tmUrl" placeholder="Video Link">
+        <input type="number" id="tmSec" placeholder="Time in Seconds (e.g. 120)">
+        <button onclick="fnTime()" class="btn-use" style="width:100%">Get Timestamp Link</button>
+        <div id="tmRes" class="res-box" style="display:none; text-align:center;"></div>
+    </div>
+</div>
+
+<div id="aboutModal" class="modal-overlay"><div class="modal-content"><span class="close-btn" onclick="closeModal('aboutModal')">&times;</span><h3>About AhsanTools</h3><p>We provide free tools for YouTube creators to help them grow and analyze their channels.</p></div></div>
+<div id="privacyModal" class="modal-overlay"><div class="modal-content"><span class="close-btn" onclick="closeModal('privacyModal')">&times;</span><h3>Privacy</h3><p>We don't store your data. Everything happens in your browser.</p></div></div>
+
+<footer>
+    <div class="footer-links">
+        <a onclick="openModal('aboutModal')">About</a>
+        <a onclick="openModal('privacyModal')">Privacy</a>
+        <a href="mailto:support@ahsantools.com">Contact</a>
+    </div>
+    <div class="footer-bottom"> &copy; 2026 AhsanTools • All Rights Reserved </div>
+</footer>
 
 <script>
-    let activeTool = "";
-    function openT(t) { 
-        activeTool = t; 
-        document.getElementById('title').innerText = t.replace('_', ' ').toUpperCase();
-        document.getElementById('modal').style.display = 'flex';
-        document.getElementById('res').style.display = 'none';
-        document.getElementById('inp').value = '';
+    function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+    function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+
+    function getID(url) {
+        let id = '';
+        if(url.includes('v=')) id = url.split('v=')[1].split('&')[0];
+        else if(url.includes('youtu.be/')) id = url.split('youtu.be/')[1].split('?')[0];
+        else if(url.includes('shorts/')) id = url.split('shorts/')[1].split('?')[0];
+        return id;
     }
-    function closeT() { document.getElementById('modal').style.display = 'none'; }
 
-    async function process() {
-        const val = document.getElementById('inp').value.trim();
-        const out = document.getElementById('res');
-        if(!val) return alert("Input required!");
-        out.style.display = 'block'; out.innerText = "Processing...";
+    function fnThumb() {
+        let id = getID(document.getElementById('tUrl').value);
+        if(id) {
+            let img = `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
+            document.getElementById('tRes').innerHTML = `<img src="${img}" style="width:100%; border-radius:8px;"><br><a href="${img}" target="_blank" style="color:var(--primary-red); text-decoration:none; font-weight:bold; display:block; margin-top:15px;">Download HD Thumbnail</a>`;
+            document.getElementById('tRes').style.display = 'block';
+        } else { alert("Please enter a valid YouTube link"); }
+    }
 
-        try {
-            if(activeTool === 'thumb') {
-                const reg = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i;
-                const id = val.match(reg)?.[1];
-                if(id) {
-                    out.innerHTML = `<img src="https://img.youtube.com/vi/${id}/maxresdefault.jpg" width="100%"><br><br><a href="https://img.youtube.com/vi/${id}/maxresdefault.jpg" target="_blank" style="color:red; font-weight:bold;">Download HD Thumbnail</a>`;
-                } else { out.innerText = "Invalid YouTube URL"; }
-            } else if(activeTool === 'keywords') {
-                const proxy = "https://api.allorigins.win/get?url=";
-                const target = `https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=${encodeURIComponent(val)}`;
-                const response = await fetch(proxy + encodeURIComponent(target));
-                const data = await response.json();
-                const suggestions = JSON.parse(data.contents)[1];
-                out.innerText = suggestions.length > 0 ? "Trending Keywords:\n\n" + suggestions.join("\n") : "No keywords found.";
-            } else {
-                const prompt = `YouTube expert: generate ${activeTool} for topic: ${val}`;
-                const r = await puter.ai.chat(prompt);
-                out.innerText = r.toString();
-            }
-        } catch(e) { out.innerText = "Error. Please try again."; }
+    function fnCalc() {
+        let v = document.getElementById('viewsIn').value;
+        if(v <= 0) return alert("Enter valid daily views");
+        let min = (v/1000)*0.5; let max = (v/1000)*4.5;
+        document.getElementById('cRes').innerHTML = `Estimated Daily: $${min.toFixed(2)} - $${max.toFixed(2)}`;
+        document.getElementById('cRes').style.display = 'block';
+    }
+
+    function fnTitle() {
+        let t = document.getElementById('titleIn').value.length;
+        let color = t > 70 ? "red" : (t < 40 ? "orange" : "green");
+        let status = t > 70 ? "Too Long" : (t < 40 ? "Too Short" : "Perfect");
+        document.getElementById('tiRes').innerHTML = `Characters: ${t} / 100 <br> Status: <span style="color:${color}; font-weight:bold;">${status}</span>`;
+    }
+
+    function fnEmbed() {
+        let id = getID(document.getElementById('eUrl').value);
+        if(id) {
+            let code = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${id}" frameborder="0" allowfullscreen></iframe>`;
+            document.getElementById('eRes').innerText = code;
+            document.getElementById('eRes').style.display = 'block';
+        }
+    }
+
+    function fnTime() {
+        let id = getID(document.getElementById('tmUrl').value);
+        let sec = document.getElementById('tmSec').value;
+        if(id && sec) {
+            let link = `https://youtu.be/${id}?t=${sec}`;
+            document.getElementById('tmRes').innerHTML = `<a href="${link}" target="_blank" style="color:red; font-weight:bold;">${link}</a>`;
+            document.getElementById('tmRes').style.display = 'block';
+        }
+    }
+
+    // Close modal on outside click
+    window.onclick = function(event) {
+        if (event.target.className === 'modal-overlay') {
+            event.target.style.display = "none";
+        }
     }
 </script>
+
 </body>
 </html>
