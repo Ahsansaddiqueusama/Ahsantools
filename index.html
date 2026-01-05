@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AhsanTools – Creator Suite</title>
+    <title>AhsanTools – YouTube Growth Suite</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --navy: #050b20; --cyan: #00b4ff; --bg: #f8fafc; }
+        :root { --navy: #050b20; --cyan: #00b4ff; --bg: #f4f7fe; }
         * { box-sizing: border-box; transition: all 0.3s ease; font-family: 'Plus Jakarta Sans', sans-serif; }
         body { margin: 0; background: var(--bg); display: flex; height: 100vh; overflow: hidden; }
 
@@ -15,131 +15,157 @@
         .sidebar { width: 280px; background: var(--navy); color: white; display: flex; flex-direction: column; padding: 25px 0; }
         .logo { text-align: center; font-size: 24px; font-weight: 800; margin-bottom: 40px; }
         .logo span { color: var(--cyan); }
-        .nav-item { padding: 14px 25px; cursor: pointer; display: flex; align-items: center; gap: 15px; color: rgba(255,255,255,0.7); }
+        .nav-item { padding: 14px 25px; cursor: pointer; display: flex; align-items: center; gap: 15px; color: rgba(255,255,255,0.7); font-size: 14px; }
         .nav-item.active { background: rgba(0, 180, 255, 0.1); color: white; border-left: 4px solid var(--cyan); }
 
-        /* Main */
-        .wrapper { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
-        header { background: white; padding: 15px 35px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; }
-        .search-box { position: relative; width: 350px; }
-        .search-box input { width: 100%; padding: 10px 40px; border-radius: 10px; border: 1px solid #ddd; outline: none; }
-        .search-box i { position: absolute; left: 15px; top: 13px; color: #999; }
+        /* Main Content */
+        .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        header { background: white; padding: 15px 35px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; }
+        .search-box { position: relative; width: 400px; }
+        .search-box input { width: 100%; padding: 12px 45px; border-radius: 12px; border: 1px solid #e2e8f0; background: #f8fafc; outline: none; }
+        .search-box i { position: absolute; left: 18px; top: 15px; color: #94a3b8; }
 
         .content { padding: 30px; overflow-y: auto; flex: 1; }
-        .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
-        
-        /* Centered Card Design */
+        .hero { background: var(--navy); padding: 40px; border-radius: 20px; color: white; text-align: center; margin-bottom: 30px; }
+        .hero h1 { margin: 0; font-size: 28px; }
+        .hero span { color: var(--cyan); }
+
+        /* Centered Cards */
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
         .card { 
             background: white; border-radius: 20px; padding: 40px 25px; text-align: center;
-            border: 1px solid #e2e8f0; display: flex; flex-direction: column; align-items: center;
+            border: 1px solid #eef2f6; display: flex; flex-direction: column; align-items: center;
         }
-        .icon-box { background: #f0f9ff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
-        .icon-box i { font-size: 24px; color: var(--navy); }
-        .card h3 { margin: 10px 0; font-size: 18px; color: var(--navy); }
-        .card p { font-size: 13px; color: #64748b; margin-bottom: 20px; min-height: 40px; }
-        .btn { background: var(--navy); color: white; border: none; padding: 12px; border-radius: 10px; width: 100%; cursor: pointer; font-weight: 700; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.05); border-color: var(--cyan); }
+        .icon-box { background: #f0f9ff; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+        .icon-box i { font-size: 26px; color: var(--navy); }
+        .card h3 { margin: 10px 0; font-size: 18px; color: var(--navy); font-weight: 700; }
+        .card p { font-size: 13px; color: #64748b; margin-bottom: 20px; line-height: 1.6; }
+        .btn { background: var(--navy); color: white; border: none; padding: 13px; border-radius: 10px; width: 100%; cursor: pointer; font-weight: 700; font-size: 13px; }
         .btn:hover { background: var(--cyan); }
 
         /* Modal */
-        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 9999; align-items: center; justify-content: center; }
-        .modal-box { background: white; padding: 40px; border-radius: 20px; width: 500px; text-align: center; position: relative; }
-        .modal-box input { width: 100%; padding: 15px; margin: 20px 0; border-radius: 10px; border: 1px solid #ddd; }
-        .res-area { margin-top: 20px; display: none; text-align: center; }
-        .res-area img { width: 100%; border-radius: 10px; margin-bottom: 15px; border: 1px solid #eee; }
+        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 9999; align-items: center; justify-content: center; padding: 20px; }
+        .modal-box { background: white; padding: 40px; border-radius: 25px; width: 100%; max-width: 550px; text-align: center; }
+        .modal-box input { width: 100%; padding: 16px; margin: 20px 0; border-radius: 12px; border: 1px solid #ddd; outline: none; }
+        .res-area { margin-top: 20px; display: none; }
+        .res-area img { width: 100%; border-radius: 12px; margin-bottom: 15px; border: 1px solid #eee; }
+
+        .wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); text-decoration: none; }
     </style>
 </head>
 <body>
 
 <div class="sidebar">
     <div class="logo">Ahsan<span>Tools</span></div>
-    <div class="nav-item active"><i class="fa-solid fa-house"></i> Dashboard</div>
-    <div class="nav-item"><i class="fa-solid fa-magnifying-glass"></i> SEO Suite</div>
-    <div class="nav-item"><i class="fa-solid fa-robot"></i> AI Studio</div>
+    <div class="nav-item active"><i class="fa-solid fa-layer-group"></i> All Tools</div>
+    <div class="nav-item"><i class="fa-solid fa-chart-line"></i> SEO Suite</div>
+    <div class="nav-item"><i class="fa-solid fa-pen-nib"></i> AI Writing</div>
 </div>
 
-<div class="wrapper">
+<div class="main">
     <header>
-        <div class="search-box"><i class="fa-solid fa-search"></i><input type="text" placeholder="Search tools..."></div>
-        <div style="font-weight: 800; color: #64748b;">GUEST</div>
+        <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search from 70+ tools..." onkeyup="searchTools()" id="toolSearch">
+        </div>
+        <div style="font-size: 12px; font-weight: 800; color: #94a3b8;">AHSANTOOLS v2.0</div>
     </header>
 
     <div class="content">
-        <div class="tools-grid">
-            <div class="card">
-                <div class="icon-box"><i class="fa-solid fa-image"></i></div>
-                <h3>Thumbnail Downloader</h3>
-                <p>Download 4K thumbnails from any YouTube video instantly.</p>
-                <button class="btn" onclick="openTool('thumb', 'Thumbnail Downloader')">Launch Tool</button>
-            </div>
-
-            <div class="card">
-                <div class="icon-box"><i class="fa-solid fa-key"></i></div>
-                <h3>Keyword Planner</h3>
-                <p>Analyze search volume and ranking difficulty.</p>
-                <button class="btn" onclick="alert('Login Required')">Login to Unlock</button>
-            </div>
+        <div class="hero">
+            <h1>Expert Tools for <span>YouTube Growth</span></h1>
+            <p>Direct, simple, and powerful tools for every creator.</p>
         </div>
+        <div class="grid" id="toolsDisplay"></div>
     </div>
 </div>
 
 <div id="toolModal" class="modal">
     <div class="modal-box">
-        <h2 id="mTitle">Tool</h2>
-        <input type="text" id="mInput" placeholder="Paste YouTube Video URL here...">
-        <button class="btn" id="mBtn" onclick="processTool()">Download Thumbnail</button>
+        <h2 id="mTitle">Tool Name</h2>
+        <p id="mDesc" style="color: #64748b; font-size: 13px;"></p>
+        <input type="text" id="mInput" placeholder="Enter keyword or paste link here...">
+        <button class="btn" id="mBtn" onclick="runTool()">Analyze Now</button>
         
         <div id="resArea" class="res-area">
-            <div id="imgContainer"></div>
-            <a id="dlLink" href="#" target="_blank" style="color:var(--cyan); font-weight:bold; text-decoration:none;">Download HD Image</a>
+            <div id="imgPreview"></div>
+            <a id="downloadBtn" href="#" target="_blank" style="display:block; margin-top:10px; color:var(--cyan); font-weight:bold; text-decoration:none;">Download Full Resolution</a>
         </div>
         
-        <button onclick="closeModal()" style="margin-top:20px; background:none; border:none; color:#999; cursor:pointer;">Close Window</button>
+        <button onclick="closeModal()" style="margin-top:20px; background:none; border:none; color:#aaa; cursor:pointer; font-weight:600;">Close Window</button>
     </div>
 </div>
 
-<script>
-    let activeTool = '';
+<a href="https://wa.me/923266342858" class="wa-float" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
 
-    function openTool(id, title) {
-        activeTool = id;
+<script>
+    const tools = [
+        { id: 'thumb', icon: 'fa-image', title: 'Thumbnail Downloader', desc: 'Fetch 4K/HD thumbnails from any YouTube video link instantly.' },
+        { id: 'kw', icon: 'fa-magnifying-glass-chart', title: 'Keyword Research', desc: 'Find high-volume search terms and analyze SEO competition.' },
+        { id: 'script', icon: 'fa-scroll', title: 'AI Script Generator', desc: 'Create viral video scripts with professional hooks and intros.' },
+        { id: 'tags', icon: 'fa-hashtag', title: 'Viral Tag Finder', desc: 'Extract and copy the best performing tags from viral videos.' },
+        { id: 'audit', icon: 'fa-stethoscope', title: 'Channel Auditor', desc: 'Get a full SEO health report of your YouTube channel.' },
+        { id: 'title', icon: 'fa-bolt', title: 'Viral Title Generator', desc: 'Get high-CTR titles based on the latest trending topics.' }
+    ];
+
+    let activeId = '';
+
+    function render(list) {
+        document.getElementById('toolsDisplay').innerHTML = list.map(t => `
+            <div class="card">
+                <div class="icon-box"><i class="fa-solid ${t.icon}"></i></div>
+                <h3>${t.title}</h3>
+                <p>${t.desc}</p>
+                <button class="btn" onclick="openTool('${t.id}', '${t.title}', '${t.desc}')">Launch Tool</button>
+            </div>
+        `).join('');
+    }
+
+    function openTool(id, title, desc) {
+        activeId = id;
         document.getElementById('mTitle').innerText = title;
+        document.getElementById('mDesc').innerText = desc;
+        document.getElementById('mBtn').innerText = (id === 'thumb') ? "Download Thumbnail" : "Analyze Now";
         document.getElementById('resArea').style.display = 'none';
         document.getElementById('mInput').value = '';
         document.getElementById('toolModal').style.display = 'flex';
     }
 
-    function processTool() {
-        const input = document.getElementById('mInput').value.trim();
+    function runTool() {
+        const val = document.getElementById('mInput').value.trim();
         const resArea = document.getElementById('resArea');
-        const imgContainer = document.getElementById('imgContainer');
-        const dlLink = document.getElementById('dlLink');
+        const imgPreview = document.getElementById('imgPreview');
+        const dl = document.getElementById('downloadBtn');
 
-        if(!input) return alert("Please paste a URL!");
+        if(!val) return alert("Please provide input!");
 
-        if(activeTool === 'thumb') {
-            // Updated Logic: Robust YouTube ID Extraction
-            let videoId = "";
-            if(input.includes("v=")) {
-                videoId = input.split("v=")[1].split("&")[0];
-            } else if(input.includes("youtu.be/")) {
-                videoId = input.split("youtu.be/")[1].split("?")[0];
-            } else {
-                videoId = input; // Assume direct ID
-            }
+        if(activeId === 'thumb') {
+            let vid = "";
+            if(val.includes("v=")) vid = val.split("v=")[1].split("&")[0];
+            else if(val.includes("youtu.be/")) vid = val.split("youtu.be/")[1].split("?")[0];
+            else vid = val;
 
-            if(videoId) {
-                const imgUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
-                imgContainer.innerHTML = `<img src="${imgUrl}" onerror="this.src='https://img.youtube.com/vi/${videoId}/hqdefault.jpg'">`;
-                dlLink.href = imgUrl;
+            if(vid) {
+                const url = `https://img.youtube.com/vi/${vid}/maxresdefault.jpg`;
+                imgPreview.innerHTML = `<img src="${url}" onerror="this.src='https://img.youtube.com/vi/${vid}/hqdefault.jpg'">`;
+                dl.href = url;
                 resArea.style.display = 'block';
             } else {
-                alert("Invalid YouTube Link!");
+                alert("Invalid Link!");
             }
+        } else {
+            alert("Analysis in progress... (AI logic ready for connection)");
         }
     }
 
     function closeModal() { document.getElementById('toolModal').style.display = 'none'; }
-</script>
+    function searchTools() {
+        const q = document.getElementById('toolSearch').value.toLowerCase();
+        render(tools.filter(t => t.title.toLowerCase().includes(q)));
+    }
 
+    render(tools);
+</script>
 </body>
 </html>
