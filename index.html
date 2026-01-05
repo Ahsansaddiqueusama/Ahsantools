@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AhsanTools – Professional AI Suite</title>
+    <title>AhsanTools – Professional AI Studio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
@@ -13,40 +13,41 @@
         body { margin: 0; background: var(--bg); color: var(--text); display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
         
         header { 
-            width: 100%; background: var(--red); padding: 30px 0; text-align: center; 
+            width: 100%; background: var(--red); padding: 25px 0; text-align: center; 
             box-shadow: 0 4px 20px rgba(229, 9, 20, 0.2); 
         }
-        .logo { font-size: 32px; font-weight: 800; color: var(--white); text-decoration: none; text-transform: uppercase; letter-spacing: 1px; }
+        .logo { font-size: 32px; font-weight: 800; color: var(--white); text-decoration: none; text-transform: uppercase; }
 
-        .container { max-width: 1100px; width: 90%; padding: 60px 0; text-align: center; }
-        .hero h1 { font-size: 45px; font-weight: 800; margin-bottom: 15px; }
-        .hero h1 mark { background: var(--red); color: white; padding: 0 12px; border-radius: 8px; }
-        .hero p { color: #555; margin-bottom: 50px; font-size: 19px; }
+        .container { max-width: 1100px; width: 90%; padding: 50px 0; text-align: center; }
+        .hero h1 { font-size: 42px; font-weight: 800; margin-bottom: 15px; }
+        .hero h1 mark { background: var(--red); color: white; padding: 0 10px; border-radius: 8px; }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; width: 100%; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; width: 100%; margin-top: 40px; }
         .card { 
-            background: var(--white); border-radius: 25px; padding: 45px; text-align: center; 
+            background: var(--white); border-radius: 25px; padding: 40px; text-align: center; 
             border: 1px solid #eee; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
         .card:hover { transform: translateY(-10px); border-color: var(--red); }
         
-        .icon-box { width: 85px; height: 85px; border-radius: 22px; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px; font-size: 38px; background: #fff1f1; color: var(--red); }
+        .icon-box { width: 80px; height: 80px; border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px; font-size: 35px; background: #fff1f1; color: var(--red); }
         .btn { background: var(--red); color: var(--white); border: none; padding: 18px; border-radius: 14px; width: 100%; cursor: pointer; font-weight: 800; text-transform: uppercase; }
 
-        /* Floating WhatsApp & Arrow */
+        /* Floating WhatsApp & 3D Arrow */
         .wa-container { position: fixed; bottom: 30px; right: 30px; display: flex; align-items: center; z-index: 10000; }
-        .wa-btn { background: #25d366; color: white; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 38px; text-decoration: none; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4); }
-        .arrow-3d { font-size: 45px; color: var(--red); margin-right: 35px; animation: pointEffect 1.2s infinite ease-in-out; }
+        .wa-btn { background: #25d366; color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 35px; text-decoration: none; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4); }
+        .arrow-3d { font-size: 40px; color: var(--red); margin-right: 30px; animation: pointEffect 1.2s infinite ease-in-out; }
         @keyframes pointEffect { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(15px); } }
 
-        /* Modal */
+        /* Modal & Advanced Result Area */
         .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 10001; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(5px); }
-        .modal-box { background: var(--white); padding: 40px; border-radius: 35px; width: 100%; max-width: 600px; text-align: center; border-bottom: 8px solid var(--red); }
-        .modal-box input { width: 100%; padding: 18px; margin: 25px 0; border-radius: 12px; border: 2px solid #eee; outline: none; font-size: 16px; text-align: center; }
+        .modal-box { background: var(--white); padding: 40px; border-radius: 35px; width: 100%; max-width: 700px; text-align: center; position: relative; border-bottom: 10px solid var(--red); }
+        .modal-box input { width: 100%; padding: 18px; margin: 20px 0; border-radius: 12px; border: 2px solid #eee; outline: none; font-size: 16px; text-align: center; }
         
-        .res-area { margin-top: 25px; display: none; padding: 25px; background: #fafafa; border-radius: 15px; text-align: left; max-height: 400px; overflow-y: auto; border: 1px dashed var(--red); line-height: 1.8; }
-        .script-section { margin-bottom: 15px; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
-        .script-title { color: var(--red); font-weight: 800; text-transform: uppercase; font-size: 14px; }
+        .res-area { margin-top: 20px; display: none; padding: 25px; background: #fcfcfc; border-radius: 15px; text-align: left; max-height: 450px; overflow-y: auto; border: 1px solid #eee; line-height: 1.8; }
+        .script-part { margin-bottom: 20px; padding: 15px; background: white; border-left: 4px solid var(--red); border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
+        .script-part h4 { margin: 0 0 10px 0; color: var(--red); text-transform: uppercase; font-size: 13px; letter-spacing: 1px; }
+        
+        .copy-btn { background: #333; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; margin-top: 15px; font-weight: bold; width: 100%; }
     </style>
 </head>
 <body>
@@ -55,28 +56,25 @@
 
 <div class="container">
     <div class="hero">
-        <h1>YouTube <mark>AI Studio</mark></h1>
-        <p>Active tools for Long-form Scripts and Viral Tags.</p>
+        <h1>Powerful <mark>YouTube</mark> Engine</h1>
+        <p>Expert-level tools for creators who want to dominate the algorithm.</p>
     </div>
 
     <div class="grid">
         <div class="card">
-            <div class="icon-box"><i class="fa-solid fa-image"></i></div>
-            <h3>Thumbnail Extractor</h3>
-            <p>High-quality images from any YouTube link.</p>
-            <button class="btn" onclick="openT('thumb', 'Thumbnail Downloader')">Open Tool</button>
+            <div class="icon-box"><i class="fa-solid fa-cloud-arrow-down"></i></div>
+            <h3>Thumbnail Downloader</h3>
+            <button class="btn" onclick="openT('thumb', 'Thumbnail Downloader')">Launch Tool</button>
         </div>
         <div class="card">
-            <div class="icon-box"><i class="fa-solid fa-scroll"></i></div>
-            <h3>Long Video Script AI</h3>
-            <p>Generate 10+ minute video structures.</p>
-            <button class="btn" onclick="openT('script', 'AI Long Script Writer')">Write Script</button>
+            <div class="icon-box"><i class="fa-solid fa-pen-fancy"></i></div>
+            <h3>Pro AI Script Writer</h3>
+            <button class="btn" onclick="openT('script', 'AI Long Script Writer')">Start AI Writing</button>
         </div>
         <div class="card">
-            <div class="icon-box"><i class="fa-solid fa-hashtag"></i></div>
-            <h3>Viral Tag Generator</h3>
-            <p>SEO tags to rank your videos higher.</p>
-            <button class="btn" onclick="openT('tags', 'SEO Tag Generator')">Get Tags</button>
+            <div class="icon-box"><i class="fa-solid fa-tags"></i></div>
+            <h3>Viral Tag Extractor</h3>
+            <button class="btn" onclick="openT('tags', 'Viral Tag Extractor')">Extract Now</button>
         </div>
     </div>
 </div>
@@ -85,14 +83,15 @@
     <div class="modal-box">
         <h2 id="tTitle" style="color:var(--red);">Tool</h2>
         <input type="text" id="tInput" placeholder="Enter topic or URL...">
-        <button class="btn" onclick="run()">Generate Full Result</button>
+        <button class="btn" onclick="run()">Get Full Script</button>
         <div id="res" class="res-area"></div>
-        <button onclick="closeM()" style="margin-top:20px; border:none; background:none; color:#999; cursor:pointer; font-weight:bold;">[ EXIT ]</button>
+        <button id="copyBtn" class="copy-btn" style="display:none;" onclick="copyRes()">COPY FULL SCRIPT</button>
+        <button onclick="closeM()" style="margin-top:20px; border:none; background:none; color:#bbb; cursor:pointer; font-weight:800;">[ CLOSE ]</button>
     </div>
 </div>
 
 <div class="wa-container">
-    <div class="arrow-3d"><i class="fa-solid fa-hand-point-right"></i></div>
+    <div class="arrow-3d"><i class="fa-solid fa-circle-chevron-right"></i></div>
     <a href="https://wa.me/923266342858" class="wa-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
 </div>
 
@@ -103,18 +102,26 @@
         activeTool = id;
         document.getElementById('tTitle').innerText = title;
         document.getElementById('res').style.display = 'none';
+        document.getElementById('copyBtn').style.display = 'none';
         document.getElementById('tInput').value = '';
         document.getElementById('modal').style.display = 'flex';
     }
 
     function closeM() { document.getElementById('modal').style.display = 'none'; }
 
+    function copyRes() {
+        const text = document.getElementById('res').innerText;
+        navigator.clipboard.writeText(text);
+        alert("Copied to clipboard!");
+    }
+
     function run() {
         const input = document.getElementById('tInput').value.trim();
         const res = document.getElementById('res');
-        if(!input) return alert("Please enter something!");
+        const cBtn = document.getElementById('copyBtn');
+        if(!input) return alert("Please enter a topic!");
         
-        res.innerHTML = "<b>AI Engine:</b> Analyzing topic and building structure...";
+        res.innerHTML = "<b>AI Generation:</b> Building a high-retention long script...";
         res.style.display = 'block';
 
         setTimeout(() => {
@@ -122,24 +129,31 @@
                 const vid = input.match(/(?:v=|\/)([0-9A-Za-z_-]{11})/);
                 if(vid) {
                     const url = `https://img.youtube.com/vi/${vid[1]}/maxresdefault.jpg`;
-                    res.innerHTML = `<img src="${url}" onerror="this.src='https://img.youtube.com/vi/${vid[1]}/hqdefault.jpg'"><br><center><a href="${url}" target="_blank" style="color:red; font-weight:bold; text-decoration:none; display:block; margin-top:10px;">DOWNLOAD 4K IMAGE</a></center>`;
-                } else { res.innerText = "Invalid Link!"; }
+                    res.innerHTML = `<img src="${url}" style="width:100%; border-radius:12px;"><br><center><a href="${url}" target="_blank" style="color:red; font-weight:bold; text-decoration:none; display:block; margin-top:10px;">DOWNLOAD IMAGE</a></center>`;
+                } else { res.innerText = "Error: Use a valid YouTube Link."; }
             } 
             else if(activeTool === 'script') {
+                cBtn.style.display = 'block';
                 res.innerHTML = `
-                    <div class="script-section"><div class="script-title">Video Title</div><b>The Ultimate Guide to ${input} (2026 Edition)</b></div>
-                    <div class="script-section"><div class="script-title">1. Introduction (0:00 - 1:30)</div>"Hey everyone! If you've ever struggled with ${input}, you're in the right place. In this long-form deep dive, we aren't just looking at the basics. We are going to uncover the hidden secrets that most experts don't want you to know about ${input}."</div>
-                    <div class="script-section"><div class="script-title">2. The Problem & Context (1:30 - 4:00)</div>"The biggest issue with ${input} today is that most people approach it from the wrong angle. Usually, people think it's about X, but actually, it's about Y. Let's break down why this happens..."</div>
-                    <div class="script-section"><div class="script-title">3. Step-by-Step Deep Dive (4:00 - 8:00)</div>"Step 1: Focus on the foundation of ${input}.<br>Step 2: Implementing the advanced strategies.<br>Step 3: Avoiding the common pitfalls that kill your progress in ${input}."</div>
-                    <div class="script-section"><div class="script-title">4. Case Studies & Proof (8:00 - 10:00)</div>"Let's look at how successful people use ${input} to get massive results. These examples will show you exactly how to apply this to your own channel or life."</div>
-                    <div class="script-section"><div class="script-title">5. Final Summary (10:00+)</div>"To wrap things up, remember that ${input} is a marathon, not a sprint. If you apply these steps, you will see results. Subscribe to AhsanTools for more deep-dive guides!"</div>
+                    <div class="script-part"><h4>Video Concept</h4><b>Title:</b> The Complete Masterclass on ${input}<br><b>Duration:</b> 12-15 Minutes</div>
+                    
+                    <div class="script-part"><h4>00:00 - 01:30 | The Killer Hook</h4>"Stop everything you're doing. If you've ever felt that ${input} is too difficult, or you're just not seeing the results you want, this video is your turning point. Today, we're stripping away the noise and looking at the raw strategy of ${input}."</div>
+                    
+                    <div class="script-part"><h4>01:30 - 04:00 | The Core Problem</h4>"Why do 90% of people fail at ${input}? It's because they focus on X, when they should be focusing on Y. In this section, we break down the fundamental mistakes you're likely making right now without even realizing it."</div>
+                    
+                    <div class="script-part"><h4>04:00 - 09:00 | Step-by-Step Execution</h4>"Now, let's get practical. <br><b>Step 1:</b> Setting the foundation for ${input}.<br><b>Step 2:</b> The 'Secret Sauce' technique used by top creators.<br><b>Step 3:</b> Scaling your results using automated workflows. This is where the magic happens for ${input}."</div>
+                    
+                    <div class="script-part"><h4>09:00 - 12:00 | Advanced Strategy & Tips</h4>"Most videos end here, but we're going deeper. Let's talk about the advanced psychological triggers of ${input} and how you can use them to stay ahead of the competition in 2026."</div>
+                    
+                    <div class="script-part"><h4>12:00 - End | Summary & Outro</h4>"So, we covered the basics, the common mistakes, and the advanced tactics for ${input}. If you found this helpful, there is a lot more coming. Subscribe to AhsanTools and let's grow together!"</div>
                 `;
             } 
             else if(activeTool === 'tags') {
-                const tags = [input, `${input} guide`, `${input} tutorial`, `how to master ${input}`, `${input} for beginners`, `advanced ${input} 2026`, `${input} secret tips`, `viral ${input} video` ];
-                res.innerHTML = "<b>Viral SEO Tags:</b><br><br>" + tags.map(t => `<span style="background:#eee; padding:5px; margin:3px; display:inline-block; border-radius:5px;">#${t}</span>`).join(" ");
+                cBtn.style.display = 'block';
+                const tags = [input, `${input} tutorial`, `how to ${input}`, `best ${input} tips`, `viral ${input} 2026`, `${input} guide`, `mastering ${input}`, `${input} secrets`];
+                res.innerHTML = "<b>Pro Ranking Tags:</b><br><br>" + tags.map(t => `<span style="background:#eee; padding:5px; margin:3px; display:inline-block; border-radius:5px;">#${t}</span>`).join(" ");
             }
-        }, 1200);
+        }, 1000);
     }
 </script>
 </body>
