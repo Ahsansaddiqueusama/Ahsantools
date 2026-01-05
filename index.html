@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AhsanTools – 100% Active YouTube Suite</title>
+    <title>AhsanTools – Professional AI Suite</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --red: #e50914; --white: #ffffff; --bg: #fdfdfd; --text: #1a1a1a; }
+        :root { --red: #e50914; --white: #ffffff; --bg: #f8f9fa; --text: #1a1a1a; }
         * { box-sizing: border-box; transition: all 0.3s ease; font-family: 'Plus Jakarta Sans', sans-serif; }
         
         body { margin: 0; background: var(--bg); color: var(--text); display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
         
-        /* Highlighted Header */
         header { 
             width: 100%; background: var(--red); padding: 30px 0; text-align: center; 
             box-shadow: 0 4px 20px rgba(229, 9, 20, 0.2); 
@@ -24,7 +23,6 @@
         .hero h1 mark { background: var(--red); color: white; padding: 0 12px; border-radius: 8px; }
         .hero p { color: #555; margin-bottom: 50px; font-size: 19px; }
 
-        /* Tools Grid */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; width: 100%; }
         .card { 
             background: var(--white); border-radius: 25px; padding: 45px; text-align: center; 
@@ -35,61 +33,50 @@
         .icon-box { width: 85px; height: 85px; border-radius: 22px; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px; font-size: 38px; background: #fff1f1; color: var(--red); }
         .btn { background: var(--red); color: var(--white); border: none; padding: 18px; border-radius: 14px; width: 100%; cursor: pointer; font-weight: 800; text-transform: uppercase; }
 
-        /* WhatsApp Section with 3D Arrow */
+        /* Floating WhatsApp & Arrow */
         .wa-container { position: fixed; bottom: 30px; right: 30px; display: flex; align-items: center; z-index: 10000; }
         .wa-btn { background: #25d366; color: white; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 38px; text-decoration: none; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4); }
-        
-        .arrow-3d { 
-            font-size: 45px; color: var(--red); 
-            margin-right: 35px; /* Distance between arrow and icon */
-            animation: pointEffect 1.2s infinite ease-in-out;
-        }
-
-        @keyframes pointEffect {
-            0%, 100% { transform: translateX(0); opacity: 1; }
-            50% { transform: translateX(15px); opacity: 0.5; }
-        }
+        .arrow-3d { font-size: 45px; color: var(--red); margin-right: 35px; animation: pointEffect 1.2s infinite ease-in-out; }
+        @keyframes pointEffect { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(15px); } }
 
         /* Modal */
         .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 10001; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(5px); }
-        .modal-box { background: var(--white); padding: 45px; border-radius: 35px; width: 100%; max-width: 550px; text-align: center; border-bottom: 8px solid var(--red); }
+        .modal-box { background: var(--white); padding: 40px; border-radius: 35px; width: 100%; max-width: 600px; text-align: center; border-bottom: 8px solid var(--red); }
         .modal-box input { width: 100%; padding: 18px; margin: 25px 0; border-radius: 12px; border: 2px solid #eee; outline: none; font-size: 16px; text-align: center; }
         
-        .res-area { margin-top: 25px; display: none; padding: 25px; background: #fafafa; border-radius: 15px; text-align: left; max-height: 350px; overflow-y: auto; border: 1px dashed var(--red); line-height: 1.7; }
-        .res-area img { width: 100%; border-radius: 12px; }
-        .copy-btn { background: #333; color: white; border: none; padding: 8px 15px; border-radius: 5px; margin-top: 10px; cursor: pointer; font-size: 12px; }
+        .res-area { margin-top: 25px; display: none; padding: 25px; background: #fafafa; border-radius: 15px; text-align: left; max-height: 400px; overflow-y: auto; border: 1px dashed var(--red); line-height: 1.8; }
+        .script-section { margin-bottom: 15px; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
+        .script-title { color: var(--red); font-weight: 800; text-transform: uppercase; font-size: 14px; }
     </style>
 </head>
 <body>
 
-<header>
-    <a href="#" class="logo">AHSAN<span>TOOLS</span></a>
-</header>
+<header><a href="#" class="logo">AHSAN<span>TOOLS</span></a></header>
 
 <div class="container">
     <div class="hero">
-        <h1>Ultimate <mark>YouTube</mark> Pro Suite</h1>
-        <p>Professional tools that work 24/7 without any API limits.</p>
+        <h1>YouTube <mark>AI Studio</mark></h1>
+        <p>Active tools for Long-form Scripts and Viral Tags.</p>
     </div>
 
     <div class="grid">
         <div class="card">
             <div class="icon-box"><i class="fa-solid fa-image"></i></div>
-            <h3>Thumbnail Fetcher</h3>
-            <p>Extract HD/4K thumbnails from any YouTube link.</p>
-            <button class="btn" onclick="openT('thumb', 'Thumbnail Downloader')">Launch</button>
+            <h3>Thumbnail Extractor</h3>
+            <p>High-quality images from any YouTube link.</p>
+            <button class="btn" onclick="openT('thumb', 'Thumbnail Downloader')">Open Tool</button>
         </div>
         <div class="card">
-            <div class="icon-box"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-            <h3>Smart Script Writer</h3>
-            <p>Generate viral scripts using AI content logic.</p>
-            <button class="btn" onclick="openT('script', 'AI Script Writer')">Generate</button>
+            <div class="icon-box"><i class="fa-solid fa-scroll"></i></div>
+            <h3>Long Video Script AI</h3>
+            <p>Generate 10+ minute video structures.</p>
+            <button class="btn" onclick="openT('script', 'AI Long Script Writer')">Write Script</button>
         </div>
         <div class="card">
-            <div class="icon-box"><i class="fa-solid fa-bolt"></i></div>
+            <div class="icon-box"><i class="fa-solid fa-hashtag"></i></div>
             <h3>Viral Tag Generator</h3>
-            <p>Get the most searched SEO tags for your topic.</p>
-            <button class="btn" onclick="openT('tags', 'Pro Tag Extractor')">Extract</button>
+            <p>SEO tags to rank your videos higher.</p>
+            <button class="btn" onclick="openT('tags', 'SEO Tag Generator')">Get Tags</button>
         </div>
     </div>
 </div>
@@ -97,10 +84,10 @@
 <div id="modal" class="modal">
     <div class="modal-box">
         <h2 id="tTitle" style="color:var(--red);">Tool</h2>
-        <input type="text" id="tInput" placeholder="Paste link or type topic...">
-        <button class="btn" onclick="run()">Get Results</button>
+        <input type="text" id="tInput" placeholder="Enter topic or URL...">
+        <button class="btn" onclick="run()">Generate Full Result</button>
         <div id="res" class="res-area"></div>
-        <button onclick="closeM()" style="margin-top:20px; border:none; background:none; color:#999; cursor:pointer; font-weight:bold;">[ CLOSE ]</button>
+        <button onclick="closeM()" style="margin-top:20px; border:none; background:none; color:#999; cursor:pointer; font-weight:bold;">[ EXIT ]</button>
     </div>
 </div>
 
@@ -125,9 +112,9 @@
     function run() {
         const input = document.getElementById('tInput').value.trim();
         const res = document.getElementById('res');
-        if(!input) return alert("Please provide input!");
+        if(!input) return alert("Please enter something!");
         
-        res.innerHTML = "Processing data...";
+        res.innerHTML = "<b>AI Engine:</b> Analyzing topic and building structure...";
         res.style.display = 'block';
 
         setTimeout(() => {
@@ -135,25 +122,24 @@
                 const vid = input.match(/(?:v=|\/)([0-9A-Za-z_-]{11})/);
                 if(vid) {
                     const url = `https://img.youtube.com/vi/${vid[1]}/maxresdefault.jpg`;
-                    res.innerHTML = `<img src="${url}" onerror="this.src='https://img.youtube.com/vi/${vid[1]}/hqdefault.jpg'"><br><center><a href="${url}" target="_blank" style="color:red; font-weight:bold; text-decoration:none; display:block; margin-top:10px;">Download HD Image</a></center>`;
-                } else { res.innerText = "Invalid YouTube Link!"; }
+                    res.innerHTML = `<img src="${url}" onerror="this.src='https://img.youtube.com/vi/${vid[1]}/hqdefault.jpg'"><br><center><a href="${url}" target="_blank" style="color:red; font-weight:bold; text-decoration:none; display:block; margin-top:10px;">DOWNLOAD 4K IMAGE</a></center>`;
+                } else { res.innerText = "Invalid Link!"; }
             } 
             else if(activeTool === 'script') {
-                // Internal AI Script Logic (No API needed)
                 res.innerHTML = `
-                    <b style="color:red;">Generated Script for:</b> ${input}<br><br>
-                    <b>1. The Hook:</b> "Most people fail at ${input} because they don't know this one secret..."<br>
-                    <b>2. Introduction:</b> "Welcome back! Today, I'm going to show you exactly how to master ${input} step-by-step."<br>
-                    <b>3. Main Value:</b> Focus on the 3 core pillars of ${input} that drive views.<br>
-                    <b>4. Closing:</b> "If you enjoyed this ${input} guide, subscribe to AhsanTools!"
+                    <div class="script-section"><div class="script-title">Video Title</div><b>The Ultimate Guide to ${input} (2026 Edition)</b></div>
+                    <div class="script-section"><div class="script-title">1. Introduction (0:00 - 1:30)</div>"Hey everyone! If you've ever struggled with ${input}, you're in the right place. In this long-form deep dive, we aren't just looking at the basics. We are going to uncover the hidden secrets that most experts don't want you to know about ${input}."</div>
+                    <div class="script-section"><div class="script-title">2. The Problem & Context (1:30 - 4:00)</div>"The biggest issue with ${input} today is that most people approach it from the wrong angle. Usually, people think it's about X, but actually, it's about Y. Let's break down why this happens..."</div>
+                    <div class="script-section"><div class="script-title">3. Step-by-Step Deep Dive (4:00 - 8:00)</div>"Step 1: Focus on the foundation of ${input}.<br>Step 2: Implementing the advanced strategies.<br>Step 3: Avoiding the common pitfalls that kill your progress in ${input}."</div>
+                    <div class="script-section"><div class="script-title">4. Case Studies & Proof (8:00 - 10:00)</div>"Let's look at how successful people use ${input} to get massive results. These examples will show you exactly how to apply this to your own channel or life."</div>
+                    <div class="script-section"><div class="script-title">5. Final Summary (10:00+)</div>"To wrap things up, remember that ${input} is a marathon, not a sprint. If you apply these steps, you will see results. Subscribe to AhsanTools for more deep-dive guides!"</div>
                 `;
             } 
             else if(activeTool === 'tags') {
-                // Professional Tag Logic (No API needed)
-                const keywords = [input, `${input} tutorial`, `best ${input} 2026`, `how to ${input}`, `viral ${input}`, `${input} secrets`, `trending ${input}`];
-                res.innerHTML = "<b>Recommended Viral Tags:</b><br><br>" + keywords.join(", ");
+                const tags = [input, `${input} guide`, `${input} tutorial`, `how to master ${input}`, `${input} for beginners`, `advanced ${input} 2026`, `${input} secret tips`, `viral ${input} video` ];
+                res.innerHTML = "<b>Viral SEO Tags:</b><br><br>" + tags.map(t => `<span style="background:#eee; padding:5px; margin:3px; display:inline-block; border-radius:5px;">#${t}</span>`).join(" ");
             }
-        }, 600);
+        }, 1200);
     }
 </script>
 </body>
