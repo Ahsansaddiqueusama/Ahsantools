@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AhsanTools – Creator Growth Suite</title>
+    <title>AhsanTools – Professional YouTube Suite</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
@@ -30,35 +30,40 @@
         .search-box input { width: 100%; padding: 12px 45px; border-radius: 12px; border: 1px solid #e2e8f0; background: #f8fafc; outline: none; }
         .search-box i { position: absolute; left: 15px; top: 15px; color: #94a3b8; }
 
-        /* Hero Section (YouTube Relevant) */
+        /* Hero Section */
         .hero { 
-            background: linear-gradient(rgba(5, 11, 32, 0.85), rgba(5, 11, 32, 0.85)), url('https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&q=80&w=1000');
+            background: linear-gradient(rgba(5, 11, 32, 0.85), rgba(5, 11, 32, 0.85)), url('https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&q=80&w=1000');
             background-size: cover; background-position: center; padding: 45px; border-radius: 20px; margin: 20px; color: white;
         }
         .hero h1 { margin: 0; font-size: 30px; font-weight: 800; }
         .hero span { color: var(--cyan); }
 
-        /* Tool Grid */
+        /* Tool Grid - Cards are now fully visible */
         .content-area { padding: 0 20px 20px 20px; overflow-y: auto; flex: 1; }
         .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; padding: 10px 0; }
         .tool-card { 
             background: white; border-radius: 18px; padding: 30px 20px; text-align: center;
-            border: 1px solid #e2e8f0; position: relative; overflow: hidden;
-            display: flex; flex-direction: column; justify-content: space-between; min-height: 290px;
+            border: 1px solid #e2e8f0; position: relative;
+            display: flex; flex-direction: column; justify-content: space-between; min-height: 310px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
-        .tool-card i { font-size: 42px; color: var(--navy-dark); margin-bottom: 15px; }
-        .tool-card h3 { margin: 10px 0; font-size: 17px; color: var(--navy-dark); font-weight: 700; }
-        .tool-card p { font-size: 12px; color: #64748b; line-height: 1.6; height: 38px; overflow: hidden; }
-        .btn-use { background: var(--navy-dark); color: white; border: none; padding: 13px; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 13px; }
-        .btn-use:hover { background: var(--cyan); }
-
-        /* Locked State */
-        .locked-overlay { position: absolute; inset: 0; background: rgba(255,255,255,0.92); backdrop-filter: blur(3px); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 5; }
+        .tool-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); border-color: var(--cyan); }
+        .tool-card i { font-size: 45px; color: var(--navy-dark); margin-bottom: 15px; }
+        .tool-card h3 { margin: 10px 0; font-size: 18px; color: var(--navy-dark); font-weight: 700; }
+        .tool-card p { font-size: 13px; color: #64748b; line-height: 1.6; margin-bottom: 15px; }
         
-        /* Modal */
+        .btn-use { background: var(--navy-dark); color: white; border: none; padding: 13px; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 13px; width: 100%; }
+        .btn-use:hover { background: var(--cyan); }
+        .btn-locked { background: #f1f5f9; color: #64748b; border: 1px dashed #cbd5e1; cursor: pointer; }
+
+        /* Locked Indicator */
+        .pro-tag { font-size: 10px; font-weight: 800; color: var(--cyan); background: rgba(0, 180, 255, 0.1); padding: 4px 10px; border-radius: 10px; display: inline-block; margin-bottom: 10px; }
+
+        /* Modals */
         .modal { display: none; position: fixed; inset: 0; background: rgba(5, 11, 32, 0.9); backdrop-filter: blur(8px); z-index: 9999; align-items: center; justify-content: center; }
-        .auth-box { background: white; padding: 40px; border-radius: 24px; width: 400px; text-align: center; }
-        .auth-box input { width: 100%; padding: 14px; margin: 10px 0; border-radius: 10px; border: 1px solid #e2e8f0; outline: none; }
+        .modal-box { background: white; padding: 40px; border-radius: 24px; width: 500px; text-align: center; }
+        .modal-box input { width: 100%; padding: 14px; margin: 15px 0; border-radius: 10px; border: 1px solid #e2e8f0; outline: none; }
+        .res-box { text-align: left; background: #f8fafc; padding: 15px; border-radius: 10px; margin-top: 15px; max-height: 200px; overflow-y: auto; display: none; }
 
         .wa-support { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4); text-decoration: none; z-index: 5000; }
     </style>
@@ -69,91 +74,139 @@
     <div class="logo">Ahsan<span>Tools</span></div>
     <div class="nav-group">
         <span class="nav-label">Dashboard</span>
-        <div class="nav-item active" onclick="filterCat('home')"><i class="fa-solid fa-house-user"></i> Home</div>
-        <div class="nav-item" onclick="filterCat('seo')"><i class="fa-solid fa-chart-line"></i> SEO Tools</div>
-        <div class="nav-item" onclick="filterCat('ai')"><i class="fa-solid fa-microchip"></i> AI Content</div>
+        <div class="nav-item active" onclick="filterCat('home')"><i class="fa-solid fa-house"></i> Home</div>
+        <div class="nav-item" onclick="filterCat('seo')"><i class="fa-solid fa-chart-line"></i> SEO Suite</div>
+        <div class="nav-item" onclick="filterCat('ai')"><i class="fa-solid fa-brain"></i> AI Scripts</div>
     </div>
-    <div class="nav-group" id="authSide">
+    <div class="nav-group" id="authSectionSide">
         <span class="nav-label">Account</span>
-        <div class="nav-item" onclick="openAuth('Login')"><i class="fa-solid fa-lock-open"></i> Sign In</div>
-        <div class="nav-item" onclick="openAuth('Create Account')"><i class="fa-solid fa-user-plus"></i> Register</div>
+        <div class="nav-item" onclick="openAuth('Login')"><i class="fa-solid fa-sign-in"></i> Sign In</div>
+        <div class="nav-item" onclick="openAuth('Sign Up')"><i class="fa-solid fa-user-plus"></i> Register</div>
     </div>
-    <div class="nav-group" id="userSide" style="display:none;">
-        <span class="nav-label">User</span>
-        <div class="nav-item" onclick="logout()"><i class="fa-solid fa-circle-xmark"></i> Logout</div>
+    <div class="nav-group" id="userSectionSide" style="display:none;">
+        <span class="nav-label">Profile</span>
+        <div class="nav-item" onclick="logout()"><i class="fa-solid fa-power-off"></i> Logout</div>
     </div>
 </div>
 
 <div class="main-wrapper">
     <header>
-        <div class="search-box">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" id="toolSearch" placeholder="Search for tools..." onkeyup="searchTools()">
-        </div>
-        <div style="display:flex; align-items:center; gap:15px;">
-            <div id="badge" style="font-size:11px; font-weight:800; background:#f1f5f9; color:#64748b; padding:6px 14px; border-radius:20px;">GUEST</div>
-            <img src="https://ui-avatars.com/api/?name=User&background=00b4ff&color=fff" style="width:38px; border-radius:50%;">
-        </div>
+        <div class="search-box"><i class="fa-solid fa-search"></i><input type="text" id="toolSearch" placeholder="Search 70+ tools..." onkeyup="searchTools()"></div>
+        <div id="statusBadge" style="font-size:11px; font-weight:800; background:#f1f5f9; color:#64748b; padding:6px 14px; border-radius:20px;">STANDARD ACCESS</div>
     </header>
 
     <div class="content-area">
         <div class="hero">
             <h1>Master the <span>Algorithm</span></h1>
-            <p>Your all-in-one suite for YouTube SEO, AI Scripting, and Channel Automation. Login to unlock premium tools.</p>
+            <p>Your ultimate workspace for YouTube growth. Analyze keywords, write scripts, and download assets in seconds.</p>
         </div>
         <div class="tools-grid" id="toolsDisplay"></div>
     </div>
 </div>
 
+<div id="toolModal" class="modal">
+    <div class="modal-box">
+        <h2 id="mTitle">Tool Name</h2>
+        <p id="mDesc" style="color:#64748b; font-size:13px;"></p>
+        <input type="text" id="mInput" placeholder="Enter keyword or URL...">
+        <button class="btn-use" onclick="executeTool()">Analyze Now</button>
+        <div id="mRes" class="res-box"></div>
+        <button onclick="closeModal()" style="background:none; border:none; color:#94a3b8; margin-top:15px; cursor:pointer;">Close</button>
+    </div>
+</div>
+
 <div id="authModal" class="modal">
-    <div class="auth-box">
-        <h2 id="mTitle">Login</h2>
+    <div class="modal-box" style="max-width:400px;">
+        <h2 id="aTitle">Sign In</h2>
+        <p style="font-size:13px; color:#64748b;">Unlock all Pro features by logging in.</p>
         <input type="email" placeholder="Email Address">
         <input type="password" placeholder="Password">
-        <button class="btn-use" style="width:100%; margin-top:10px;" onclick="login()">Continue to Dashboard</button>
-        <button onclick="closeAuth()" style="background:none; border:none; color:#94a3b8; margin-top:15px; cursor:pointer;">Close</button>
+        <button class="btn-use" onclick="login()">Continue</button>
+        <button onclick="closeAuth()" style="background:none; border:none; color:#94a3b8; margin-top:15px; cursor:pointer;">Cancel</button>
     </div>
 </div>
 
 <a href="https://wa.me/923266342858" class="wa-support" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
 
 <script>
-    const allTools = [
-        { id: 'kw', cat: 'home seo', icon: 'fa-magnifying-glass-chart', title: 'Keyword Planner Pro', desc: 'Real-time search volume and SEO difficulty analysis.' },
-        { id: 'script', cat: 'home ai', icon: 'fa-scroll', title: 'AI Video Scripting', desc: 'Generate complete, viral-ready scripts for any topic.' },
-        { id: 'thumb', cat: 'home visual', icon: 'fa-image', title: 'Thumbnail Grabber', desc: 'Download high-quality thumbnails from any YouTube URL.' },
-        { id: 'tags', cat: 'seo', icon: 'fa-hashtag', title: 'Viral Tag Finder', desc: 'Extract hidden tags from top-performing videos.' }
+    const GEM_KEY = "AIzaSyC5GztPDS_NyyXBPj1Up3Tn4p0yIlVZsiA";
+    const tools = [
+        { id: 'kw', cat: 'home seo', icon: 'fa-magnifying-glass-chart', title: 'Keyword Planner Pro', desc: 'Find high-volume keywords and analyze SEO competition scores.', auth: true },
+        { id: 'script', cat: 'home ai', icon: 'fa-scroll', title: 'AI Video Scripting', desc: 'Generate complete viral scripts with hooks and calls to action.', auth: true },
+        { id: 'thumb', cat: 'home visual', icon: 'fa-download', title: 'YouTube Thumbnail Downloader', desc: 'Download high-quality thumbnails from any YouTube video URL for free.', auth: false },
+        { id: 'tags', cat: 'home seo', icon: 'fa-hashtag', title: 'Viral Tag Finder Generator', desc: 'Extract high-ranking tags from any top-performing YouTube video.', auth: true },
+        { id: 'sub_maker', cat: 'visual', icon: 'fa-bell', title: 'Subscribe Button Maker', desc: 'Create custom subscribe animation overlays for your videos.', auth: true }
     ];
 
     let isLogged = localStorage.getItem('isLogged') === 'true';
+    let currentTool = '';
 
-    function render() {
+    function renderTools(list) {
         const grid = document.getElementById('toolsDisplay');
-        grid.innerHTML = allTools.map(t => `
+        grid.innerHTML = list.map(t => `
             <div class="tool-card">
-                ${!isLogged ? `<div class="locked-overlay"><i class="fa-solid fa-lock-keyhole"></i><p style="font-size:12px; font-weight:700; color:#475569; margin-top:10px;">Login Required</p></div>` : ''}
-                <i class="fa-solid ${t.icon}"></i>
-                <h3>${t.title}</h3>
-                <p>${t.desc}</p>
-                <button class="btn-use">Launch Tool</button>
+                <div>
+                    ${t.auth ? '<span class="pro-tag"><i class="fa-solid fa-crown"></i> PRO TOOL</span>' : '<span class="pro-tag" style="color:#22c55e; background:rgba(34,197,94,0.1);"><i class="fa-solid fa-check"></i> FREE</span>'}
+                    <i class="fa-solid ${t.icon}"></i>
+                    <h3>${t.title}</h3>
+                    <p>${t.desc}</p>
+                </div>
+                <button class="${t.auth && !isLogged ? 'btn-use btn-locked' : 'btn-use'}" onclick="openTool('${t.id}', '${t.title}', '${t.desc}', ${t.auth})">
+                    ${t.auth && !isLogged ? '<i class="fa-solid fa-lock"></i> Login to Unlock' : 'Launch Tool'}
+                </button>
             </div>
         `).join('');
     }
 
-    function openAuth(t) { document.getElementById('mTitle').innerText = t; document.getElementById('authModal').style.display = 'flex'; }
+    function openTool(id, title, desc, needsAuth) {
+        if(needsAuth && !isLogged) return openAuth('Unlock ' + title);
+        currentTool = id;
+        document.getElementById('mTitle').innerText = title;
+        document.getElementById('mDesc').innerText = desc;
+        document.getElementById('mRes').style.display = 'none';
+        document.getElementById('toolModal').style.display = 'flex';
+    }
+
+    async function executeTool() {
+        const val = document.getElementById('mInput').value;
+        const resBox = document.getElementById('mRes');
+        if(!val) return alert("Input required!");
+        resBox.innerHTML = "Generating..."; resBox.style.display = 'block';
+
+        if(currentTool === 'thumb') {
+            const vid = val.split('v=')[1]?.split('&')[0] || val.split('/').pop();
+            resBox.innerHTML = `<img src="https://img.youtube.com/vi/${vid}/maxresdefault.jpg" style="width:100%; border-radius:10px;"><br><a href="https://img.youtube.com/vi/${vid}/maxresdefault.jpg" target="_blank" style="color:var(--cyan); font-weight:bold; display:block; margin-top:10px; text-decoration:none;">Download Image</a>`;
+        } else {
+            try {
+                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEM_KEY}`, {
+                    method: "POST",
+                    body: JSON.stringify({ contents: [{ parts: [{ text: `YouTube Specialist: ${currentTool} for ${val}` }] }] })
+                });
+                const data = await res.json();
+                resBox.innerText = data.candidates[0].content.parts[0].text;
+            } catch(e) { resBox.innerText = "Error: API Limit reached."; }
+        }
+    }
+
+    function openAuth(t) { document.getElementById('aTitle').innerText = t; document.getElementById('authModal').style.display = 'flex'; }
     function closeAuth() { document.getElementById('authModal').style.display = 'none'; }
+    function closeModal() { document.getElementById('toolModal').style.display = 'none'; }
     function login() { localStorage.setItem('isLogged', 'true'); location.reload(); }
     function logout() { localStorage.setItem('isLogged', 'false'); location.reload(); }
 
     if(isLogged) {
-        document.getElementById('authSide').style.display = 'none';
-        document.getElementById('userSide').style.display = 'block';
-        document.getElementById('badge').innerText = 'PRO ACCESS';
-        document.getElementById('badge').style.background = '#dcfce7';
-        document.getElementById('badge').style.color = '#15803d';
+        document.getElementById('authSectionSide').style.display = 'none';
+        document.getElementById('userSectionSide').style.display = 'block';
+        document.getElementById('statusBadge').innerText = 'PRO MEMBER';
+        document.getElementById('statusBadge').style.background = '#dcfce7'; document.getElementById('statusBadge').style.color = '#15803d';
     }
 
-    render();
+    function searchTools() {
+        const term = document.getElementById('toolSearch').value.toLowerCase();
+        renderTools(tools.filter(t => t.title.toLowerCase().includes(term)));
+    }
+
+    renderTools(tools);
 </script>
 </body>
 </html>
