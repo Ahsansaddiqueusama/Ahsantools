@@ -1,94 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AhsanTools - Free YouTube Suite</title>
-    
-    <script src="https://js.puter.com/v2/"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <style>
-        :root { --red: #ff0033; --dark: #1a1a1a; }
-        body { font-family: 'Segoe UI', sans-serif; background: #f9f9f9; margin: 0; color: #333; }
-        header { background: var(--red); color: white; padding: 40px 20px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .container { max-width: 1000px; margin: auto; padding: 20px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .card { background: white; padding: 25px; border-radius: 15px; border: 1px solid #eee; text-align: center; transition: 0.3s; }
-        .card:hover { transform: translateY(-5px); border-color: var(--red); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        .card i { font-size: 40px; color: var(--red); margin-bottom: 15px; }
-        .btn { background: var(--red); color: white; border: none; padding: 12px 25px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 10px; }
-        
-        /* Modal */
-        .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:999; justify-content:center; align-items:center; }
-        .modal-box { background:white; padding:30px; border-radius:15px; width:90%; max-width:500px; position:relative; }
-        input { width:100%; padding:12px; margin:15px 0; border:1px solid #ddd; border-radius:8px; box-sizing: border-box; }
-        #res { background:#f4f4f4; padding:15px; margin-top:15px; border-radius:8px; text-align:left; max-height:250px; overflow-y:auto; white-space: pre-wrap; font-size: 14px; border: 1px dashed #ccc; }
-        .close { position:absolute; top:10px; right:15px; font-size:25px; cursor:pointer; color: #999; }
-    </style>
-</head>
-<body>
-
-<header>
-    <h1>AhsanTools</h1>
-    <p>Professional YouTube Tools | Free & Fast</p>
-</header>
-
-<div class="container">
-    <div class="grid">
-        <div class="card">
-            <i class="fa-solid fa-magnifying-glass-chart"></i>
-            <h3>Keyword Planner</h3>
-            <p>Find trending keywords from YouTube search.</p>
-            <button class="btn" onclick="openT('keywords')">Open Tool</button>
-        </div>
-
-        <div class="card">
-            <i class="fa-solid fa-tags"></i>
-            <h3>Tag Generator</h3>
-            <p>Generate SEO tags via AI for growth.</p>
-            <button class="btn" onclick="openT('tags')">Open Tool</button>
-        </div>
-
-        <div class="card">
-            <i class="fa-solid fa-file-lines"></i>
-            <h3>AI Script Writer</h3>
-            <p>Write complete video scripts for free.</p>
-            <button class="btn" onclick="openT('script')">Open Tool</button>
-        </div>
-
-        <div class="card">
-            <i class="fa-solid fa-image"></i>
-            <h3>Thumb Downloader</h3>
-            <p>Get HD video thumbnails instantly.</p>
-            <button class="btn" onclick="openT('thumb')">Open Tool</button>
-        </div>
-    </div>
-</div>
-
-<div id="modal" class="modal">
-    <div class="modal-box">
-        <span class="close" onclick="closeT()">&times;</span>
-        <h2 id="title">Tool</h2>
-        <input type="text" id="inp" placeholder="Type here...">
-        <button class="btn" id="runBtn" onclick="process()">Generate</button>
-        <div id="res" style="display:none;"></div>
-    </div>
-</div>
-
-<script>
-let activeTool = "";
-
-function openT(t) {
-    activeTool = t;
-    document.getElementById('title').innerText = t.toUpperCase().replace('_', ' ');
-    document.getElementById('modal').style.display = 'flex';
-    document.getElementById('res').style.display = 'none';
-    document.getElementById('inp').value = '';
-}
-
-function closeT() { document.getElementById('modal').style.display = 'none'; }
-
 async function process() {
     const val = document.getElementById('inp').value.trim();
     const out = document.getElementById('res');
@@ -98,8 +7,28 @@ async function process() {
     out.innerText = "Processing... Please wait.";
 
     try {
-        if(activeTool === 'keywords') {
-            // Keyword Planner Logic (YouTube Suggestion Scraping)
+        if(activeTool === 'thumb') {
+            // Updated Regex: Jo har tarah ke YT links ko handle karega
+            const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i;
+            const match = val.match(regex);
+            const id = match ? match[1] : null;
+
+            if(id) {
+                out.innerHTML = `
+                    <div style="text-align:center;">
+                        <img src="https://img.youtube.com/vi/${id}/maxresdefault.jpg" width="100%" style="border-radius:8px; border:1px solid #ddd;">
+                        <p style="margin-top:10px; font-weight:bold; color:#555;">HD Quality</p>
+                        <a href="https://img.youtube.com/vi/${id}/maxresdefault.jpg" target="_blank" download="thumbnail.jpg" 
+                           style="display:inline-block; background:red; color:white; padding:10px 20px; text-decoration:none; border-radius:5px; font-weight:bold;">
+                           Download HD Thumbnail
+                        </a>
+                    </div>`;
+            } else { 
+                out.innerText = "Error: Invalid YouTube Link. Please copy the link correctly."; 
+            }
+        } 
+        // ... (Baki tools ka code waisa hi rahega)
+        else if(activeTool === 'keywords') {
             const proxy = "https://api.allorigins.win/get?url=";
             const target = `https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=${encodeURIComponent(val)}`;
             const response = await fetch(proxy + encodeURIComponent(target));
@@ -107,26 +36,12 @@ async function process() {
             const suggestions = JSON.parse(data.contents)[1];
             out.innerText = suggestions.length > 0 ? "Trending Keywords:\n\n" + suggestions.join("\n") : "No keywords found.";
         } 
-        else if(activeTool === 'tags') {
-            // AI Tag Generator via Puter.js
-            const r = await puter.ai.chat(`Generate 20 viral SEO tags for YouTube video: ${val}. Separate with commas.`);
+        else if(activeTool === 'tags' || activeTool === 'script') {
+            let prompt = activeTool === 'tags' ? `Generate 20 SEO tags for: ${val}` : `Write a script for: ${val}`;
+            const r = await puter.ai.chat(prompt);
             out.innerText = r.toString();
-        }
-        else if(activeTool === 'script') {
-            // AI Script Writer via Puter.js
-            const r = await puter.ai.chat(`Write a professional YouTube script for: ${val}`);
-            out.innerText = r.toString();
-        }
-        else if(activeTool === 'thumb') {
-            const id = val.match(/(?:v=|be\/|embed\/)([^&?#]+)/)?.[1];
-            if(id) {
-                out.innerHTML = `<img src="https://img.youtube.com/vi/${id}/maxresdefault.jpg" width="100%"><br><br><a href="https://img.youtube.com/vi/${id}/maxresdefault.jpg" target="_blank" style="color:red; font-weight:bold;">Download HD Thumbnail</a>`;
-            } else { out.innerText = "Invalid YouTube Link!"; }
         }
     } catch(e) {
-        out.innerText = "Error: Network issue. Try again.";
+        out.innerText = "Error: System slow hai ya link galat hai.";
     }
 }
-</script>
-</body>
-</html>
