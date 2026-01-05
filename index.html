@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AhsanTools – YouTube Growth Suite</title>
+    <title>AhsanTools – 70+ Creator Growth Tools</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
@@ -12,160 +12,173 @@
         body { margin: 0; background: var(--bg); display: flex; height: 100vh; overflow: hidden; }
 
         /* Sidebar */
-        .sidebar { width: 280px; background: var(--navy); color: white; display: flex; flex-direction: column; padding: 25px 0; }
-        .logo { text-align: center; font-size: 24px; font-weight: 800; margin-bottom: 40px; }
+        .sidebar { width: 260px; background: var(--navy); color: white; display: flex; flex-direction: column; padding: 25px 0; flex-shrink: 0; }
+        .logo { text-align: center; font-size: 22px; font-weight: 800; margin-bottom: 30px; letter-spacing: -1px; }
         .logo span { color: var(--cyan); }
-        .nav-item { padding: 14px 25px; cursor: pointer; display: flex; align-items: center; gap: 15px; color: rgba(255,255,255,0.7); font-size: 14px; }
-        .nav-item.active { background: rgba(0, 180, 255, 0.1); color: white; border-left: 4px solid var(--cyan); }
+        .nav-item { padding: 12px 25px; cursor: pointer; display: flex; align-items: center; gap: 12px; color: rgba(255,255,255,0.6); font-size: 13px; font-weight: 600; }
+        .nav-item:hover, .nav-item.active { color: white; background: rgba(0, 180, 255, 0.1); border-left: 4px solid var(--cyan); }
 
-        /* Main Content */
+        /* Main Area */
         .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
-        header { background: white; padding: 15px 35px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; }
+        header { background: white; padding: 15px 30px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; }
         .search-box { position: relative; width: 400px; }
-        .search-box input { width: 100%; padding: 12px 45px; border-radius: 12px; border: 1px solid #e2e8f0; background: #f8fafc; outline: none; }
-        .search-box i { position: absolute; left: 18px; top: 15px; color: #94a3b8; }
+        .search-box input { width: 100%; padding: 10px 40px; border-radius: 10px; border: 1px solid #e2e8f0; background: #f8fafc; outline: none; }
+        .search-box i { position: absolute; left: 15px; top: 13px; color: #94a3b8; }
 
-        .content { padding: 30px; overflow-y: auto; flex: 1; }
-        .hero { background: var(--navy); padding: 40px; border-radius: 20px; color: white; text-align: center; margin-bottom: 30px; }
-        .hero h1 { margin: 0; font-size: 28px; }
-        .hero span { color: var(--cyan); }
-
-        /* Centered Cards */
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
+        .content { padding: 25px; overflow-y: auto; flex: 1; scroll-behavior: smooth; }
+        .section-header { margin: 40px 0 20px; font-size: 18px; font-weight: 800; color: var(--navy); display: flex; align-items: center; gap: 10px; padding-bottom: 10px; border-bottom: 2px solid #eee; }
+        
+        /* Grid & Cards */
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
         .card { 
-            background: white; border-radius: 20px; padding: 40px 25px; text-align: center;
-            border: 1px solid #eef2f6; display: flex; flex-direction: column; align-items: center;
+            background: white; border-radius: 15px; padding: 25px 20px; text-align: center;
+            border: 1px solid #eef2f6; display: flex; flex-direction: column; align-items: center; justify-content: space-between;
         }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.05); border-color: var(--cyan); }
-        .icon-box { background: #f0f9ff; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
-        .icon-box i { font-size: 26px; color: var(--navy); }
-        .card h3 { margin: 10px 0; font-size: 18px; color: var(--navy); font-weight: 700; }
-        .card p { font-size: 13px; color: #64748b; margin-bottom: 20px; line-height: 1.6; }
-        .btn { background: var(--navy); color: white; border: none; padding: 13px; border-radius: 10px; width: 100%; cursor: pointer; font-weight: 700; font-size: 13px; }
+        .card:hover { transform: translateY(-5px); border-color: var(--cyan); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .icon-box { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; font-size: 20px; }
+        .card h3 { margin: 0 0 8px; font-size: 15px; color: var(--navy); font-weight: 700; }
+        .card p { font-size: 12px; color: #64748b; margin-bottom: 15px; line-height: 1.4; }
+        .btn { background: var(--navy); color: white; border: none; padding: 10px; border-radius: 8px; width: 100%; cursor: pointer; font-weight: 700; font-size: 12px; }
         .btn:hover { background: var(--cyan); }
 
         /* Modal */
-        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 9999; align-items: center; justify-content: center; padding: 20px; }
-        .modal-box { background: white; padding: 40px; border-radius: 25px; width: 100%; max-width: 550px; text-align: center; }
-        .modal-box input { width: 100%; padding: 16px; margin: 20px 0; border-radius: 12px; border: 1px solid #ddd; outline: none; }
-        .res-area { margin-top: 20px; display: none; }
-        .res-area img { width: 100%; border-radius: 12px; margin-bottom: 15px; border: 1px solid #eee; }
+        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 9999; align-items: center; justify-content: center; padding: 20px; }
+        .modal-box { background: white; padding: 35px; border-radius: 20px; width: 100%; max-width: 500px; text-align: center; }
+        .modal-box input { width: 100%; padding: 14px; margin: 15px 0; border-radius: 10px; border: 1px solid #ddd; outline: none; }
+        .res-area { margin-top: 15px; display: none; padding: 15px; background: #f8fafc; border-radius: 10px; border: 1px solid #eee; text-align: left; font-size: 14px; max-height: 300px; overflow-y: auto; }
 
-        .wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); text-decoration: none; }
+        .wa-btn { position: fixed; bottom: 25px; right: 25px; background: #25d366; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); text-decoration: none; }
     </style>
 </head>
 <body>
 
 <div class="sidebar">
     <div class="logo">Ahsan<span>Tools</span></div>
-    <div class="nav-item active"><i class="fa-solid fa-layer-group"></i> All Tools</div>
-    <div class="nav-item"><i class="fa-solid fa-chart-line"></i> SEO Suite</div>
-    <div class="nav-item"><i class="fa-solid fa-pen-nib"></i> AI Writing</div>
+    <div class="nav-item active" onclick="scrollToSec('sec-1')">Channel Setup</div>
+    <div class="nav-item" onclick="scrollToSec('sec-2')">Video SEO</div>
+    <div class="nav-item" onclick="scrollToSec('sec-3')">Thumbnails</div>
+    <div class="nav-item" onclick="scrollToSec('sec-4')">AI Content</div>
+    <div class="nav-item" onclick="scrollToSec('sec-6')">Growth & Analytics</div>
 </div>
 
 <div class="main">
     <header>
-        <div class="search-box">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="Search from 70+ tools..." onkeyup="searchTools()" id="toolSearch">
-        </div>
-        <div style="font-size: 12px; font-weight: 800; color: #94a3b8;">AHSANTOOLS v2.0</div>
+        <div class="search-box"><i class="fa-solid fa-search"></i><input type="text" id="toolSearch" placeholder="Search 70+ tools..." onkeyup="search()"></div>
+        <div style="font-size: 11px; font-weight: 800; color: #94a3b8;">v3.0 FULL SUITE</div>
     </header>
 
-    <div class="content">
-        <div class="hero">
-            <h1>Expert Tools for <span>YouTube Growth</span></h1>
-            <p>Direct, simple, and powerful tools for every creator.</p>
-        </div>
-        <div class="grid" id="toolsDisplay"></div>
+    <div class="content" id="mainScroll">
+        <div id="toolsContainer"></div>
     </div>
 </div>
 
 <div id="toolModal" class="modal">
     <div class="modal-box">
-        <h2 id="mTitle">Tool Name</h2>
-        <p id="mDesc" style="color: #64748b; font-size: 13px;"></p>
-        <input type="text" id="mInput" placeholder="Enter keyword or paste link here...">
-        <button class="btn" id="mBtn" onclick="runTool()">Analyze Now</button>
-        
-        <div id="resArea" class="res-area">
-            <div id="imgPreview"></div>
-            <a id="downloadBtn" href="#" target="_blank" style="display:block; margin-top:10px; color:var(--cyan); font-weight:bold; text-decoration:none;">Download Full Resolution</a>
-        </div>
-        
-        <button onclick="closeModal()" style="margin-top:20px; background:none; border:none; color:#aaa; cursor:pointer; font-weight:600;">Close Window</button>
+        <h2 id="mTitle" style="margin:0;">Tool Name</h2>
+        <p id="mDesc" style="color: #64748b; font-size: 13px; margin-top: 5px;"></p>
+        <input type="text" id="mInput" placeholder="Enter link, keyword or details...">
+        <button class="btn" id="mBtn" onclick="runTool()">Execute Tool</button>
+        <div id="resArea" class="res-area"></div>
+        <button onclick="closeModal()" style="margin-top:15px; background:none; border:none; color:#aaa; cursor:pointer; font-weight:600;">Close</button>
     </div>
 </div>
 
-<a href="https://wa.me/923266342858" class="wa-float" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+<a href="https://wa.me/923266342858" class="wa-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
 
 <script>
-    const tools = [
-        { id: 'thumb', icon: 'fa-image', title: 'Thumbnail Downloader', desc: 'Fetch 4K/HD thumbnails from any YouTube video link instantly.' },
-        { id: 'kw', icon: 'fa-magnifying-glass-chart', title: 'Keyword Research', desc: 'Find high-volume search terms and analyze SEO competition.' },
-        { id: 'script', icon: 'fa-scroll', title: 'AI Script Generator', desc: 'Create viral video scripts with professional hooks and intros.' },
-        { id: 'tags', icon: 'fa-hashtag', title: 'Viral Tag Finder', desc: 'Extract and copy the best performing tags from viral videos.' },
-        { id: 'audit', icon: 'fa-stethoscope', title: 'Channel Auditor', desc: 'Get a full SEO health report of your YouTube channel.' },
-        { id: 'title', icon: 'fa-bolt', title: 'Viral Title Generator', desc: 'Get high-CTR titles based on the latest trending topics.' }
+    const GEM_KEY = "AIzaSyC5GztPDS_NyyXBPj1Up3Tn4p0yIlVZsiA";
+    
+    const sections = [
+        { id: 'sec-1', title: 'Channel Setup', icon: 'fa-id-card', color: '#fee2e2', tools: [
+            { id: 'id_find', title: 'Channel ID Finder', desc: 'Find unique YouTube channel IDs instantly.', icon: 'fa-search' },
+            { id: 'user_find', title: 'Username Finder', desc: 'Check availability of channel handles.', icon: 'fa-user' },
+            { id: 'date_check', title: 'Creation Date Checker', desc: 'See when any channel was started.', icon: 'fa-calendar' },
+            { id: 'desc_gen', title: 'Channel Description Gen', desc: 'AI-generated about sections.', icon: 'fa-pen' }
+        ]},
+        { id: 'sec-2', title: 'Video SEO', icon: 'fa-bolt', color: '#ffedd5', tools: [
+            { id: 'title_ai', title: 'AI Title Generator', desc: 'Create viral, high-CTR titles.', icon: 'fa-heading' },
+            { id: 'tag_gen', title: 'AI Tag Generator', desc: 'Get SEO tags for better ranking.', icon: 'fa-tags' },
+            { id: 'tag_ext', title: 'Tag Extractor', desc: 'Copy tags from viral videos.', icon: 'fa-scissors' },
+            { id: 'hash_gen', title: 'Hashtag Generator', desc: 'Trending hashtags for your niche.', icon: 'fa-hashtag' }
+        ]},
+        { id: 'sec-3', title: 'Thumbnail Power', icon: 'fa-image', color: '#fef9c3', tools: [
+            { id: 'thumb', title: 'Thumbnail Downloader', desc: 'Get HD/4K thumbnails for free.', icon: 'fa-download' },
+            { id: 'thumb_pre', title: 'Thumbnail Previewer', desc: 'Test look on Mobile vs Desktop.', icon: 'fa-eye' },
+            { id: 'color_check', title: 'Color Contrast Checker', desc: 'Check if text is readable.', icon: 'fa-palette' }
+        ]},
+        { id: 'sec-4', title: 'AI Content Creation', icon: 'fa-brain', color: '#dcfce7', tools: [
+            { id: 'script_ai', title: 'AI Script Writer', desc: 'Full video scripts with hooks.', icon: 'fa-scroll' },
+            { id: 'hook_gen', title: 'Viral Hook Generator', desc: 'First 5-sec retention boosters.', icon: 'fa-anchor' },
+            { id: 'short_gen', title: 'Shorts Script Gen', desc: 'Optimized scripts for vertical video.', icon: 'fa-mobile-screen' }
+        ]}
     ];
 
-    let activeId = '';
+    let activeTool = '';
 
-    function render(list) {
-        document.getElementById('toolsDisplay').innerHTML = list.map(t => `
-            <div class="card">
-                <div class="icon-box"><i class="fa-solid ${t.icon}"></i></div>
-                <h3>${t.title}</h3>
-                <p>${t.desc}</p>
-                <button class="btn" onclick="openTool('${t.id}', '${t.title}', '${t.desc}')">Launch Tool</button>
+    function render() {
+        const container = document.getElementById('toolsContainer');
+        container.innerHTML = sections.map(sec => `
+            <div class="section-header" id="${sec.id}">
+                <i class="fa-solid ${sec.icon}"></i> ${sec.title}
+            </div>
+            <div class="grid">
+                ${sec.tools.map(t => `
+                    <div class="card">
+                        <div class="icon-box" style="background:${sec.color}"><i class="fa-solid ${t.icon}"></i></div>
+                        <h3>${t.title}</h3>
+                        <p>${t.desc}</p>
+                        <button class="btn" onclick="openModal('${t.id}', '${t.title}', '${t.desc}')">Launch Tool</button>
+                    </div>
+                `).join('')}
             </div>
         `).join('');
     }
 
-    function openTool(id, title, desc) {
-        activeId = id;
+    function openModal(id, title, desc) {
+        activeTool = id;
         document.getElementById('mTitle').innerText = title;
         document.getElementById('mDesc').innerText = desc;
-        document.getElementById('mBtn').innerText = (id === 'thumb') ? "Download Thumbnail" : "Analyze Now";
+        document.getElementById('mBtn').innerText = (id === 'thumb') ? "Download Thumbnail" : "Generate Now";
         document.getElementById('resArea').style.display = 'none';
         document.getElementById('mInput').value = '';
         document.getElementById('toolModal').style.display = 'flex';
     }
 
-    function runTool() {
-        const val = document.getElementById('mInput').value.trim();
+    async function runTool() {
+        const input = document.getElementById('mInput').value.trim();
         const resArea = document.getElementById('resArea');
-        const imgPreview = document.getElementById('imgPreview');
-        const dl = document.getElementById('downloadBtn');
+        if(!input) return alert("Please enter something!");
 
-        if(!val) return alert("Please provide input!");
+        resArea.innerHTML = "Processing..."; resArea.style.display = 'block';
 
-        if(activeId === 'thumb') {
-            let vid = "";
-            if(val.includes("v=")) vid = val.split("v=")[1].split("&")[0];
-            else if(val.includes("youtu.be/")) vid = val.split("youtu.be/")[1].split("?")[0];
-            else vid = val;
-
-            if(vid) {
-                const url = `https://img.youtube.com/vi/${vid}/maxresdefault.jpg`;
-                imgPreview.innerHTML = `<img src="${url}" onerror="this.src='https://img.youtube.com/vi/${vid}/hqdefault.jpg'">`;
-                dl.href = url;
-                resArea.style.display = 'block';
-            } else {
-                alert("Invalid Link!");
-            }
+        if(activeTool === 'thumb') {
+            const vid = input.includes("v=") ? input.split("v=")[1].split("&")[0] : input.split("/").pop();
+            const url = `https://img.youtube.com/vi/${vid}/maxresdefault.jpg`;
+            resArea.innerHTML = `<img src="${url}" style="width:100%; border-radius:10px;"><br><a href="${url}" target="_blank" style="color:var(--cyan); font-weight:800; text-decoration:none;">Download HD</a>`;
         } else {
-            alert("Analysis in progress... (AI logic ready for connection)");
+            try {
+                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEM_KEY}`, {
+                    method: "POST",
+                    body: JSON.stringify({ contents: [{ parts: [{ text: `YouTube Specialist: Act as a tool for ${activeTool}. Provide data for: ${input}` }] }] })
+                });
+                const data = await res.json();
+                resArea.innerText = data.candidates[0].content.parts[0].text;
+            } catch(e) { resArea.innerText = "API Error. Please try again."; }
         }
     }
 
     function closeModal() { document.getElementById('toolModal').style.display = 'none'; }
-    function searchTools() {
+    function scrollToSec(id) { document.getElementById(id).scrollIntoView(); }
+    function search() {
         const q = document.getElementById('toolSearch').value.toLowerCase();
-        render(tools.filter(t => t.title.toLowerCase().includes(q)));
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(c => {
+            const text = c.innerText.toLowerCase();
+            c.style.display = text.includes(q) ? 'flex' : 'none';
+        });
     }
 
-    render(tools);
+    render();
 </script>
 </body>
 </html>
