@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AhsanTools – Pro SEO Suite</title>
+    <title>AhsanTools – 100% Fixed & AI Powered</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WMX94TX4PQ"></script>
     <script>
@@ -13,10 +13,12 @@
       gtag('config', 'G-WMX94TX4PQ');
     </script>
     
+    <script src="https://js.puter.com/v2/"></script>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
-        :root { --red: #ff0033; --light: #f6f7fb; --wa: #25d366; }
+        :root { --red: #ff0033; --light: #f6f7fb; }
         body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: var(--light); color: #222; }
         header { background: linear-gradient(135deg, #ff0033 0%, #b30024 100%); color: #fff; padding: 35px 20px; text-align: center; }
         .container { max-width: 1100px; margin: auto; padding: 20px 15px; }
@@ -24,12 +26,25 @@
         .section-title { font-size: 19px; margin: 30px 0 15px; border-left: 4px solid var(--red); padding-left: 10px; display: flex; align-items: center; gap: 8px; font-weight: 800; }
         .section-title i { color: var(--red); }
 
-        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; justify-content: center; }
+        .tools-grid { 
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px; 
+            justify-content: center;
+        }
         
         .tool-card { 
-            background: #fff; border-radius: 10px; padding: 18px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); 
-            text-align: center; display: flex; flex-direction: column; justify-content: space-between;
-            border: 1px solid #eee; transition: 0.3s; min-height: 220px;
+            background: #fff; 
+            border-radius: 10px; 
+            padding: 18px; 
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05); 
+            text-align: center;
+            width: 240px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid #eee;
+            transition: 0.3s;
         }
         .tool-card:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(255,0,51,0.08); }
         
@@ -37,7 +52,6 @@
         .card-icon.blue { color: #007bff; }
         .card-icon.yellow { color: #ffc107; }
         .card-icon.green { color: #28a745; }
-        .card-icon.purple { color: #6f42c1; }
 
         .tool-card h3 { margin: 5px 0; font-size: 16px; color: #333; font-weight: 700; }
         .tool-card p { font-size: 12.5px; color: #777; margin: 2px 0 12px; line-height: 1.3; height: 34px; overflow: hidden; }
@@ -47,60 +61,37 @@
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; }
         .modal-content { background: #fff; padding: 25px; border-radius: 12px; width: 90%; max-width: 450px; position: relative; text-align: center; }
         .close-btn { position: absolute; top: 8px; right: 15px; cursor: pointer; font-size: 24px; color: #999; }
-        input, textarea { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; font-family: inherit; }
-        .res-box { margin-top: 15px; padding: 12px; background: #f9f9f9; border-radius: 6px; font-size: 13.5px; border: 1px dashed #ccc; display: none; text-align: left; white-space: pre-wrap; color: #333; max-height: 300px; overflow-y: auto; }
+        input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; }
+        .res-box { margin-top: 15px; padding: 12px; background: #f9f9f9; border-radius: 6px; font-size: 13.5px; border: 1px dashed #ccc; display: none; text-align: left; white-space: pre-wrap; color: #333; max-height: 250px; overflow-y: auto; }
         .loader { border: 3px solid #f3f3f3; border-top: 3px solid var(--red); border-radius: 50%; width: 20px; height: 20px; animation: spin 1s linear infinite; display: none; margin: 10px auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; z-index: 3000; text-decoration: none; }
     </style>
 </head>
 <body>
 
 <header>
     <h1>AhsanTools</h1>
-    <p>Professional YouTube SEO & Content Suite</p>
+    <p>All-in-One AI Powered YouTube Suite</p>
 </header>
 
 <div class="container">
     
-    <h2 class="section-title"><i class="fa-solid fa-magnifying-glass-chart"></i> Pro SEO & Research</h2>
+    <h2 class="section-title"><i class="fa-solid fa-box-open"></i> Data & Download Tools</h2>
     <div class="tools-grid">
-        <div class="tool-card">
-            <i class="fa-solid fa-key card-icon yellow"></i>
-            <h3>Keyword Research</h3>
-            <p>Check search volume & difficulty score.</p>
-            <button class="btn-use" onclick="openTool('ai_keyword')">Analyze Keyword</button>
-        </div>
-        <div class="tool-card">
-            <i class="fa-solid fa-gauge-high card-icon green"></i>
-            <h3>SEO Audit Tool</h3>
-            <p>Get SEO score for your title & tags.</p>
-            <button class="btn-use" onclick="openTool('ai_seo_audit')">Run Audit</button>
-        </div>
-        <div class="tool-card">
-            <i class="fa-solid fa-users-viewfinder card-icon blue"></i>
-            <h3>Competitor Analysis</h3>
-            <p>Compare two channels or video data.</p>
-            <button class="btn-use" onclick="openTool('ai_competitor')">Compare Now</button>
-        </div>
-        <div class="tool-card">
-            <i class="fa-solid fa-vials card-icon purple"></i>
-            <h3>Thumbnail A/B Test</h3>
-            <p>Compare two thumbnails for better CTR.</p>
-            <button class="btn-use" onclick="openTool('ai_ab_test')">Test CTR</button>
-        </div>
+        <div class="tool-card"><i class="fa-solid fa-search card-icon blue"></i><h3>Channel ID Finder</h3><p>Get ID (Requires YT API Key).</p><button class="btn-use" onclick="openTool('channel')">Use Tool</button></div>
+        <div class="tool-card"><i class="fa-solid fa-image card-icon yellow"></i><h3>Thumb Downloader</h3><p>Download HD thumbnails instantly.</p><button class="btn-use" onclick="openTool('thumb')">Use Tool</button></div>
+        <div class="tool-card"><i class="fa-solid fa-code card-icon blue"></i><h3>Embed Generator</h3><p>Get responsive embed codes.</p><button class="btn-use" onclick="openTool('embed')">Use Tool</button></div>
+        <div class="tool-card"><i class="fa-solid fa-dollar-sign card-icon yellow"></i><h3>Income Calculator</h3><p>Calculate estimated earnings.</p><button class="btn-use" onclick="openTool('income')">Use Tool</button></div>
     </div>
 
-    <h2 class="section-title"><i class="fa-solid fa-robot"></i> AI Scripting</h2>
+    <h2 class="section-title"><i class="fa-solid fa-robot"></i> AI Script & SEO (Free via Puter.js)</h2>
     <div class="tools-grid">
-        <div class="tool-card"><i class="fa-solid fa-pen-fancy card-icon yellow"></i><h3>AI Script Writer</h3><p>Generate full professional scripts.</p><button class="btn-use" onclick="openTool('ai_script')">Write Script</button></div>
-        <div class="tool-card"><i class="fa-solid fa-wand-magic-sparkles card-icon blue"></i><h3>Viral Hook Gen</h3><p>Create high-retention video intros.</p><button class="btn-use" onclick="openTool('ai_hook')">Get Hooks</button></div>
-    </div>
-
-    <h2 class="section-title"><i class="fa-solid fa-box-open"></i> Classic Tools</h2>
-    <div class="tools-grid">
-        <div class="tool-card"><i class="fa-solid fa-id-badge card-icon blue"></i><h3>Channel ID Finder</h3><p>Get ID via handle or URL.</p><button class="btn-use" onclick="openTool('channel')">Find ID</button></div>
-        <div class="tool-card"><i class="fa-solid fa-image card-icon yellow"></i><h3>Thumb Downloader</h3><p>Get HD images of any video.</p><button class="btn-use" onclick="openTool('thumb')">Download</button></div>
-        <div class="tool-card"><i class="fa-solid fa-dollar-sign card-icon green"></i><h3>Income Calculator</h3><p>Estimate potential ad revenue.</p><button class="btn-use" onclick="openTool('income')">Calculate</button></div>
+        <div class="tool-card"><i class="fa-solid fa-pen-fancy card-icon yellow"></i><h3>AI Script Writer</h3><p>Professional video scripts generator.</p><button class="btn-use" onclick="openTool('ai_script')">Use Tool</button></div>
+        <div class="tool-card"><i class="fa-solid fa-wand-magic-sparkles card-icon blue"></i><h3>Viral Hook Gen</h3><p>Catchy intros for your videos.</p><button class="btn-use" onclick="openTool('ai_hook')">Use Tool</button></div>
+        <div class="tool-card"><i class="fa-solid fa-tags card-icon green"></i><h3>Tag Generator</h3><p>SEO tags based on your topic.</p><button class="btn-use" onclick="openTool('tag_gen')">Use Tool</button></div>
+        <div class="tool-card"><i class="fa-solid fa-arrows-rotate card-icon green"></i><h3>AI Rewriter</h3><p>Rewrite descriptions or scripts.</p><button class="btn-use" onclick="openTool('ai_rewrite')">Use Tool</button></div>
     </div>
 
 </div>
@@ -109,73 +100,107 @@
     <div class="modal-content">
         <span class="close-btn" onclick="closeModal()">&times;</span>
         <h3 id="uTitle">Tool</h3>
-        <div id="inputArea">
-            <input type="text" id="uInput" placeholder="Enter details...">
-        </div>
-        <button class="btn-use" onclick="runLogic()">Generate Result</button>
+        <input type="text" id="uInput" placeholder="Enter link, topic or text...">
+        <button class="btn-use" id="runBtn" onclick="runLogic()">Generate Result</button>
         <div class="loader" id="uLoad"></div>
         <div id="uRes" class="res-box"></div>
     </div>
 </div>
 
+<a href="https://wa.me/923266342858" class="whatsapp-float" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+
 <script>
-    const YT_KEY = "AIzaSyCUmd6h8n74WGmpDt_nLKij0vHUqVSFilI";
-    const GEM_KEY = "AIzaSyC5GztPDS_NyyXBPj1Up3Tn4p0yIlVZsiA";
+    // YouTube Key (Optional for ID Finder)
+    const YT_KEY = "AIzaSyCUmd6h8n74WGmpDt_nLKij0vHUqVSFilI"; 
     let activeTool = "";
 
     function openTool(t) { 
         activeTool = t; 
-        document.getElementById('uTitle').innerText = t.replace('ai_', '').replace('_', ' ').toUpperCase();
+        document.getElementById('uTitle').innerText = t.replace('_', ' ').toUpperCase();
         document.getElementById('uRes').style.display = 'none';
-        document.getElementById('uInput').value = "";
-        
-        // Custom placeholder based on tool
-        const input = document.getElementById('uInput');
-        if(t === 'ai_keyword') input.placeholder = "Enter keyword (e.g. How to grow on YT)";
-        else if(t === 'ai_seo_audit') input.placeholder = "Enter Title and Tags...";
-        else if(t === 'ai_competitor') input.placeholder = "Enter two channel names or topics...";
-        else input.placeholder = "Enter link or topic...";
-        
+        document.getElementById('uInput').value = '';
         document.getElementById('uModal').style.display = 'flex'; 
     }
-
+    
     function closeModal() { document.getElementById('uModal').style.display = 'none'; }
 
     async function runLogic() {
-        const input = document.getElementById('uInput').value;
+        const input = document.getElementById('uInput').value.trim();
         const loader = document.getElementById('uLoad');
         const resBox = document.getElementById('uRes');
-        if(!input) return alert("Please provide input!");
         
-        loader.style.display = 'block'; resBox.style.display = 'none';
+        if(!input) return alert("Please enter something!");
+        
+        loader.style.display = 'block'; 
+        resBox.style.display = 'none';
 
         try {
-            if(activeTool.startsWith('ai_')) {
-                let prompt = `Act as a YouTube SEO expert like TubeBuddy/VidIQ. Task: ${activeTool} for: ${input}. `;
-                if(activeTool==='ai_keyword') prompt += "Give Search Volume (0-100), Competition (Low/High), and Overall Score.";
-                if(activeTool==='ai_seo_audit') prompt += "Analyze this content and give an SEO Score out of 100 with improvement tips.";
-                
-                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEM_KEY}`, {
-                    method: "POST",
-                    body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
-                });
-                const data = await res.json();
-                resBox.innerText = data.candidates[0].content.parts[0].text;
-            } else if(activeTool === 'channel') {
-                const handle = input.includes('@') ? input.split('@')[1] : input.split('/').pop();
+            // --- AI TOOLS USING PUTER.JS (No Keys Required) ---
+            if(activeTool.startsWith('ai_') || activeTool === 'tag_gen') {
+                let prompt = "";
+                if(activeTool === 'ai_script') prompt = `Write a detailed YouTube video script for: ${input}`;
+                if(activeTool === 'ai_hook') prompt = `Generate 5 viral YouTube hooks for: ${input}`;
+                if(activeTool === 'tag_gen') prompt = `List 20 SEO optimized tags for a YouTube video about: ${input}`;
+                if(activeTool === 'ai_rewrite') prompt = `Rewrite this professionally for YouTube: ${input}`;
+
+                const response = await puter.ai.chat(prompt);
+                resBox.innerText = response.toString();
+            } 
+            
+            // --- THUMBNAIL DOWNLOADER (No API) ---
+            else if(activeTool === 'thumb') {
+                const vid = extractVideoID(input);
+                if(vid) {
+                    resBox.innerHTML = `
+                        <img src="https://img.youtube.com/vi/${vid}/maxresdefault.jpg" style="width:100%; border-radius:8px;">
+                        <br><br>
+                        <a href="https://img.youtube.com/vi/${vid}/maxresdefault.jpg" target="_blank" style="color:red; font-weight:bold; text-decoration:none;">
+                           Click here to Open/Download HD Image
+                        </a>`;
+                } else {
+                    resBox.innerText = "Invalid YouTube Link!";
+                }
+            } 
+
+            // --- INCOME CALCULATOR (No API) ---
+            else if(activeTool === 'income') {
+                const v = parseInt(input.replace(/,/g,'')) || 0;
+                const min = (v * 0.001).toFixed(2);
+                const max = (v * 0.004).toFixed(2);
+                resBox.innerText = `Views: ${v}\nEstimated Monthly Earnings: $${min} - $${max}\n(Based on $1-$4 CPM)`;
+            }
+
+            // --- EMBED GENERATOR (No API) ---
+            else if(activeTool === 'embed') {
+                const vid = extractVideoID(input);
+                if(vid) {
+                    const code = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${vid}" frameborder="0" allowfullscreen></iframe>`;
+                    resBox.innerText = "Copy this code:\n\n" + code;
+                } else {
+                    resBox.innerText = "Invalid YouTube Link!";
+                }
+            }
+
+            // --- CHANNEL ID (Requires YT API) ---
+            else if(activeTool === 'channel') {
+                const handle = input.includes('@') ? input.split('@')[1].split('/')[0] : input.split('/').pop();
                 const res = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=id&forHandle=${handle}&key=${YT_KEY}`);
                 const data = await res.json();
-                resBox.innerText = "Channel ID: " + (data.items ? data.items[0].id : "Not Found");
-            } else if(activeTool === 'thumb') {
-                const vid = input.split('v=')[1]?.split('&')[0] || input.split('/').pop();
-                resBox.innerHTML = `<img src="https://img.youtube.com/vi/${vid}/maxresdefault.jpg" style="width:100%"><br><a href="https://img.youtube.com/vi/${vid}/maxresdefault.jpg" target="_blank" style="color:red;font-weight:bold;">Download HD</a>`;
-            } else if(activeTool === 'income') {
-                const v = parseInt(input.replace(/,/g,'')) || 0;
-                resBox.innerText = `Views: ${v}\nEstimated Monthly: $${(v*0.001).toFixed(2)} - $${(v*0.004).toFixed(2)}`;
+                resBox.innerText = data.items ? "Channel ID: " + data.items[0].id : "Channel Not Found. Check Handle.";
             }
+
             resBox.style.display = 'block';
-        } catch(e) { resBox.innerText = "Error: API Quota exceeded or invalid input."; resBox.style.display = 'block'; }
+        } catch(e) { 
+            resBox.innerText = "Error: Something went wrong. " + e.message;
+            resBox.style.display = 'block';
+        }
         loader.style.display = 'none';
+    }
+
+    function extractVideoID(url) {
+        const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+        const match = url.match(regExp);
+        return (match && match[2].length === 11) ? match[2] : null;
     }
 </script>
 </body>
